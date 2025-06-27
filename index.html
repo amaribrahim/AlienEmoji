@@ -1,0 +1,59 @@
+<!-- index.html skeleton -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Alien Emoji Podcasts</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 42rem;
+            margin: 0 auto;
+            padding: 2rem
+        }
+
+        iframe {
+            width: 100%;
+            border: 0;
+            height: 180px
+        }
+
+        form {
+            display: grid;
+            gap: 0.5rem
+        }
+
+        input,
+        textarea,
+        button {
+            padding: 0.6rem;
+            border: 1px solid #ccc;
+            border-radius: 4px
+        }
+    </style>
+</head>
+
+<body>
+    <h1>👽 Alien Emoji Podcasts</h1>
+
+    <section>
+        <h2>Latest episodes</h2>
+        <!-- Spotify show embed (auto-updates) -->
+        <iframe src="https://open.spotify.com/embed/show/YOUR_SHOW_ID?utm_source=oembed" allowtransparency="true"
+            loading="lazy"></iframe>
+    </section>
+
+    <section>
+        <h2>Contact Us</h2>
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="_replyto" placeholder="Email" required>
+            <textarea name="message" rows="4" placeholder="How can we help?" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+</body>
+
+</html>
