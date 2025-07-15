@@ -27,6 +27,7 @@
             color: black;
             background-image: url('https://www.transparenttextures.com/patterns/white-wall-3.png');
             background-repeat: repeat;
+            line-height: 98%;
         }
 
         .container {
@@ -36,7 +37,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 90vh;
+            min-height: 95vh;
         }
 
         .top-bar {
@@ -109,22 +110,120 @@
             margin-right: auto;
         }
 
-        .section-heading {
-            font-size: 1.25rem;
-            font-weight: 400;
+        .services {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
             text-align: left;
-            margin-top: 3rem;
-            margin-bottom: 1rem;
+        }
+
+        .service-column {
+            /* background: rgba(255, 255, 255, 0.3); */
+            padding: 1rem 1.25rem;
+            /* border-radius: 1rem; */
+            /* backdrop-filter: blur(8px); */
+            flex: 200px 1 250px;
+        }
+
+        .service-column h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .service-column ul {
+            list-style: disc inside;
+            padding: 0;
+            margin: 0;
+        }
+
+        .service-column li {
+            margin-bottom: 0.35rem;
+        }
+
+        .project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            width: 100%;
+        }
+
+        .project-item {
+            width: 100%;
+        }
+
+        .spotify-embed {
+            width: 100%;
+            border: 0;
+            border-radius: 12px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .projects {
-            width: 80%;
+            width: 100%;
+        }
+
+        @media (max-width: 720px) {
+            .logo {
+                width: 95%;
+                /* position: absolute; */
+                top: 4rem;
+                left: 0rem;
+                max-width: 250px;
+                margin-bottom: 4rem;
+
+            }
+
+            .main-headline {
+                font-size: 3.5rem;
+                padding-left: 0rem;
+                padding-right: 0rem;
+                max-width: 100vw;
+                text-align: left;
+
+            }
+
+            .site-header {
+                padding: 0.4rem 0.4rem 0.4rem;
+                text-align: left;
+            }
+
+            .projects {
+
+                max-width: 95%;
+                margin-left: 2em;
+                margin-right: 2em;
+            }
+
+            .project-list {
+                flex-direction: column;
+                gap: 0rem;
+            }
+
+            .glass-button {
+                position: absolute;
+                top: 0.4rem;
+                left: 1rem;
+                /* width: fit-content; */
+                width: 200PX;
+
+                height: 35px;
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 1rem;
+            }
         }
 
         iframe {
             margin-left: auto;
             margin-right: auto;
-            /* display: block; */
+            display: block;
             width: 100%;
             border: 0;
             border-radius: 12px;
@@ -199,52 +298,6 @@
         ul li {
             margin-bottom: 0.25rem;
         }
-
-
-        @media (max-width: 720px) {
-            .logo {
-                width: 95%;
-                /* position: absolute; */
-                top: 4rem;
-                left: 0rem;
-                max-width: 250px;
-                margin-bottom: 4rem;
-
-            }
-
-            .main-headline {
-                font-size: 3.5rem;
-                padding-left: 0rem;
-                padding-right: 0rem;
-                max-width: 100vw;
-                text-align: left;
-
-            }
-
-            .site-header {
-                padding: 0.4rem 0.4rem 0.4rem;
-                text-align: left;
-            }
-
-            .projects {
-                width: 95%;
-            }
-
-            .glass-button {
-                position: absolute;
-                top: 0.4rem;
-                left: 1rem;
-                /* width: fit-content; */
-                width: 200PX;
-
-                height: 35px;
-                padding: 0.5rem 1rem;
-                font-size: 0.8rem;
-                margin-left: auto;
-                margin-right: auto;
-                margin-top: 1rem;
-            }
-        }
     </style>
 </head>
 
@@ -252,40 +305,59 @@
     <img src="assets/LOGO.svg" alt="Alien Emoji Logo" class="logo" />
     <!-- <div class="top-bar">
         <div class="marquee-text">
-            Remote Recording, Story driven Editing, Studio grade Audio Production, Full Transcription, Accessibility
-            Support, Metadata, Distribution Strategy, Promotional Content
+            <span>We are currently accepting new clients. Get in touch to start your podcast journey with us.</span>
         </div>
     </div> -->
     <div class="container">
         <header class="site-header">
+            <br><br><br>
             <h1 class="main-headline">WE MAKE PODCASTS</h1>
-            <p class="tagline">Remote recording, masterful editing, and everything else you need
-                to launch your project.
-                <br />
-                Let us handle the technical details so you can focus on your message and your audience.
-                <!-- <br />
-                <br />
-                Remote Recording, Story driven Editing, Studio grade Audio Production,
-                <br />
-                Full Transcription, Accessibility Support, Metadata,
-                <br />
-                Distribution Strategy, Promotional Content -->
+
+            <p class="tagline">
+                Remote recording, masterful editing, and everything else you need to launch your project.
+                <br> We focus on technical details so you can focus on your message and your audience.
             </p>
+            <br><br>
+            <div class="services">
+                <div class="service-column">
+                    <h3>Audio</h3>
+                    <ul>
+                        <li>Remote Recording</li>
+                        <li>Engagement Focused Editing</li>
+                        <li>Broadcast Quality Production</li>
+                    </ul>
+                </div>
+                <div class="service-column">
+                    <h3>Production</h3>
+                    <ul>
+                        <li>Accessibility Support</li>
+                        <li>Transcription and Metadata</li>
+                        <li>Promotional Content</li>
+                    </ul>
+                </div>
+            </div>
         </header>
 
         <section class="projects">
             <h2 class="section-heading">RECENT PROJECTS</h2>
-            <iframe src="https://open.spotify.com/embed/show/44Gl4oQo6p8FABpIWdyP6R?utm_source=generator&theme=0"
-                class="spotify-embed" height="180" allowfullscreen=""
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy"></iframe>
-            <iframe src="https://open.spotify.com/embed/episode/7EIkNVWfeBGKpEVQp7okds?utm_source=generator&theme=0"
-                class="spotify-embed" height="152" allowfullscreen=""
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy"></iframe>
+            <div class="project-list">
+                <div class="project-item">
+                    <iframe
+                        src="https://open.spotify.com/embed/show/44Gl4oQo6p8FABpIWdyP6R?utm_source=generator&amp;theme=0"
+                        class="spotify-embed" height="180" allowfullscreen=""
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy"></iframe>
+                </div>
+                <div class="project-item">
+                    <iframe
+                        src="https://open.spotify.com/embed/episode/7EIkNVWfeBGKpEVQp7okds?utm_source=generator&amp;theme=0"
+                        class="spotify-embed" height="152" allowfullscreen=""
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy"></iframe>
+                </div>
+            </div>
         </section>
     </div>
-
     <button class="glass-button" onclick="document.getElementById('modal').classList.add('active')">
         Get in touch
     </button>
