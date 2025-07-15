@@ -86,7 +86,7 @@
         .logo {
             width: 200px;
             margin-bottom: 2rem;
-            position: absolute;
+            position: relative;
             top: .5rem;
             left: 2rem;
             z-index: 10;
@@ -105,17 +105,14 @@
 
         .section-heading {
             font-size: 1.25rem;
-            font-weight: 700;
-            text-align: center;
+            font-weight: 400;
+            text-align: left;
             margin-top: 3rem;
             margin-bottom: 1rem;
         }
 
         .projects {
-
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            width: 80%;
         }
 
         iframe {
@@ -133,15 +130,16 @@
             right: 2rem;
             background: #FA4605;
             color: rgb(255, 255, 255);
-            font-weight: 700;
             padding: .75rem 1.5rem;
             border-radius: 2rem;
             border: none;
             backdrop-filter: blur(8px);
             cursor: pointer;
-            /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); */
+            font-size: 1.125rem;
             transition: all 0.2s ease-in-out;
             font-family: 'Visby', sans-serif;
+            font-weight: 400;
+            text-transform: lowercase;
         }
 
         .glass-button:hover {
