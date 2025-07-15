@@ -1,4 +1,3 @@
-<!-- index.html skeleton -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,56 +5,244 @@
     <meta charset="utf-8" />
     <title>Alien Emoji Productions</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <style>
+        @font-face {
+            font-family: 'Visby';
+            src: url('assets/Visby-Round-bold.otf') format('opentype');
+            font-weight: 700;
+        }
+
+        @font-face {
+            font-family: 'Visby';
+            src: url('assets/Visby-Round-heavy.otf') format('opentype');
+            font-weight: 900;
+        }
+
         body {
-            font-family: sans-serif;
-            max-width: 42rem;
+            font-family: 'Visby', sans-serif;
+            background-color: #ccff00;
+            margin: 0;
+            padding: 0;
+            color: black;
+            background-image: url('https://www.transparenttextures.com/patterns/white-wall-3.png');
+            background-repeat: repeat;
+        }
+
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 90vh;
+        }
+
+        .top-bar {
+            font-weight: 700;
+            font-size: 0.875rem;
+            color: #000000;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 100%;
+            font-size: 1.125rem;
+            position: fixed;
+            top: 3.5rem;
+        }
+
+        .marquee-text {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 20s linear infinite;
+
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .main-headline {
+            font-size: 6rem;
+            line-height: 0.8;
+            font-weight: 900;
+            margin: 0;
+            max-width: 95vw;
+            overflow-wrap: anywhere;
+        }
+
+        .site-header {
+            text-align: center;
+            padding: 1rem 2rem 2rem;
+            position: relative;
+        }
+
+        .logo {
+            width: 200px;
+            margin-bottom: 2rem;
+            position: absolute;
+            top: .5rem;
+            left: 2rem;
+            z-index: 10;
+        }
+
+
+
+        .tagline {
+            font-size: 1.125rem;
+            font-weight: 400;
+            margin-top: 2rem;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-heading {
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .projects {
+
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         iframe {
+            margin-left: auto;
+            margin-right: auto;
+            /* display: block; */
             width: 100%;
             border: 0;
-            height: 180px
+            border-radius: 12px;
+        }
+
+        .glass-button {
+            position: fixed;
+            bottom: 2.5rem;
+            right: 2rem;
+            background: #FA4605;
+            color: rgb(255, 255, 255);
+            font-weight: 700;
+            padding: .75rem 1.5rem;
+            border-radius: 2rem;
+            border: none;
+            backdrop-filter: blur(8px);
+            cursor: pointer;
+            /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); */
+            transition: all 0.2s ease-in-out;
+            font-family: 'Visby', sans-serif;
+        }
+
+        .glass-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #ffffffb6;
+            padding: 2rem;
+            border-radius: 1rem;
+            max-width: 600px;
+            width: 90%;
+            /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); */
         }
 
         form {
             display: grid;
-            gap: 0.5rem
+            gap: 0.75rem;
         }
 
         input,
         textarea,
         button {
-            padding: 0.6rem;
+            padding: 0.75rem;
             border: 1px solid #ccc;
-            border-radius: 4px
+            border-radius: 8px;
+        }
+
+        ul {
+            padding-left: 1.5rem;
+        }
+
+        ul li {
+            margin-bottom: 0.25rem;
         }
     </style>
 </head>
 
 <body>
-    <h1>👽 Alien Emoji Podcasts</h1>
+    <img src="assets/LOGO.svg" alt="Alien Emoji Logo" class="logo" />
+    <!-- <div class="top-bar">
+        <div class="marquee-text">
+            Remote Recording, Story driven Editing, Studio grade Audio Production, Full Transcription, Accessibility
+            Support, Metadata, Distribution Strategy, Promotional Content
+        </div>
+    </div> -->
+    <div class="container">
+        <header class="site-header">
+            <h1 class="main-headline">WE MAKE PODCASTS</h1>
+            <p class="tagline">Remote recording, masterful editing, and everything else you need
+                to launch your project.
+                <br />
+                Let us handle the technical details so you can focus on your message and your audience.
+            </p>
+        </header>
 
-    <section>
-        <h2>Latest episodes</h2>
-        <!-- Spotify show embed (auto-updates) -->
-        <iframe data-testid="embed-iframe" style="border-radius:12px"
-            src="https://open.spotify.com/embed/show/44Gl4oQo6p8FABpIWdyP6R?utm_source=generator&theme=0" width="100%"
-            height="352" frameBorder="0" allowfullscreen=""
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-    </section>
+        <section class="projects">
+            <h2 class="section-heading">RECENT PROJECTS</h2>
+            <iframe src="https://open.spotify.com/embed/show/44Gl4oQo6p8FABpIWdyP6R?utm_source=generator&theme=0"
+                class="spotify-embed" height="180" allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"></iframe>
+            <iframe src="https://open.spotify.com/embed/episode/7EIkNVWfeBGKpEVQp7okds?utm_source=generator&theme=0"
+                class="spotify-embed" height="152" allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"></iframe>
+        </section>
+    </div>
 
-    <section>
-        <h2>Get in touch!</h2>
-        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-            <input type="text" name="name" placeholder="Name" required>
-            <input type="email" name="_replyto" placeholder="Email" required>
-            <textarea name="message" rows="4" placeholder="How can we help?" required></textarea>
-            <button type="submit">Send</button>
-        </form>
-    </section>
+    <button class="glass-button" onclick="document.getElementById('modal').classList.add('active')">
+        Get in touch
+    </button>
+
+    <div id="modal" class="modal" onclick="event.target === this && this.classList.remove('active')">
+        <div class="modal-content">
+            <h2>Get in touch</h2>
+            <form action="https://formspree.io/f/xvgqokdp" method="POST">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="_replyto" placeholder="Email" required>
+                <textarea name="message" rows="4" placeholder="How can we help?" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>
