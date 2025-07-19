@@ -69,6 +69,7 @@
             }
         }
 
+
         .main-headline {
             font-size: 6rem;
             line-height: 0.8;
@@ -86,15 +87,11 @@
             position: relative;
         }
 
-
-
-
-
         .logo {
             width: 200px;
             margin-bottom: 2rem;
             position: relative;
-            top: .5rem;
+            top: 2.5rem;
             left: 2rem;
             z-index: 10;
         }
@@ -152,6 +149,7 @@
 
         .project-item {
             width: 100%;
+            margin-bottom: 0.5rem;
         }
 
         .spotify-embed {
@@ -167,71 +165,10 @@
             width: 100%;
         }
 
-        @media (max-width: 720px) {
-            .logo {
-                width: 95%;
-                /* position: absolute; */
-                top: 4rem;
-                left: 0rem;
-                max-width: 250px;
-                margin-bottom: 4rem;
-
-            }
-
-            .main-headline {
-                font-size: 3.5rem;
-                padding-left: 0rem;
-                padding-right: 0rem;
-                max-width: 100vw;
-                text-align: left;
-
-            }
-
-            .site-header {
-                padding: 0.4rem 0.4rem 0.4rem;
-                text-align: left;
-            }
-
-            .projects {
-
-                max-width: 95%;
-                margin-left: 2em;
-                margin-right: 2em;
-            }
-
-            .project-list {
-                flex-direction: column;
-                gap: 0rem;
-            }
-
-            .glass-button {
-                position: absolute;
-                top: 0.4rem;
-                left: 1rem;
-                /* width: fit-content; */
-                width: 200PX;
-
-                height: 35px;
-                padding: 0.5rem 1rem;
-                font-size: 0.8rem;
-                margin-left: auto;
-                margin-right: auto;
-                margin-top: 1rem;
-            }
-        }
-
-        iframe {
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
-            width: 100%;
-            border: 0;
-            border-radius: 12px;
-        }
 
         .glass-button {
             position: fixed;
-            bottom: 1rem;
+            top: 2rem;
             right: 2rem;
             background: #FA4605;
             color: rgb(255, 255, 255);
@@ -244,7 +181,76 @@
             transition: all 0.2s ease-in-out;
             font-family: 'Visby', sans-serif;
             font-weight: 400;
-            text-transform: lowercase;
+            text-transform: uppercase;
+            z-index: 1000;
+        }
+
+
+        @media (max-width: 720px) {
+            .logo {
+                max-width: 200px;
+                /* position: absolute; */
+                top: 1rem;
+                left: 0rem;
+
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+                /* max-width: 250px;
+                margin-bottom: 4rem; */
+            }
+
+            .main-headline {
+                font-size: 3.5rem;
+                padding-left: 0rem;
+                padding-right: 0rem;
+                max-width: 100vw;
+                text-align: left;
+            }
+
+            .site-header {
+                padding: 0.4rem 0.4rem 0.4rem;
+                text-align: left;
+            }
+
+            .projects {
+                max-width: 95%;
+                margin-left: 2em;
+                margin-right: 2em;
+            }
+
+            .project-list {
+                flex-direction: column;
+                gap: 0rem;
+            }
+
+            .glass-button {
+                position: absolute;
+                top: 3.5rem;
+                left: 1rem;
+                right: 1rem;
+
+                height: 35px;
+                font-size: 0.9rem;
+                margin-left: auto;
+                margin-right: auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding-top: 0;
+                padding-bottom: 0;
+
+            }
+        }
+
+        iframe {
+            margin-left: auto;
+            margin-right: auto;
+
+            display: block;
+            width: 100%;
+            border: 0;
+            border-radius: 12px;
         }
 
         .glass-button:hover {
@@ -287,8 +293,12 @@
         textarea,
         button {
             padding: 0.75rem;
-            border: 5px solid#ccc;
+            border: 4px solid#000000;
             border-radius: 13px;
+            font-family: sans-serif;
+            font-weight: 400;
+            font-size: 1rem;
+            color: #000000;
         }
 
         ul {
@@ -317,7 +327,7 @@
                 Remote recording, masterful editing, and everything else you need to launch your project.
                 <br> We focus on technical details so you can focus on your message and your audience.
             </p>
-            <br><br>
+            <!-- <br><br> -->
             <div class="services">
                 <div class="service-column">
                     <h3>Audio</h3>
@@ -344,7 +354,7 @@
                 <div class="project-item">
                     <iframe
                         src="https://open.spotify.com/embed/show/44Gl4oQo6p8FABpIWdyP6R?utm_source=generator&amp;theme=0"
-                        class="spotify-embed" height="180" allowfullscreen=""
+                        class="spotify-embed" height="152" allowfullscreen=""
                         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                         loading="lazy"></iframe>
                 </div>
@@ -355,6 +365,7 @@
                         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                         loading="lazy"></iframe>
                 </div>
+
             </div>
         </section>
     </div>
