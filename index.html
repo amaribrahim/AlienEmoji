@@ -7,178 +7,87 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <style>
-        @font-face {
-            font-family: 'Visby';
-            src: url('assets/Visby-Round-bold.otf') format('opentype');
-            font-weight: 700;
+        html {
+            font-size: 76%;
         }
 
         @font-face {
             font-family: 'Visby';
-            src: url('assets/Visby-Round-heavy.otf') format('opentype');
-            font-weight: 900;
+            src: url('assets/Visby-Round-regular.otf') format('opentype');
+            font-weight: 400;
         }
 
-        .top-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.75rem 1.5rem;
-            backdrop-filter: blur(8px);
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 80%, rgba(255, 255, 255, 0.0) 100%);
-            z-index: 10000;
-            box-sizing: border-box;
-            border-bottom-left-radius: 13px;
-            border-bottom-right-radius: 13px;
-            box-shadow: #00000014 0px 0px 10px 0px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+        @font-face {
+            font-family: 'Visby';
+            src: url('assets/Visby-Round-extrabold.otf') format('opentype');
+            font-weight: 800;
         }
 
-        .top-nav .logo {
-            width: 160px;
+        :root {
+            --color-electric-lime: #DCFC59;
+            --color-primary-dark: #1F1F1F;
+            --color-primary-light: #FFFFFF;
+        }
+
+        h1,
+        p {
             margin: 0;
-        }
-
-        .top-nav .glass-button {
-            position: static;
-            margin: 0;
-        }
-
-        .close-button {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            font-size: 1.75rem;
-            cursor: pointer;
+            padding: 0;
         }
 
         body {
             font-family: 'Visby', sans-serif;
-            background-color: #ccff00;
-            /* background-color: hsl(67, 100%, 53%); */
 
             margin: 0;
             padding: 0;
-            color: #000000;
-            background-image: url('https://www.transparenttextures.com/patterns/white-wall-3.png');
-            background-repeat: repeat;
-            line-height: 98%;
+            color: var(--color-primary-dark);
+            background: linear-gradient(to bottom, #BCA9D1 0%, #F8BCB1 50%, pink 100%);
+            background-repeat: no-repeat;
+            width: 100%;
+            min-height: 100vh;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1420px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 95vh;
+            gap: 80px;
+            min-height: 100vh;
+            padding: 0 131px;
+            /* padding: 0 2rem; */
+            /* margin-bottom: 2rem; */
         }
-
-        .top-bar {
-            font-weight: 700;
-            font-size: 0.875rem;
-            color: #000000;
-            overflow: hidden;
-            white-space: nowrap;
-            width: 100%;
-            font-size: 1.125rem;
-            position: fixed;
-            top: 3.5rem;
-        }
-
-        .marquee-text {
-            display: inline-block;
-            padding-left: 100%;
-            animation: marquee 20s linear infinite;
-
-        }
-
-        @keyframes marquee {
-            0% {
-                transform: translateX(0%);
-            }
-
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-
 
         .main-headline {
-            font-size: 9rem;
-            line-height: 0.8;
-            font-weight: 900;
-            margin: .5rem;
-            max-width: 95vw;
+            font-family: 'Visby', sans-serif;
+            font-weight: 800;
+            font-size: 7.6rem;
+            line-height: 86%;
+            letter-spacing: -0.03em;
             overflow-wrap: anywhere;
-            /* padding-left: 0;
-            padding-right: 0; */
-        }
-
-        .site-header {
             text-align: center;
-            padding: 1rem 2rem 2rem;
-            position: relative;
-            margin-top: 10vh;
+            text-transform: uppercase;
         }
 
         .logo {
-            width: 160px;
+            width: 270px;
+            height: auto;
         }
-
 
 
         .tagline {
-            font-size: 1.125rem;
+            font-family: 'Visby', sans-serif;
             font-weight: 400;
-            margin-top: 2rem;
-            max-width: 500px;
+            font-size: 1.5rem;
+            line-height: 100%;
+            letter-spacing: -0.02em;
             margin-left: auto;
             margin-right: auto;
-        }
-
-        .services {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 1.5rem;
-            flex-wrap: wrap;
+            max-width: 580px;
             text-align: center;
-        }
-
-        .service-column {
-            /* background: rgba(255, 255, 255, 0.3); */
-            padding: 1rem 1.25rem;
-            /* border-radius: 1rem; */
-            /* backdrop-filter: blur(8px); */
-            flex: 200px 1 250px;
-        }
-
-        .service-column h3 {
-            margin: 0 0 0.5rem 0;
-            font-size: 1rem;
-            font-weight: 700;
-        }
-
-        .service-column ul {
-            /* list-style: disc inside; */
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .service-column li {
-            margin-bottom: 0.35rem;
         }
 
         .project-list {
@@ -193,54 +102,66 @@
             margin-bottom: 0.5rem;
         }
 
-        .spotify-embed {
-            width: 100%;
-            border: 0;
-            border-radius: 12px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .projects {
-            width: 100%;
-            max-width: 800px;
+        .contact-button {
+            background: var(--color-electric-lime);
+            color: var(--color-primary-dark);
         }
 
 
-        .glass-button {
-            background: #14b5ce;
-            color: #ffffff;
-            padding: 0.75rem 1.5rem;
+        .dark-button {
+            background: var(--color-primary-dark);
+            color: var(--color-primary-light);
+        }
+
+        .contact-button,
+        .dark-button {
             border-radius: 2rem;
             border: none;
-            backdrop-filter: blur(8px);
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 1.5rem;
+            line-height: 100%;
+            letter-spacing: -0.02em;
+            box-shadow: 0 0 37px rgba(0, 0, 0, 0.5);
             transition: all 0.2s ease-in-out;
             font-family: 'Visby', sans-serif;
             font-weight: 400;
-            text-transform: uppercase;
+            max-width: 311px;
+            width: 100%;
+            height: 43px;
         }
 
-        .glass-button:hover {
+        .contact-button:hover,
+        .dark-button:hover {
             transform: translateY(-2px);
+
         }
 
+        .close-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.75rem;
+            cursor: pointer;
+        }
 
         @media (max-width: 720px) {
+            html {
+                font-size: 100%;
+            }
+
+            .logo {
+                width: 240px;
+
+            }
+
             .main-headline {
                 font-size: 3.5rem;
                 padding-left: 0rem;
                 padding-right: 0rem;
                 max-width: 100vw;
                 text-align: left;
-            }
-
-            .site-header {
-                padding: 0.4rem 0.4rem 0.4rem;
-                text-align: left;
-                margin-top: 20vh;
             }
 
             .tagline {
@@ -250,45 +171,44 @@
                 margin-right: 0.5rem;
             }
 
-            .projects {
-                max-width: 95%;
-                margin-left: 2em;
-                margin-right: 2em;
-            }
-
             .project-list {
                 flex-direction: column;
                 gap: 0rem;
             }
 
-            .top-nav {
+            .container {
+                /* max-width: 1420px; */
+                margin: 0 auto;
+                display: flex;
                 flex-direction: column;
+                justify-content: flex-start;
                 align-items: center;
-                gap: 0.5rem;
-                padding: 0.75rem 1rem;
-                text-align: center;
+                gap: 40px;
+                padding: 0 2rem;
+                /* height: 100vh; */
+                height: auto;
             }
 
-            .top-nav .logo {
-                width: 150px;
-                margin-left: auto;
-                margin-right: auto;
-            }
+            .contact-button,
+            .dark-button {
+                border-radius: 2rem;
 
-            .top-nav .glass-button {
-                width: 100%;
-                max-width: 200px;
-                text-align: center;
-                margin-left: auto;
-                margin-right: auto;
-                max-height: 40px;
+                font-size: 1em;
+                line-height: 100%;
+                /* letter-spacing: -0.02em;
+            box-shadow: 0 0 37px rgba(0, 0, 0, 0.5);
+            transition: all 0.2s ease-in-out;
+            font-family: 'Visby', sans-serif;
+            font-weight: 400;
+            max-width: 411px;
+            width: 100%;
+            height: 63px; */
             }
         }
 
         iframe {
             margin-left: auto;
             margin-right: auto;
-
             display: block;
             width: 100%;
             border: 0;
@@ -331,7 +251,7 @@
 
         input,
         textarea,
-        button {
+        form button {
             padding: 0.75rem;
             border: 4px solid#000000;
             border-radius: 13px;
@@ -341,78 +261,31 @@
             color: #000000;
         }
 
-        ul {
-            padding-left: 1.5rem;
-        }
+        /* Custom image cursor and trail */
+        /* body {
+            cursor: url('assets/cursor.png') 5 5, auto;
 
-        ul li {
-            margin-bottom: 0.25rem;
-        }
+        } */
     </style>
 </head>
 
 <body>
-    <div class="top-nav">
-        <img src="assets/LOGO.svg" alt="Alien Emoji Logo" class="logo" />
-        <button class="glass-button" onclick="document.getElementById('modal').classList.add('active')">
-            Get in touch
-        </button>
-    </div>
-    <!-- <div class="top-bar">
-        <div class="marquee-text">
-            <span>We are currently accepting new clients. Get in touch to start your podcast journey with us.</span>
-        </div>
-    </div> -->
     <div class="container">
-        <header class="site-header">
-            <h1 class="main-headline">WE MAKE GOOD PODCASTS</h1>
+        <img src="assets/LOGO.png" alt="Alien Emoji Logo" class="logo" />
+        <h1 class="main-headline">We Make Stellar Casts</h1>
+        <p class="tagline">
 
-            <p class="tagline">
-                Remote recording, masterful editing, and everything else you need to launch your project.
-                We focus on technical details so you can focus on your message and your audience.
+            Remote Recording, Engagement Driven Editing, Blue Ribbon Audio Production.
+            We focus on technical details so you can focus on your message and your audience.
 
-            </p>
-            <!-- <br><br> -->
-            <div class="services">
-                <div class="service-column">
-                    <h3>Audio</h3>
-                    <ul>
-                        <li>Remote Recording</li>
-                        <li>Precision Editing</li>
-                        <li>Broadcast Quality Production</li>
-                    </ul>
-                </div>
-                <div class="service-column">
-                    <h3>Production</h3>
-                    <ul>
-                        <li>Accessibility Support</li>
-                        <li>Transcription and Metadata</li>
-                        <li>Promotional Content</li>
-                    </ul>
-                </div>
-            </div>
-        </header>
-
-        <section class="projects">
-            <h2 class="section-heading">RECENT PROJECTS</h2>
-            <div class="project-list">
-                <div class="project-item">
-                    <iframe
-                        src="https://open.spotify.com/embed/show/44Gl4oQo6p8FABpIWdyP6R?utm_source=generator&amp;theme=0"
-                        class="spotify-embed" height="152" allowfullscreen=""
-                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                        loading="lazy"></iframe>
-                </div>
-                <div class="project-item">
-                    <iframe
-                        src="https://open.spotify.com/embed/episode/7EIkNVWfeBGKpEVQp7okds?utm_source=generator&amp;theme=0"
-                        class="spotify-embed" height="152" allowfullscreen=""
-                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                        loading="lazy"></iframe>
-                </div>
-
-            </div>
-        </section>
+        </p>
+        <button class="dark-button" onclick="document.getElementById('projects-modal').classList.add('active')">
+            View Recent Projects
+        </button>
+        <button class="contact-button" onclick="document.getElementById('modal').classList.add('active')">
+            Get In Touch
+        </button>
+        <br />
     </div>
 
     <div id="modal" class="modal" onclick="event.target === this && this.classList.remove('active')">
@@ -426,6 +299,27 @@
                 <textarea name="message" rows="4" placeholder="How can we help?" required></textarea>
                 <button type="submit">Send</button>
             </form>
+        </div>
+    </div>
+    <div id="projects-modal" class="modal" onclick="event.target === this && this.classList.remove('active')">
+        <div class="modal-content">
+            <button class="close-button"
+                onclick="document.getElementById('projects-modal').classList.remove('active')">✕</button>
+            <h2>Recent Projects</h2>
+            <div class="project-list">
+                <div class="project-item">
+                    <iframe
+                        src="https://open.spotify.com/embed/show/44Gl4oQo6p8FABpIWdyP6R?utm_source=generator&amp;theme=0"
+                        height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy"></iframe>
+                </div>
+                <div class="project-item">
+                    <iframe
+                        src="https://open.spotify.com/embed/episode/7EIkNVWfeBGKpEVQp7okds?utm_source=generator&amp;theme=0"
+                        height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy"></iframe>
+                </div>
+            </div>
         </div>
     </div>
 </body>
