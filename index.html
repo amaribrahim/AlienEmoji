@@ -19,12 +19,48 @@
             font-weight: 900;
         }
 
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            backdrop-filter: blur(8px);
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 80%, rgba(255, 255, 255, 0.0) 100%);
+            z-index: 10000;
+            box-sizing: border-box;
+        }
+
+        .top-nav .logo {
+            width: 160px;
+            margin: 0;
+        }
+
+        .top-nav .glass-button {
+            position: static;
+            margin: 0;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.75rem;
+            cursor: pointer;
+        }
+
         body {
             font-family: 'Visby', sans-serif;
             background-color: #ccff00;
             margin: 0;
             padding: 0;
-            color: black;
+            color: #1d1d1d;
             background-image: url('https://www.transparenttextures.com/patterns/white-wall-3.png');
             background-repeat: repeat;
             line-height: 98%;
@@ -71,10 +107,10 @@
 
 
         .main-headline {
-            font-size: 6rem;
+            font-size: 9rem;
             line-height: 0.8;
             font-weight: 900;
-            margin: 0;
+            margin: .5rem;
             max-width: 95vw;
             overflow-wrap: anywhere;
             /* padding-left: 0;
@@ -85,15 +121,11 @@
             text-align: center;
             padding: 1rem 2rem 2rem;
             position: relative;
+            margin-top: 10vh;
         }
 
         .logo {
-            width: 200px;
-            margin-bottom: 2rem;
-            position: relative;
-            top: 2.5rem;
-            left: 2rem;
-            z-index: 10;
+            width: 160px;
         }
 
 
@@ -109,11 +141,11 @@
 
         .services {
             display: flex;
-            gap: 2rem;
+            gap: 1rem;
             justify-content: center;
             margin-top: 1.5rem;
             flex-wrap: wrap;
-            text-align: left;
+            text-align: center;
         }
 
         .service-column {
@@ -126,12 +158,13 @@
 
         .service-column h3 {
             margin: 0 0 0.5rem 0;
-            font-size: 1.25rem;
+            font-size: 1rem;
             font-weight: 700;
         }
 
         .service-column ul {
-            list-style: disc inside;
+            /* list-style: disc inside; */
+            list-style: none;
             padding: 0;
             margin: 0;
         }
@@ -163,43 +196,31 @@
 
         .projects {
             width: 100%;
+            max-width: 800px;
         }
 
 
         .glass-button {
-            position: fixed;
-            top: 2rem;
-            right: 2rem;
-            background: #FA4605;
-            color: rgb(255, 255, 255);
-            padding: .75rem 1.5rem;
+            background: #14b5ce;
+            color: #ffffff;
+            padding: 0.75rem 1.5rem;
             border-radius: 2rem;
             border: none;
             backdrop-filter: blur(8px);
             cursor: pointer;
-            font-size: .9rem;
+            font-size: 0.9rem;
             transition: all 0.2s ease-in-out;
             font-family: 'Visby', sans-serif;
             font-weight: 400;
             text-transform: uppercase;
-            z-index: 1000;
+        }
+
+        .glass-button:hover {
+            transform: translateY(-2px);
         }
 
 
         @media (max-width: 720px) {
-            .logo {
-                max-width: 200px;
-                /* position: absolute; */
-                top: 1rem;
-                left: 0rem;
-
-                margin-left: auto;
-                margin-right: auto;
-                display: block;
-                /* max-width: 250px;
-                margin-bottom: 4rem; */
-            }
-
             .main-headline {
                 font-size: 3.5rem;
                 padding-left: 0rem;
@@ -211,6 +232,14 @@
             .site-header {
                 padding: 0.4rem 0.4rem 0.4rem;
                 text-align: left;
+                margin-top: 20vh;
+            }
+
+            .tagline {
+                font-size: 1rem;
+                max-width: 100%;
+                margin-left: 0.5rem;
+                margin-right: 0.5rem;
             }
 
             .projects {
@@ -224,22 +253,27 @@
                 gap: 0rem;
             }
 
-            .glass-button {
-                position: absolute;
-                top: 3.5rem;
-                left: 1rem;
-                right: 1rem;
+            .top-nav {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.75rem 1rem;
+                text-align: center;
+            }
 
-                height: 35px;
-                font-size: 0.9rem;
+            .top-nav .logo {
+                width: 150px;
                 margin-left: auto;
                 margin-right: auto;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding-top: 0;
-                padding-bottom: 0;
+            }
 
+            .top-nav .glass-button {
+                width: 100%;
+                max-width: 200px;
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                max-height: 40px;
             }
         }
 
@@ -253,9 +287,6 @@
             border-radius: 12px;
         }
 
-        .glass-button:hover {
-            transform: translateY(-2px);
-        }
 
         .modal {
             display: none;
@@ -275,13 +306,14 @@
         }
 
         .modal-content {
-            background: #bdf503b6;
+            /* background: #bdf503b6; */
 
             padding: 2rem;
             border-radius: 1rem;
             max-width: 600px;
             width: 90%;
             /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); */
+            position: relative;
         }
 
         form {
@@ -312,7 +344,12 @@
 </head>
 
 <body>
-    <img src="assets/LOGO.svg" alt="Alien Emoji Logo" class="logo" />
+    <div class="top-nav">
+        <img src="assets/LOGO.svg" alt="Alien Emoji Logo" class="logo" />
+        <button class="glass-button" onclick="document.getElementById('modal').classList.add('active')">
+            Get in touch
+        </button>
+    </div>
     <!-- <div class="top-bar">
         <div class="marquee-text">
             <span>We are currently accepting new clients. Get in touch to start your podcast journey with us.</span>
@@ -320,7 +357,6 @@
     </div> -->
     <div class="container">
         <header class="site-header">
-            <br><br><br>
             <h1 class="main-headline">WE MAKE GOOD PODCASTS</h1>
 
             <p class="tagline">
@@ -370,12 +406,11 @@
             </div>
         </section>
     </div>
-    <button class="glass-button" onclick="document.getElementById('modal').classList.add('active')">
-        Get in touch
-    </button>
 
     <div id="modal" class="modal" onclick="event.target === this && this.classList.remove('active')">
         <div class="modal-content">
+            <button class="close-button"
+                onclick="document.getElementById('modal').classList.remove('active')">✕</button>
             <h2>Get in touch</h2>
             <form action="https://formspree.io/f/xvgqokdp" method="POST">
                 <input type="text" name="name" placeholder="Name" required>
