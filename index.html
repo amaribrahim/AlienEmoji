@@ -2,14 +2,15 @@
 <html lang="en">
 <style>
     body {
+        background: #1f1f1f;
         background-image: url('assets/bg.png');
-        background-size: cover;
-        background-position: center;
+        background-size: 130% auto;
+        background-position: top center;
         background-repeat: no-repeat;
         background-attachment: fixed;
         /* adjustable vars */
-        --bg-darkness: 0.22;
-        --bg-blur: 4px;
+        /* --bg-darkness: 0.2; */
+        --bg-blur: 10px;
         position: relative;
         z-index: 0;
     }
@@ -19,7 +20,7 @@
         content: "";
         position: fixed;
         inset: 0;
-        background: rgba(0, 0, 0, var(--bg-darkness));
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.7) 40%, rgba(0, 0, 0, 0.3) 75%, rgba(0, 0, 0, 0.05) 100%);
         backdrop-filter: blur(var(--bg-blur));
         -webkit-backdrop-filter: blur(var(--bg-blur));
         pointer-events: none;
@@ -40,7 +41,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Alien Emoji</title>
+    <title>Alien Emoji — Audio Production</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <style>
@@ -62,7 +63,7 @@
 
         :root {
             --color-electric-lime: #88fff3;
-            --color-primary-dark: #2b2a2a;
+            --color-primary-dark: #ffffff;
             --color-primary-light: #ebebeb;
         }
 
@@ -78,9 +79,10 @@
             margin: 0;
             padding: 0;
             color: var(--color-primary-dark);
-            background: linear-gradient(to bottom, #c5ffee 0%, rgb(255, 255, 255) 60%);
-
-
+            /* background: linear-gradient(to bottom, #f7f7f7 100%, rgb(183, 89, 89) 60%); */
+            /* background-color: rgb(.995, .992, .971); */
+            /* background: #2b2a2a; */
+            /* background: rgb(204, 204, 204); */
             background-repeat: no-repeat;
             width: 100%;
             min-height: 100vh;
@@ -109,13 +111,17 @@
             overflow-wrap: anywhere;
             text-align: center;
             text-transform: uppercase;
+
         }
 
         .logo {
             max-width: 560px;
             height: auto;
 
-            /* text-shadow: #2b2a2a 2px 2px 8px; */
+
+            /* filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.5)); */
+
+
         }
 
 
@@ -129,6 +135,7 @@
             margin-right: auto;
             max-width: 580px;
             text-align: center;
+            text-shadow: rgba(0, 0, 0, 0.9) 0 2px 4px;
         }
 
         .project-list {
@@ -157,7 +164,7 @@
             /* blur whatever is behind the button */
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            background-image: url('assets/bg.png');
+            /* background-image: url('assets/bg.png'); */
 
             /* hint to browser for smoother rendering */
             will-change: backdrop-filter;
@@ -319,6 +326,7 @@
             gap: 0.75rem;
         }
 
+
         input,
         textarea,
         form button {
@@ -330,12 +338,6 @@
             /* font-size: 1rem; */
             color: var(--color-primary-dark);
         }
-
-        /* Custom image cursor and trail */
-        /* body {
-            cursor: url('assets/cursor.png') 5 5, auto;
-
-        } */
     </style>
 </head>
 
@@ -343,12 +345,11 @@
     <div class="container">
         <br>
 
-        <img src="assets/LOGO.png" alt="Alien Emoji Logo" class="logo" />
-        <h1 class="main-headline">We Make <br>Stellar Casts</h1>
+        <img class="logo" src="assets/LOGO.png" alt="Alien Emoji Logo" class="logo" />
+        <h1 class="main-headline">We Make <br>Stellar Sound</h1>
         <p class="tagline">
-            A bespoke podcast production company.<br>
-            We deliver engagement driven editing and broadcast quality audio.
-            You focus on your message—we’ll handle everything else.
+            A boutique audio production studio.<br>
+            From podcasts and voiceover to music, sound design and cleanup, we deliver broadcast quality audio.
 
         </p>
         <button class="contact-button" onclick="document.getElementById('modal').classList.add('active')">
