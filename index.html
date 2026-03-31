@@ -8,14 +8,11 @@
         background-position: top center;
         background-repeat: no-repeat;
         background-attachment: fixed;
-        /* adjustable vars */
-        /* --bg-darkness: 0.2; */
         --bg-blur: 10px;
         position: relative;
         z-index: 0;
     }
 
-    /* overlay that darkens + blurs the background image without affecting content */
     body::before {
         content: "";
         position: fixed;
@@ -27,13 +24,11 @@
         z-index: 0;
     }
 
-    /* ensure page content sits above the overlay */
     body>* {
         position: relative;
         z-index: 1;
     }
 
-    /* optional stronger darkening — add class "darken-bg" to <body> */
     body.darken-bg::before {
         background: rgba(0, 0, 0, 0.5);
     }
@@ -41,48 +36,40 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Alien Emoji — Audio Production</title>
+    <title>Alien Emoji — Audio-First Game Development</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description"
+        content="Alien Emoji is an indie game studio obsessed with audio-first design. We create games where sound isn't a layer — it's the experience.">
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
     <style>
         html {
             font-size: 86%;
         }
 
-        @font-face {
-            font-family: 'Visby';
-            src: url('assets/Visby-Round-regular.otf') format('opentype');
-            font-weight: 400;
-        }
-
-        @font-face {
-            font-family: 'Visby';
-            src: url('assets/Visby-Round-extrabold.otf') format('opentype');
-            font-weight: 800;
-        }
-
+        /* Use a highly readable, accessible web font with solid fallbacks */
         :root {
+            --app-font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
             --color-electric-lime: #88fff3;
             --color-primary-dark: #ffffff;
             --color-primary-light: #ebebeb;
         }
 
         h1,
+        h2,
+        h3,
         p {
             margin: 0;
             padding: 0;
         }
 
         body {
-            font-family: 'Visby', sans-serif;
-
+            font-family: var(--app-font);
             margin: 0;
             padding: 0;
             color: var(--color-primary-dark);
-            /* background: linear-gradient(to bottom, #f7f7f7 100%, rgb(183, 89, 89) 60%); */
-            /* background-color: rgb(.995, .992, .971); */
-            /* background: #2b2a2a; */
-            /* background: rgb(204, 204, 204); */
             background-repeat: no-repeat;
             width: 100%;
             min-height: 100vh;
@@ -95,15 +82,22 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 80px;
+            gap: 100px;
             min-height: 100vh;
-            padding: 0 131px;
-            /* padding: 0 2rem; */
-            /* margin-bottom: 2rem; */
+            padding: 80px 131px;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 32px;
+            text-align: center;
         }
 
         .main-headline {
-            font-family: 'Visby', sans-serif;
+            font-family: var(--app-font);
             font-weight: 800;
             font-size: 6rem;
             line-height: 86%;
@@ -111,25 +105,18 @@
             overflow-wrap: anywhere;
             text-align: center;
             text-transform: uppercase;
-
         }
 
         .logo {
             max-width: 560px;
             height: auto;
-
-
-            /* filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.5)); */
-
-
         }
 
-
         .tagline {
-            font-family: 'Visby', sans-serif;
+            font-family: var(--app-font);
             font-weight: 400;
             font-size: 1.8rem;
-            line-height: 100%;
+            line-height: 130%;
             letter-spacing: -0.02em;
             margin-left: auto;
             margin-right: auto;
@@ -138,41 +125,27 @@
             text-shadow: rgba(0, 0, 0, 0.9) 0 2px 4px;
         }
 
-        .project-list {
+        .hero-buttons {
             display: flex;
-            flex-direction: column;
-            gap: 0;
-            width: 100%;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
-        .project-item {
-            width: 100%;
-            margin-bottom: 0.5rem;
-        }
-
+        /* ── Buttons ── */
         .contact-button {
-            /* position: fixed !important; */
             top: 1rem;
-            /* left: 1rem; */
             background: rgba(255, 255, 255, 0.06);
-            /* semi-transparent so backdrop-filter is visible */
             color: var(--color-primary-light);
             border: #f0ff41 4px solid;
             z-index: 999;
             border-radius: 16px;
-
-            /* blur whatever is behind the button */
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            /* background-image: url('assets/bg.png'); */
-
-            /* hint to browser for smoother rendering */
             will-change: backdrop-filter;
         }
 
-
         .dark-button {
-            /* background: var(--color-primary-dark); */
             background: none;
             color: var(--color-primary-light);
             border: #f0ff41 4px solid;
@@ -181,15 +154,13 @@
         .contact-button,
         .dark-button {
             border-radius: 16px;
-            /* border: none; */
             cursor: pointer;
             font-size: 1.2rem;
             line-height: 100%;
             letter-spacing: -0.02em;
-            /* box-shadow: 0 0 37px rgba(0, 0, 0, 0.5); */
             box-shadow: rgba(0, 0, 0, 0.35) 4px 4px 20px 0px;
             transition: all 0.2s ease-in-out;
-            font-family: 'Visby', sans-serif;
+            font-family: var(--app-font);
             max-width: 224px;
             width: 100%;
             height: 66px;
@@ -199,7 +170,6 @@
         .contact-button:hover,
         .dark-button:hover {
             transform: translateY(-2px);
-
         }
 
         .close-button {
@@ -210,89 +180,172 @@
             border: none;
             font-size: 1.75rem;
             cursor: pointer;
+            color: var(--color-primary-light);
         }
 
-        @media (max-width: 720px) {
-            /* html {
-                /* font-size: 76%; */
-
-
-            .logo {
-                width: 140px;
-
-            }
-
-            .main-headline {
-                font-size: 4.5rem;
-                padding-left: 0rem;
-                padding-right: 0rem;
-                max-width: 100vw;
-                /* text-align: left; */
-            }
-
-            .tagline {
-
-                max-width: 100%;
-                margin-left: 0.5rem;
-                margin-right: 0.5rem;
-            }
-
-            .project-list {
-                flex-direction: column;
-                gap: 0rem;
-            }
-
-            .project-item {
-                width: 100%;
-                /* height: 100px; */
-            }
-
-            iFrame {
-                width: 100%;
-            }
-
-            .container {
-
-                margin: 2rem auto;
-                display: flex;
-                flex-direction: column;
-                /* justify-content: flex-start; */
-                align-items: center;
-                gap: 40px;
-                padding: 0 2rem;
-
-                height: auto;
-            }
-
-            .contact-button,
-            .dark-button {
-                border-radius: 2rem;
-                /* font-size: 1em; */
-                line-height: 100%;
-
-            }
-
-            .contact-button,
-            .dark-button,
-            .tagline {
-                font-size: 1.23rem;
-            }
-
-
-
-        }
-
-        iframe {
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
+        /* ── Games Section ── */
+        .section {
             width: 100%;
-            border: 0;
-            border-radius: 12px;
-            height: 152px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
         }
 
+        .section-header {
+            font-family: var(--app-font);
+            font-weight: 800;
+            font-size: 1rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-electric-lime);
+        }
 
+        .game-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 36px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .game-card-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .game-title {
+            font-family: var(--app-font);
+            font-weight: 800;
+            font-size: 2.8rem;
+            letter-spacing: -0.03em;
+            line-height: 100%;
+        }
+
+        .platform-badge {
+            font-family: var(--app-font);
+            font-weight: 800;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #1f1f1f;
+            background: var(--color-electric-lime);
+            padding: 4px 12px;
+            border-radius: 100px;
+        }
+
+        .game-description {
+            font-family: var(--app-font);
+            font-weight: 400;
+            font-size: 1.3rem;
+            line-height: 150%;
+            letter-spacing: -0.01em;
+            color: #d4d4d4;
+            max-width: 560px;
+        }
+
+        .game-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .game-button {
+            font-family: var(--app-font);
+            font-weight: 800;
+            font-size: 0.95rem;
+            letter-spacing: -0.01em;
+            cursor: pointer;
+            border-radius: 12px;
+            padding: 10px 20px;
+            transition: all 0.2s ease-in-out;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .game-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .game-button-primary {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--color-primary-light);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .game-button-secondary {
+            background: none;
+            color: #888;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            cursor: default;
+        }
+
+        .game-button-secondary:hover {
+            transform: none;
+        }
+
+        /* ── About / Mission ── */
+        .about-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .about-headline {
+            font-family: var(--app-font);
+            font-weight: 800;
+            font-size: 2.4rem;
+            letter-spacing: -0.03em;
+            line-height: 100%;
+            text-transform: uppercase;
+        }
+
+        .about-body {
+            font-family: var(--app-font);
+            font-weight: 400;
+            font-size: 1.4rem;
+            line-height: 150%;
+            letter-spacing: -0.01em;
+            color: #d4d4d4;
+            max-width: 640px;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 40px 0 20px;
+            font-family: var(--app-font);
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #666;
+            flex-wrap: wrap;
+        }
+
+        .footer a {
+            color: #888;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer a:hover {
+            color: var(--color-primary-light);
+        }
+
+        .footer-sep {
+            color: #444;
+        }
+
+        /* ── Modal ── */
         .modal {
             display: none;
             position: fixed;
@@ -301,10 +354,10 @@
             width: 100%;
             height: 100%;
             background: rgba(255, 255, 255, 0.1);
-            /* background-image: url('assets/bg.png'); */
             backdrop-filter: blur(8px);
             justify-content: center;
             align-items: center;
+            z-index: 1000;
         }
 
         .modal.active {
@@ -312,20 +365,37 @@
         }
 
         .modal-content {
-
-            padding: 1rem;
+            padding: 2rem;
             border-radius: 1rem;
             max-width: 600px;
             width: 90%;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            background: rgba(30, 30, 30, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
             position: relative;
+        }
+
+        .modal-heading {
+            font-family: var(--app-font);
+            font-weight: 800;
+            font-size: 2rem;
+            letter-spacing: -0.03em;
+            margin-bottom: 6px;
+        }
+
+        .modal-subheading {
+            font-family: var(--app-font);
+            font-weight: 400;
+            font-size: 1rem;
+            color: #aaa;
+            margin-bottom: 1.5rem;
+            line-height: 140%;
         }
 
         form {
             display: grid;
             gap: 0.75rem;
         }
-
 
         input,
         textarea,
@@ -335,81 +405,176 @@
             border-radius: 13px;
             font-family: sans-serif;
             font-weight: 400;
-            /* font-size: 1rem; */
             color: var(--color-primary-dark);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #777;
+        }
+
+        form button[type="submit"] {
+            font-family: var(--app-font);
+            font-weight: 800;
+            font-size: 1.1rem;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.08);
+            transition: all 0.2s ease-in-out;
+        }
+
+        form button[type="submit"]:hover {
+            transform: translateY(-2px);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 720px) {
+            .logo {
+                width: 140px;
+            }
+
+            .main-headline {
+                font-size: 4.5rem;
+                padding-left: 0;
+                padding-right: 0;
+                max-width: 100vw;
+            }
+
+            .tagline {
+                max-width: 100%;
+                margin-left: 0.5rem;
+                margin-right: 0.5rem;
+            }
+
+            .container {
+                margin: 0 auto;
+                gap: 60px;
+                padding: 60px 2rem;
+                height: auto;
+            }
+
+            .contact-button,
+            .dark-button {
+                border-radius: 2rem;
+                line-height: 100%;
+            }
+
+            .contact-button,
+            .dark-button,
+            .tagline {
+                font-size: 1.23rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .game-card {
+                padding: 24px;
+            }
+
+            .game-title {
+                font-size: 2.2rem;
+            }
+
+            .about-headline {
+                font-size: 1.8rem;
+            }
+
+            .about-body {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <br>
 
-        <img class="logo" src="assets/LOGO.png" alt="Alien Emoji Logo" class="logo" />
-        <h1 class="main-headline">We Make <br>Stellar Sound</h1>
-        <p class="tagline">
-            A boutique audio production studio.<br>
-            From podcasts and voiceover to music, sound design and cleanup, we deliver broadcast quality audio.
-
-        </p>
-        <button class="contact-button" onclick="document.getElementById('modal').classList.add('active')">
-            👽 CONTACT US
-        </button>
-        <!-- <button class="dark-button" onclick="document.getElementById('projects-modal').classList.add('active')">
-            Samples
-        </button> -->
-
-
-        <!-- <br /> -->
-        <div class="project-list">
-            <h2>Recent Projects</h2>
-            <div class="project-item">
-                <iframe
-                    src="https://open.spotify.com/embed/show/44Gl4oQo6p8FABpIWdyP6R?utm_source=generator&amp;theme=0"
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    loading="lazy"></iframe>
-            </div>
-            <div class="project-item">
-                <iframe
-                    src="https://open.spotify.com/embed/episode/7EIkNVWfeBGKpEVQp7okds?utm_source=generator&amp;theme=0"
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    loading="lazy"></iframe>
+        <div class="hero">
+            <img class="logo" src="assets/LOGO.png" alt="Alien Emoji Logo" />
+            <h1 class="main-headline">We Build Worlds<br>Through Sound</h1>
+            <p class="tagline">
+                An indie game studio focused on audio-first design and interactive experiences. We make games where
+                sound isn't just a layer — it's the experience.
+            </p>
+            <div class="hero-buttons">
+                <button class="contact-button"
+                    onclick="document.getElementById('games').scrollIntoView({behavior:'smooth'})">
+                    👽 Our Games
+                </button>
+                <button class="dark-button" onclick="document.getElementById('contact-modal').classList.add('active')">
+                    Get in Touch
+                </button>
             </div>
         </div>
+
+        <div class="section" id="games">
+            <p class="section-header">Our Games</p>
+            <div class="game-card">
+                <div class="game-card-header">
+                    <h2 class="game-title">Birdsong</h2>
+                    <span class="platform-badge">macOS</span>
+                </div>
+                <p class="game-description">
+                    A meditative audio experience for macOS. Step into a living soundscape of birdsong — no objectives,
+                    no pressure, just you and the quiet voice of a world in full bloom. A place to breathe.
+                </p>
+                <div class="game-buttons">
+                    <a href="privacy.html" class="game-button game-button-primary" target="_blank">Privacy Policy</a>
+                    <span class="game-button game-button-secondary">Coming to the App Store</span>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-card-header">
+                    <h2 class="game-title">Sleepy Aliens</h2>
+                    <span class="platform-badge">iOS</span>
+                </div>
+                <p class="game-description">
+                    iOS music-making experience using animals, chords, and motion; intuitive musical UX.
+                </p>
+                <div class="game-buttons">
+                    <a href="privacy.html" class="game-button game-button-primary" target="_blank">Privacy Policy</a>
+                    <span class="game-button game-button-secondary">Coming to the App Store</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-section">
+            <p class="section-header">Why Audio First?</p>
+            <h3 class="about-headline">Sound Is The<br>Experience</h3>
+            <p class="about-body">
+                We believe sound is the most overlooked dimension in game design. At Alien Emoji, every project starts
+                with a sonic question: what does this world feel like to hear? We build from that answer outward —
+                designing interactive experiences where audio drives atmosphere, emotion, and play.
+            </p>
+        </div>
+
+        <footer class="footer">
+            <span>© 2026 Alien Emoji</span>
+            <span class="footer-sep">·</span>
+            <a href="privacy.html">Privacy Policy</a>
+            <span class="footer-sep">·</span>
+            <a href="#"
+                onclick="event.preventDefault(); document.getElementById('contact-modal').classList.add('active')">Contact</a>
+        </footer>
+
     </div>
 
-    <div id="modal" class="modal" onclick="event.target === this && this.classList.remove('active')">
+    <div id="contact-modal" class="modal" onclick="event.target === this && this.classList.remove('active')">
         <div class="modal-content">
             <button class="close-button"
-                onclick="document.getElementById('modal').classList.remove('active')">✕</button>
-            <h2>Get in touch</h2>
+                onclick="document.getElementById('contact-modal').classList.remove('active')">✕</button>
+            <h2 class="modal-heading">Say Hello</h2>
+            <p class="modal-subheading">Whether you're curious about our games or want to collaborate, we'd love to hear
+                from you.</p>
             <form action="https://formspree.io/f/xvgqokdp" method="POST">
                 <input type="text" name="name" placeholder="Name" required>
                 <input type="email" name="_replyto" placeholder="Email" required>
-                <textarea name="message" rows="4" placeholder="How can we help?" required></textarea>
+                <textarea name="message" rows="4" placeholder="Your message" required></textarea>
                 <button type="submit">Send</button>
             </form>
-        </div>
-    </div>
-    <div id="projects-modal" class="modal" onclick="event.target === this && this.classList.remove('active')">
-        <div class="modal-content">
-            <button class="close-button"
-                onclick="document.getElementById('projects-modal').classList.remove('active')">✕</button>
-            <h2>Recent Projects</h2>
-            <div class="project-list">
-                <div class="project-item">
-                    <iframe
-                        src="https://open.spotify.com/embed/show/44Gl4oQo6p8FABpIWdyP6R?utm_source=generator&amp;theme=0"
-                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                        loading="lazy"></iframe>
-                </div>
-                <div class="project-item">
-                    <iframe
-                        src="https://open.spotify.com/embed/episode/7EIkNVWfeBGKpEVQp7okds?utm_source=generator&amp;theme=0"
-                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                        loading="lazy"></iframe>
-                </div>
-            </div>
         </div>
     </div>
 </body>
