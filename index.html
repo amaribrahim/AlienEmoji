@@ -1,582 +1,215 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<style>
-    body {
-        background: #1f1f1f;
-        background-image: url('assets/bg.png');
-        background-size: 130% auto;
-        background-position: top center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        --bg-blur: 10px;
-        position: relative;
-        z-index: 0;
-    }
-
-    body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.7) 40%, rgba(0, 0, 0, 0.3) 75%, rgba(0, 0, 0, 0.05) 100%);
-        backdrop-filter: blur(var(--bg-blur));
-        -webkit-backdrop-filter: blur(var(--bg-blur));
-        pointer-events: none;
-        z-index: 0;
-    }
-
-    body>* {
-        position: relative;
-        z-index: 1;
-    }
-
-    body.darken-bg::before {
-        background: rgba(0, 0, 0, 0.5);
-    }
-</style>
-
 <head>
-    <meta charset="utf-8" />
-    <title>Alien Emoji — Audio-First Game Development</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description"
-        content="Alien Emoji is an indie game studio obsessed with audio-first design. We create games where sound isn't a layer — it's the experience.">
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
-    <style>
-        html {
-            font-size: 86%;
-        }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Alien Emoji — Audio-first studio for spatial sound</title>
+<meta name="description" content="Alien Emoji is an independent studio building tools and experiences in spatial audio. Makers of Birdsong and Sleepy Aliens." />
 
-        /* Use a highly readable, accessible web font with solid fallbacks */
-        :root {
-            --app-font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-            --color-electric-lime: #88fff3;
-            --color-primary-dark: #ffffff;
-            --color-primary-light: #ebebeb;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-        h1,
-        h2,
-        h3,
-        p {
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: var(--app-font);
-            margin: 0;
-            padding: 0;
-            color: var(--color-primary-dark);
-            background-repeat: no-repeat;
-            width: 100%;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1020px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 100px;
-            min-height: 100vh;
-            padding: 80px 131px;
-        }
-
-        /* ── Hero ── */
-        .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 32px;
-            text-align: center;
-        }
-
-        .main-headline {
-            font-family: var(--app-font);
-            font-weight: 800;
-            font-size: 6rem;
-            line-height: 86%;
-            letter-spacing: -0.03em;
-            overflow-wrap: anywhere;
-            text-align: center;
-            text-transform: uppercase;
-        }
-
-        .logo {
-            max-width: 560px;
-            height: auto;
-        }
-
-        .tagline {
-            font-family: var(--app-font);
-            font-weight: 400;
-            font-size: 1.8rem;
-            line-height: 130%;
-            letter-spacing: -0.02em;
-            margin-left: auto;
-            margin-right: auto;
-            max-width: 580px;
-            text-align: center;
-            text-shadow: rgba(0, 0, 0, 0.9) 0 2px 4px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        /* ── Buttons ── */
-        .contact-button {
-            top: 1rem;
-            background: rgba(255, 255, 255, 0.06);
-            color: var(--color-primary-light);
-            border: #f0ff41 4px solid;
-            z-index: 999;
-            border-radius: 16px;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            will-change: backdrop-filter;
-        }
-
-        .dark-button {
-            background: none;
-            color: var(--color-primary-light);
-            border: #f0ff41 4px solid;
-        }
-
-        .contact-button,
-        .dark-button {
-            border-radius: 16px;
-            cursor: pointer;
-            font-size: 1.2rem;
-            line-height: 100%;
-            letter-spacing: -0.02em;
-            box-shadow: rgba(0, 0, 0, 0.35) 4px 4px 20px 0px;
-            transition: all 0.2s ease-in-out;
-            font-family: var(--app-font);
-            max-width: 224px;
-            width: 100%;
-            height: 66px;
-            font-weight: 800;
-        }
-
-        .contact-button:hover,
-        .dark-button:hover {
-            transform: translateY(-2px);
-        }
-
-        .close-button {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            font-size: 1.75rem;
-            cursor: pointer;
-            color: var(--color-primary-light);
-        }
-
-        /* ── Games Section ── */
-        .section {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-
-        .section-header {
-            font-family: var(--app-font);
-            font-weight: 800;
-            font-size: 1rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--color-electric-lime);
-        }
-
-        .game-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 255, 255, 0.12);
-            border-radius: 20px;
-            padding: 36px;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .game-card-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .game-title {
-            font-family: var(--app-font);
-            font-weight: 800;
-            font-size: 2.8rem;
-            letter-spacing: -0.03em;
-            line-height: 100%;
-        }
-
-        .platform-badge {
-            font-family: var(--app-font);
-            font-weight: 800;
-            font-size: 0.75rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: #1f1f1f;
-            background: var(--color-electric-lime);
-            padding: 4px 12px;
-            border-radius: 100px;
-        }
-
-        .game-description {
-            font-family: var(--app-font);
-            font-weight: 400;
-            font-size: 1.3rem;
-            line-height: 150%;
-            letter-spacing: -0.01em;
-            color: #d4d4d4;
-            max-width: 560px;
-        }
-
-        .game-buttons {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .game-button {
-            font-family: var(--app-font);
-            font-weight: 800;
-            font-size: 0.95rem;
-            letter-spacing: -0.01em;
-            cursor: pointer;
-            border-radius: 12px;
-            padding: 10px 20px;
-            transition: all 0.2s ease-in-out;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .game-button:hover {
-            transform: translateY(-2px);
-        }
-
-        .game-button-primary {
-            background: rgba(255, 255, 255, 0.08);
-            color: var(--color-primary-light);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .game-button-secondary {
-            background: none;
-            color: #888;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            cursor: default;
-        }
-
-        .game-button-secondary:hover {
-            transform: none;
-        }
-
-        /* ── About / Mission ── */
-        .about-section {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .about-headline {
-            font-family: var(--app-font);
-            font-weight: 800;
-            font-size: 2.4rem;
-            letter-spacing: -0.03em;
-            line-height: 100%;
-            text-transform: uppercase;
-        }
-
-        .about-body {
-            font-family: var(--app-font);
-            font-weight: 400;
-            font-size: 1.4rem;
-            line-height: 150%;
-            letter-spacing: -0.01em;
-            color: #d4d4d4;
-            max-width: 640px;
-        }
-
-        /* ── Footer ── */
-        .footer {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            padding: 40px 0 20px;
-            font-family: var(--app-font);
-            font-size: 0.9rem;
-            font-weight: 400;
-            color: #666;
-            flex-wrap: wrap;
-        }
-
-        .footer a {
-            color: #888;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .footer a:hover {
-            color: var(--color-primary-light);
-        }
-
-        .footer-sep {
-            color: #444;
-        }
-
-        /* ── Modal ── */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(8px);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            padding: 2rem;
-            border-radius: 1rem;
-            max-width: 600px;
-            width: 90%;
-            background: rgba(30, 30, 30, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-            position: relative;
-        }
-
-        .modal-heading {
-            font-family: var(--app-font);
-            font-weight: 800;
-            font-size: 2rem;
-            letter-spacing: -0.03em;
-            margin-bottom: 6px;
-        }
-
-        .modal-subheading {
-            font-family: var(--app-font);
-            font-weight: 400;
-            font-size: 1rem;
-            color: #aaa;
-            margin-bottom: 1.5rem;
-            line-height: 140%;
-        }
-
-        form {
-            display: grid;
-            gap: 0.75rem;
-        }
-
-        input,
-        textarea,
-        form button {
-            padding: 0.75rem;
-            border: 4px solid var(--color-primary-dark);
-            border-radius: 13px;
-            font-family: sans-serif;
-            font-weight: 400;
-            color: var(--color-primary-dark);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        input::placeholder,
-        textarea::placeholder {
-            color: #777;
-        }
-
-        form button[type="submit"] {
-            font-family: var(--app-font);
-            font-weight: 800;
-            font-size: 1.1rem;
-            cursor: pointer;
-            background: rgba(255, 255, 255, 0.08);
-            transition: all 0.2s ease-in-out;
-        }
-
-        form button[type="submit"]:hover {
-            transform: translateY(-2px);
-        }
-
-        /* ── Responsive ── */
-        @media (max-width: 720px) {
-            .logo {
-                width: 140px;
-            }
-
-            .main-headline {
-                font-size: 4.5rem;
-                padding-left: 0;
-                padding-right: 0;
-                max-width: 100vw;
-            }
-
-            .tagline {
-                max-width: 100%;
-                margin-left: 0.5rem;
-                margin-right: 0.5rem;
-            }
-
-            .container {
-                margin: 0 auto;
-                gap: 60px;
-                padding: 60px 2rem;
-                height: auto;
-            }
-
-            .contact-button,
-            .dark-button {
-                border-radius: 2rem;
-                line-height: 100%;
-            }
-
-            .contact-button,
-            .dark-button,
-            .tagline {
-                font-size: 1.23rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .game-card {
-                padding: 24px;
-            }
-
-            .game-title {
-                font-size: 2.2rem;
-            }
-
-            .about-headline {
-                font-size: 1.8rem;
-            }
-
-            .about-body {
-                font-size: 1.2rem;
-            }
-        }
-    </style>
+<link rel="stylesheet" href="styles.css">
 </head>
+<body data-page="home" data-screen-label="Home">
 
-<body>
-    <div class="container">
+<div id="site-nav"></div>
 
-        <div class="hero">
-            <img class="logo" src="assets/LOGO.png" alt="Alien Emoji Logo" />
-            <h1 class="main-headline">We Build Worlds<br>Through Sound</h1>
-            <p class="tagline">
-                An indie game studio focused on audio-first design and interactive experiences. We make games where
-                sound isn't just a layer — it's the experience.
-            </p>
-            <div class="hero-buttons">
-                <button class="contact-button"
-                    onclick="document.getElementById('games').scrollIntoView({behavior:'smooth'})">
-                    👽 Our Games
-                </button>
-                <button class="dark-button" onclick="document.getElementById('contact-modal').classList.add('active')">
-                    Get in Touch
-                </button>
-            </div>
+<main class="main-content">
+
+  <!-- ============ HERO ============ -->
+
+  <section class="section first hero-gradient hero-section" style="padding-top: 72px; padding-bottom: 56px;" data-screen-label="Home · Hero">
+    <!-- <canvas class="hero-waves" aria-hidden="true"></canvas>      -->
+    <div class="shell hero-content">
+      <div class="row" style="margin-bottom: 56px; align-items: start;">
+        <div style="grid-column: span 7;" class="reveal-hero" data-delay="0">
+          <div class="eyebrow" style="margin-bottom: 28px;">
+            <span class="dot"></span>Independent · R&amp;D-focused studio · Est. 2024 · Los Angeles
+          </div>
+          <h1 class="h-display" style="font-size: clamp(40px, 5.5vw, 80px);">
+            Building the next generation of audio experiences.
+          </h1>
         </div>
+        <div style="grid-column: span 4 / -1; padding-top: 60px;" class="reveal-hero" data-delay="120">
+          <p class="lead" style="margin: 0 0 24px;">
+            Alien Emoji is an audio studio led by <a href="https://www.linkedin.com/in/amaribrahim" target="_blank" rel="noopener" style="color: var(--accent); border-bottom: 1px solid currentColor;">Amar Ibrahim</a> — 15+ years in sound design, engineering, and interactive systems. We ship a small number of products carefully, each one a vehicle for research into what's possible when audio meets a gaming medium.
+          </p>
 
-        <div class="section" id="games">
-            <p class="section-header">Our Games</p>
-            <div class="game-card">
-                <div class="game-card-header">
-                    <h2 class="game-title">Birdsong</h2>
-                    <span class="platform-badge">macOS</span>
-                </div>
-                <p class="game-description">
-                    A meditative audio experience for macOS. Step into a living soundscape of birdsong — no objectives,
-                    no pressure, just you and the quiet voice of a world in full bloom. A place to breathe.
-                </p>
-                <div class="game-buttons">
-                    <a href="privacy.html" class="game-button game-button-primary" target="_blank">Privacy Policy</a>
-                    <span class="game-button game-button-secondary">Coming to the App Store</span>
-                </div>
-            </div>
-            <div class="game-card">
-                <div class="game-card-header">
-                    <h2 class="game-title">Sleepy Aliens</h2>
-                    <span class="platform-badge">iOS</span>
-                </div>
-                <p class="game-description">
-                    iOS music-making experience using animals, chords, and motion; intuitive musical UX.
-                </p>
-                <div class="game-buttons">
-                    <a href="privacy.html" class="game-button game-button-primary" target="_blank">Privacy Policy</a>
-                    <span class="game-button game-button-secondary">Coming to the App Store</span>
-                </div>
-            </div>
+          <div style="display:flex; gap: 12px; flex-wrap: wrap;">
+            <a class="btn btn-primary" href="#products">
+              See current work <span class="arrow">↓</span>
+            </a>
+            <a class="btn btn-ghost" href="#contact">
+              Get in touch
+            </a>
+          </div>
         </div>
-
-        <div class="about-section">
-            <p class="section-header">Why Audio First?</p>
-            <h3 class="about-headline">Sound Is The<br>Experience</h3>
-            <p class="about-body">
-                We believe sound is the most overlooked dimension in game design. At Alien Emoji, every project starts
-                with a sonic question: what does this world feel like to hear? We build from that answer outward —
-                designing interactive experiences where audio drives atmosphere, emotion, and play.
-            </p>
+      </div>
+      <div class="row" style="margin-top: 40px; align-items: start;">
+        <div style="grid-column: span 4;" class="reveal-hero" data-delay="220">
+          <div class="mono" style="margin-bottom: 8px;">[01] Next</div>
+          <div style="font-size: 15px; color: var(--ink-2);">
+            An immersive audio engine, licensable.
+            <span style="color: var(--muted); margin-left: 6px;">Late 2026 →</span>
+          </div>
         </div>
-
-        <footer class="footer">
-            <span>© 2026 Alien Emoji</span>
-            <span class="footer-sep">·</span>
-            <a href="privacy.html">Privacy Policy</a>
-            <span class="footer-sep">·</span>
-            <a href="#"
-                onclick="event.preventDefault(); document.getElementById('contact-modal').classList.add('active')">Contact</a>
-        </footer>
-
+        <div style="grid-column: span 4;" class="reveal-hero" data-delay="300">
+          <div class="mono" style="margin-bottom: 8px;">[02] Currently shipping</div>
+          <div style="font-size: 15px; color: var(--ink-2);">
+            Birdsong v1.2 — new Forest Ambience system.
+            <a href="birdsong.html" style="color: var(--accent); margin-left: 6px;">Read →</a>
+          </div>
+        </div>
+        <div style="grid-column: span 4;" class="reveal-hero" data-delay="380">
+          <div class="mono" style="margin-bottom: 8px;">[03] In rotation</div>
+          <div style="font-size: 15px; color: var(--ink-2);">
+            Sleepy Aliens — ambient lullaby maker for iPhone.
+            <a href="sleepy-aliens.html" style="color: var(--accent); margin-left: 6px;">Read →</a>
+          </div>
+        </div>
+      </div>
+ 
     </div>
+  </section>
 
-    <div id="contact-modal" class="modal" onclick="event.target === this && this.classList.remove('active')">
-        <div class="modal-content">
-            <button class="close-button"
-                onclick="document.getElementById('contact-modal').classList.remove('active')">✕</button>
-            <h2 class="modal-heading">Say Hello</h2>
-            <p class="modal-subheading">Whether you're curious about our games or want to collaborate, we'd love to hear
-                from you.</p>
-            <form action="https://formspree.io/f/xvgqokdp" method="POST">
-                <input type="text" name="name" placeholder="Name" required>
-                <input type="email" name="_replyto" placeholder="Email" required>
-                <textarea name="message" rows="4" placeholder="Your message" required></textarea>
-                <button type="submit">Send</button>
-            </form>
-        </div>
+  <!-- ============ TICKER ============ -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <span>Spatial audio</span><span class="sep">●</span>
+      <span>Real-world acoustics</span><span class="sep">●</span>
+      <span>Interactive sound design</span><span class="sep">●</span>
+      <span>HRTF / Binaural</span><span class="sep">●</span>
+      <span>Procedural ambience</span><span class="sep">●</span>
+      <span>Listener-first software</span><span class="sep">●</span>
+      <span>Spatial audio</span><span class="sep">●</span>
+      <span>Real-world acoustics</span><span class="sep">●</span>
+      <span>Interactive sound design</span><span class="sep">●</span>
+      <span>HRTF / Binaural</span><span class="sep">●</span>
+      <span>Procedural ambience</span><span class="sep">●</span>
+      <span>Listener-first software</span><span class="sep">●</span>
     </div>
+  </div>
+
+  <!-- ============ PRODUCTS ============ -->
+  <section class="section products-gradient" id="products" data-screen-label="Home · Products">
+    <div class="shell">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow"><span class="dot"></span>Products</div>
+        </div>
+      </div>
+
+      <div class="products-grid">
+        <!-- Engine (coming soon) -->
+        <div class="card product-card reveal-scroll">
+          <div class="product-card-media" style="padding: 0; overflow: hidden;">
+            <div class="spatial" style="border: none; border-radius: 0; aspect-ratio: unset; height: 100%;">
+              <div class="spatial-axes"></div>
+              <div class="spatial-ring spatial-ring--outer"></div>
+              <div class="spatial-ring spatial-ring--inner"></div>
+              <div class="spatial-listener"></div>
+              <div class="spatial-source" style="left: 32%; top: 28%;">
+                <span class="spatial-label">Sparrow · 18m</span>
+              </div>
+              <div class="spatial-source" style="left: 68%; top: 38%; animation-delay: 1.2s;">
+                <span class="spatial-label">Robin · 24m</span>
+              </div>
+              <div class="spatial-source" style="left: 76%; top: 66%; animation-delay: 0.4s;">
+                <span class="spatial-label">Stream · 31m</span>
+              </div>
+              <div class="spatial-source" style="left: 24%; top: 62%; animation-delay: 2.1s;">
+                <span class="spatial-label">Cricket · 6m</span>
+              </div>
+              <div class="mono" style="position: absolute; left: 12px; top: 12px; font-size: 10px; color: var(--muted-2);">FIG. 03 — Listener field</div>
+              <div class="mono" style="position: absolute; right: 12px; bottom: 12px; font-size: 10px; color: var(--muted-2);">N · ↑ forward</div>
+            </div>
+          </div>
+          <div class="product-card-body">
+            <div class="card-meta">
+              <span>R&amp;D / Late 2026</span>
+              <span style="color: var(--muted-2);">Engine</span>
+            </div>
+            <h3 class="h3" style="margin: 12px 0 8px;">Immersive Audio Engine</h3>
+            <p style="color: var(--muted); margin: 0 0 16px; font-size: 14px; line-height: 1.5;">
+              A spatial sound workstation that simplifies authoring immersive audio content.
+            </p>
+            <a href="#contact" class="mono" style="color: var(--accent);">→ Request the deck</a>
+          </div>
+        </div>
+        <!-- Birdsong -->
+        <a href="birdsong.html" class="card product-card reveal-scroll" style="text-decoration: none;">
+          <div class="product-card-media">
+            <img src="assets/birdsong-shot-1.png" alt="Birdsong: Listen to the forest"
+                 onerror="this.style.display='none'; this.parentElement.classList.add('placeholder-fallback');" />
+          </div>
+          <div class="product-card-body">
+            <div class="card-meta">
+              <span>Birdsong / 2026</span>
+              <span style="color: var(--accent);">macOS · Now</span>
+            </div>
+            <h3 class="h3" style="margin: 12px 0 8px;">
+              <span style="font-family: 'DM Serif Display', Georgia, serif; font-style: italic; color: var(--accent);">Birdsong</span> — Listen to the forest.
+            </h3>
+            <p style="color: var(--muted); margin: 0 0 16px; font-size: 14px; line-height: 1.5;">
+              Immersive spatial audio bird-finding. Every call, every leaf positioned where it would be in the real world.
+            </p>
+            <span class="mono" style="color: var(--accent);">View →</span>
+          </div>
+        </a>
+
+        <!-- Sleepy Aliens -->
+        <a href="sleepy-aliens.html" class="card product-card reveal-scroll" style="text-decoration: none;">
+          <div class="product-card-media">
+            <img src="assets/sleepy-aliens-icon.png" alt="Sleepy Aliens — ambient lullaby maker" />
+          </div>
+          <div class="product-card-body">
+            <div class="card-meta">
+              <span>Sleepy Aliens / 2025</span>
+              <span>iOS</span>
+            </div>
+            <h3 class="h3" style="margin: 12px 0 8px;">Sleepy Aliens</h3>
+            <p style="color: var(--muted); margin: 0 0 16px; font-size: 14px; line-height: 1.5;">
+              An ambient lullaby maker. Drag friendly animals up a glowing UFO beam to compose calm, evolving music.
+            </p>
+            <span class="mono" style="color: var(--accent);">View →</span>
+          </div>
+        </a>
+
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section contact-gradient contact-section" id="contact" style="border-top: none; padding: 180px 0; color: var(--fg);" data-screen-label="Home · Contact">
+    <div class="shell" style="text-align: center;">
+      <div class="eyebrow" style="margin-bottom: 28px; color: var(--muted); justify-content: center; display: flex; align-items: center; justify-content: center;"><span class="dot" style="background: var(--accent);"></span>Get in touch</div>
+      <h2 style="font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-size: clamp(48px, 7vw, 96px); font-weight: 400; color: var(--fg); margin: 0 0 28px; line-height: 1.05; letter-spacing: -0.02em;">
+        Say hello.
+      </h2>
+      <p style="color: var(--muted); margin: 0 auto 40px; max-width: 38ch; font-size: 16px; line-height: 1.6;">
+        Collaborations, licensing, press, or just to talk about the future of audio.
+      </p>
+      <a href="mailto:amar@alienemoji.com" class="btn btn-primary" style="font-size: 14px; padding: 13px 24px; background: var(--accent); color: #fff; border-color: transparent;">
+        amar@alienemoji.com <span class="arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  
+</main>
+<div id="site-footer"></div>
+<script src="site.js"></script>
+
+<!-- Tweaks panel (React) -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="tweaks.jsx"></script>
+
 </body>
-
 </html>

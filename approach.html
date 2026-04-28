@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Approach — Alien Emoji</title>
+<meta name="description" content="How Alien Emoji thinks about spatial audio — sound with coordinates, modeled after nature, procedural and alive." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="approach" data-screen-label="Approach">
+
+<div id="site-nav"></div>
+
+<main>
+
+  <section class="section first product-hero-gradient" style="padding-top: 72px; padding-bottom: 56px;" data-screen-label="Approach · Hero">
+    <div class="shell">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow"><span class="dot"></span>Approach</div>
+        </div>
+        <div>
+          <h2 class="h1" style="margin: 0; max-width: 18ch;">
+            Audio is not a finishing touch. It's the whole room.
+          </h2>
+        </div>
+      </div>
+
+      <div class="row">
+        <div style="grid-column: span 5;">
+          <div class="spatial" id="spatial-demo">
+            <div class="spatial-axes"></div>
+            <div class="spatial-listener" title="Listener"></div>
+            <div class="spatial-source" style="left: 28%; top: 32%;">
+              <span class="spatial-label">Bird · 11° L · 14m</span>
+            </div>
+            <div class="spatial-source" style="left: 72%; top: 44%; animation-delay: 1s;">
+              <span class="spatial-label">Stream · 38° R · 22m</span>
+            </div>
+            <div class="spatial-source" style="left: 58%; top: 70%; animation-delay: 2s;">
+              <span class="spatial-label">Wind · canopy · 8m</span>
+            </div>
+            <div class="spatial-source" style="left: 22%; top: 66%; animation-delay: 0.5s;">
+              <span class="spatial-label">Footstep · 4m</span>
+            </div>
+            <div style="position: absolute; left: 16px; top: 16px;" class="mono">FIG. 01 — Listener field</div>
+            <div style="position: absolute; right: 16px; bottom: 16px;" class="mono">15 m radius</div>
+          </div>
+        </div>
+
+        <div style="grid-column: span 6 / -1;">
+          <div style="display: grid; gap: 36px;">
+            <div>
+              <div class="mono" style="color: var(--accent); margin-bottom: 10px;">01 — PRINCIPLE</div>
+              <h3 class="h3" style="margin: 0 0 8px;">Sound has coordinates.</h3>
+              <p style="color: var(--muted); margin: 0; max-width: 52ch;">
+                In the real world, every sound source has a position, distance,
+                and direction relative to your ears. Spatial audio is a growing
+                immersive experience. We are building the next generation of
+                audio immersive products.
+              </p>
+            </div>
+            <div>
+              <div class="mono" style="color: var(--accent); margin-bottom: 10px;">02 — METHOD</div>
+              <h3 class="h3" style="margin: 0 0 8px;">Modeled after nature</h3>
+              <p style="color: var(--muted); margin: 0; max-width: 52ch;">
+                Our engines start from acoustics — air absorption, occlusion,
+                head-related transfer functions — and work outward. The result
+                is sound that feels placed, not panned.
+              </p>
+            </div>
+            <div>
+              <div class="mono" style="color: var(--accent); margin-bottom: 10px;">03 — POSTURE</div>
+              <h3 class="h3" style="margin: 0 0 8px;">Procedural, generative, alive.</h3>
+              <p style="color: var(--muted); margin: 0; max-width: 52ch;">
+                We build procedural ambient engines that never loop &mdash;
+                interactive audio without DAWs, soundtracks that respond to
+                listeners, and audio-first design as a discipline.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="site-footer"></div>
+<script src="site.js"></script>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="tweaks.jsx"></script>
+
+</body>
+</html>

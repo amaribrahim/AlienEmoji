@@ -1,304 +1,75 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<style>
-    body {
-        background: #1f1f1f;
-        background-image: url('assets/bg.png');
-        background-size: 130% auto;
-        background-position: top center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        --bg-blur: 10px;
-        position: relative;
-        z-index: 0;
-    }
-
-    body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.7) 40%, rgba(0, 0, 0, 0.5) 75%, rgba(0, 0, 0, 0.4) 100%);
-        backdrop-filter: blur(var(--bg-blur));
-        -webkit-backdrop-filter: blur(var(--bg-blur));
-        pointer-events: none;
-        z-index: 0;
-    }
-
-    body>* {
-        position: relative;
-        z-index: 1;
-    }
-</style>
-
 <head>
-    <meta charset="utf-8" />
-    <title>Birdsong — Privacy Policy · Alien Emoji</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="Privacy policy for Birdsong by Alien Emoji. We do not collect any user data.">
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
-    <style>
-        html {
-            font-size: 86%;
-        }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Privacy Policy — Alien Emoji</title>
+<meta name="description" content="Birdsong privacy policy. We don't collect anything." />
 
-        /* Use a highly readable, accessible web font with solid fallbacks */
-        :root {
-            --app-font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-            --color-electric-lime: #88fff3;
-            --color-primary-dark: #ffffff;
-            --color-primary-light: #ebebeb;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: var(--app-font);
-            color: var(--color-primary-dark);
-            width: 100%;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 60px 2rem 80px;
-            display: flex;
-            flex-direction: column;
-            gap: 48px;
-        }
-
-        /* ── Nav ── */
-        .nav {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .back-link {
-            font-family: var(--app-font);
-            font-weight: 800;
-            font-size: 0.9rem;
-            letter-spacing: 0.05em;
-            color: var(--color-electric-lime);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: opacity 0.2s;
-        }
-
-        .back-link:hover {
-            opacity: 0.7;
-        }
-
-        .logo-small {
-            height: 28px;
-            width: auto;
-        }
-
-        /* ── Header ── */
-        .policy-header {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 32px;
-        }
-
-        .app-label {
-            font-family: var(--app-font);
-            font-weight: 800;
-            font-size: 0.85rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--color-electric-lime);
-        }
-
-        .policy-title {
-            font-family: var(--app-font);
-            font-weight: 800;
-            font-size: 3rem;
-            letter-spacing: -0.03em;
-            line-height: 90%;
-            text-transform: uppercase;
-        }
-
-        .policy-date {
-            font-family: var(--app-font);
-            font-weight: 400;
-            font-size: 0.9rem;
-            color: #777;
-            margin-top: 4px;
-        }
-
-        /* ── Policy Body ── */
-        .policy-body {
-            display: flex;
-            flex-direction: column;
-            gap: 36px;
-        }
-
-        .policy-section {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .policy-section-title {
-            font-family: var(--app-font);
-            font-weight: 800;
-            font-size: 1.1rem;
-            letter-spacing: -0.01em;
-            color: var(--color-primary-light);
-        }
-
-        .policy-section-body {
-            font-family: var(--app-font);
-            font-weight: 400;
-            font-size: 1.1rem;
-            line-height: 160%;
-            letter-spacing: -0.01em;
-            color: #c0c0c0;
-        }
-
-        .policy-section-body a {
-            color: var(--color-electric-lime);
-            text-decoration: none;
-        }
-
-        .policy-section-body a:hover {
-            text-decoration: underline;
-        }
-
-        /* ── Footer ── */
-        .policy-footer {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 32px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .policy-footer span {
-            font-family: var(--app-font);
-            font-size: 0.85rem;
-            color: #555;
-        }
-
-        .policy-footer a {
-            font-family: var(--app-font);
-            font-weight: 800;
-            font-size: 0.9rem;
-            color: #888;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .policy-footer a:hover {
-            color: var(--color-primary-light);
-        }
-
-        @media (max-width: 720px) {
-            .policy-title {
-                font-size: 2.2rem;
-            }
-
-            .container {
-                padding: 40px 1.5rem 60px;
-            }
-        }
-    </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .legal { max-width: 720px; }
+  .legal h2 {
+    font-size: 22px; letter-spacing: -0.015em; font-weight: 500;
+    margin: 48px 0 12px;
+  }
+  .legal p { color: var(--ink-2); margin: 0 0 16px; line-height: 1.6; font-size: 16px; }
+  .legal a { color: var(--accent); }
+  .legal a:hover { text-decoration: underline; }
+</style>
 </head>
+<body data-page="privacy" data-screen-label="Privacy">
 
-<body>
-    <div class="container">
+<div id="site-nav"></div>
 
-        <nav class="nav">
-            <a href="/" class="back-link">← alienemoji.com</a>
-        </nav>
-
-        <header class="policy-header">
-            <p class="app-label">Birdsong for macOS</p>
-            <h1 class="policy-title">Privacy<br>Policy</h1>
-            <p class="policy-date">Last updated: March 30, 2026</p>
-        </header>
-
-        <div class="policy-body">
-
-            <div class="policy-section">
-                <h2 class="policy-section-title">Overview</h2>
-                <p class="policy-section-body">
-                    Birdsong is a macOS app made by Alien Emoji. This policy describes our approach to user privacy. The
-                    short version: we don't collect anything.
-                </p>
-            </div>
-
-            <div class="policy-section">
-                <h2 class="policy-section-title">Data Collection</h2>
-                <p class="policy-section-body">
-                    Birdsong does not collect, store, transmit, or share any personal data, usage information, or device
-                    identifiers of any kind. The app runs entirely on your device. Nothing is sent to external servers —
-                    not by us, and not by any third party.
-                </p>
-            </div>
-
-            <div class="policy-section">
-                <h2 class="policy-section-title">Tracking</h2>
-                <p class="policy-section-body">
-                    We do not use analytics, advertising SDKs, crash reporting services, or any third-party frameworks
-                    that collect user information. We do not track your location, behavior, interactions, or device.
-                </p>
-            </div>
-
-            <div class="policy-section">
-                <h2 class="policy-section-title">Third-Party Services</h2>
-                <p class="policy-section-body">
-                    Birdsong does not integrate any third-party services.
-                </p>
-            </div>
-
-            <div class="policy-section">
-                <h2 class="policy-section-title">Children's Privacy</h2>
-                <p class="policy-section-body">
-                    Birdsong does not knowingly collect information from users of any age. No data is collected from
-                    anyone.
-                </p>
-            </div>
-
-            <div class="policy-section">
-                <h2 class="policy-section-title">Changes to This Policy</h2>
-                <p class="policy-section-body">
-                    We may update this policy from time to time. Any changes will be reflected at this URL with an
-                    updated date. We will not retroactively change any substantive terms.
-                </p>
-            </div>
-
-            <div class="policy-section">
-                <h2 class="policy-section-title">Contact</h2>
-                <p class="policy-section-body">
-                    Questions about this policy?<br>
-                    Email: <a href="mailto:amar@alienemoji.com">amar@alienemoji.com</a><br>
-                    Web: <a href="https://alienemoji.com">alienemoji.com</a>
-                </p>
-            </div>
-
+<main>
+  <section class="section first" style="padding: 80px 0;">
+    <div class="shell">
+      <div class="row">
+        <div style="grid-column: span 3;">
+          <a href="index.html" class="mono" style="color: var(--muted);">← Back to studio</a>
         </div>
+        <div style="grid-column: span 8;" class="legal">
+          <div class="eyebrow" style="margin-bottom: 24px;"><span class="dot"></span>Birdsong for macOS · Privacy Policy</div>
+          <h1 class="h1" style="margin: 0 0 16px;">Privacy Policy</h1>
+          <div class="mono" style="margin-bottom: 40px;">Last updated: March 30, 2026</div>
 
-        <footer class="policy-footer">
-            <span>© 2026 Alien Emoji</span>
-            <a href="/">← Back to alienemoji.com</a>
-        </footer>
+          <h2>Overview</h2>
+          <p>Birdsong is a macOS app made by Alien Emoji. This policy describes our approach to user privacy. The short version: we don't collect anything.</p>
 
+          <h2>Data Collection</h2>
+          <p>Birdsong does not collect, store, transmit, or share any personal data, usage information, or device identifiers of any kind. The app runs entirely on your device. Nothing is sent to external servers — not by us, and not by any third party.</p>
+
+          <h2>Tracking</h2>
+          <p>We do not use analytics, advertising SDKs, crash reporting services, or any third-party frameworks that collect user information. We do not track your location, behavior, interactions, or device.</p>
+
+          <h2>Third-Party Services</h2>
+          <p>Birdsong does not integrate any third-party services.</p>
+
+          <h2>Children's Privacy</h2>
+          <p>Birdsong does not knowingly collect information from users of any age. No data is collected from anyone.</p>
+
+          <h2>Changes to This Policy</h2>
+          <p>We may update this policy from time to time. Any changes will be reflected at this URL with an updated date. We will not retroactively change any substantive terms.</p>
+
+          <h2>Contact</h2>
+          <p>Questions about this policy?<br>
+          Email: <a href="mailto:amar@alienemoji.com">amar@alienemoji.com</a><br>
+          Web: <a href="index.html">alienemoji.com</a></p>
+
+          <div style="margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--line);" class="mono">
+            © 2026 Alien Emoji
+          </div>
+        </div>
+      </div>
     </div>
-</body>
+  </section>
+</main>
 
+<div id="site-footer"></div>
+<script src="site.js"></script>
+</body>
 </html>
