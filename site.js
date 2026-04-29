@@ -31,7 +31,7 @@
               <strong style="color:var(--ink); font-weight:600; letter-spacing:-0.01em;">Alien Emoji</strong>
             </div>
             <p style="max-width: 36ch; margin: 0 0 16px; color: var(--muted);">
-              An independent audio-first studio. We design tomorrows tools and experiences.
+              An independent, audio-first studio. We design tomorrow's tools and experiences.
             </p>
             <div class="mono">— Amar Ibrahim, founder</div>
           </div>
