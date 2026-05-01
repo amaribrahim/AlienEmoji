@@ -707,13 +707,15 @@ img { max-width: 100%; display: block; }
   .nav-cta { display: none; }
   .products-grid { grid-template-columns: 1fr; }
   .hero-icon-col {
-    grid-column: span 6 !important;
+    grid-column: span 2 !important;
   }
   .hero-app-icon {
-    max-width: 120px;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 160px;
   }
   .hero-title-col {
-    grid-column: span 6 !important;
+    grid-column: span 4 !important;
   }
 }
 
@@ -747,8 +749,8 @@ img { max-width: 100%; display: block; }
   .lead { font-size: 16px; max-width: 100%; }
 
   /* ---- hero (index) info row — force 1 col ---- */
-  .hero-icon-col { max-width: 80px; }
-  .hero-app-icon { max-width: 80px !important; }
+  .hero-icon-col { max-width: 100%; display: flex; justify-content: left; }
+  .hero-app-icon { max-width: 140px !important; }
 
   /* ---- product hero top meta bar ---- */
   .hero-meta-bar {
