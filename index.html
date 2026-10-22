@@ -1,216 +1,72 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Alien Emoji — Audio-first studio for spatial sound</title>
-<meta name="description" content="Alien Emoji is an independent studio building tools and experiences in spatial audio. Makers of Birdsong and Sleepy Aliens." />
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101611">
+<title>Alien Emoji — Audio experiences, tools &amp; systems</title>
+<meta name="description" content="Building the next generation of audio experiences. Alien Emoji creates spatial audio products, custom tools and middleware solutions for games.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-<link rel="icon" href="assets/alienemoji-logo.ico" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Mono:wght@400&family=Inter+Tight:wght@400;450;500;600;650;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/alienemoji-logo.ico">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="dynamic.css">
+<script src="dynamic.js" defer></script>
+<link rel="stylesheet" href="star-guitar.css">
+<script type="module" src="star-guitar.mjs"></script>
 </head>
-<body data-page="home" data-screen-label="Home">
-
+<body data-page="home">
 <div id="site-nav"></div>
-
-<main class="main-content">
-
-  <!-- ============ HERO ============ -->
-
-  <section class="section first hero-gradient hero-section" style="padding-top: 72px; padding-bottom: 56px;" data-screen-label="Home · Hero">
-    <!-- <canvas class="hero-waves" aria-hidden="true"></canvas>      -->
-    <div class="shell hero-content">
-      <div class="row" style="margin-bottom: 56px; align-items: start;">
-        <div style="grid-column: span 7;" class="reveal-hero" data-delay="0">
-          <div class="eyebrow" style="margin-bottom: 28px;">
-            <span class="dot"></span>R&amp;D-focused studio · Est. 2024 · Los Angeles
+<main id="main">
+<section class="hero-stage" aria-labelledby="hero-title">
+  <canvas class="star-field" aria-hidden="true"></canvas>
+  <div class="shell hero-content-new">
+    <h1 class="hero-title" id="hero-title">Building the<br>next generation<br>of <span>audio<br class="desktop-break"> experiences.</span></h1>
+  </div>
+  <div class="hero-bottom">
+    <a class="scroll-link" href="#products" aria-label="Scroll to projects"><span class="circle-arrow" aria-hidden="true">↓</span></a>
+  </div>
+</section>
+<section class="work-section" id="products" aria-labelledby="products-title">
+  <div class="shell">
+    <div class="work-heading reveal"><div><div class="section-kicker micro">01 / Projects</div><h2 id="products-title">Birdsong Forest</h2></div></div>
+    <div class="product-carousel reveal" role="region" aria-roledescription="carousel" aria-label="Projects" tabindex="0">
+      <div class="product-slides" id="product-slides">
+        <article class="product-slide" role="group" aria-roledescription="slide" aria-label="1 of 4: Birdsong Forest" data-title="Birdsong Forest">
+          <a class="project-cover cover-birdsong" href="birdsong.html" aria-label="Explore Birdsong Forest"><img src="assets/birdsong-shot-2.png" width="3360" height="2100" alt="A robin perched on a branch in Birdsong Forest’s sunlit woodland" loading="lazy"><span class="project-tag micro">Spatial audio experience / macOS</span><span class="project-arrow" aria-hidden="true">↗</span></a>
+          <div class="project-info"><div><p>Listen, follow, and find. An immersive bird-finding experience guided by spatial sound.</p></div><a class="text-link" href="birdsong.html">Explore the forest <span aria-hidden="true">↗</span></a></div>
+        </article>
+        <article class="product-slide" role="group" aria-roledescription="slide" aria-label="2 of 4: Sleepy Aliens" data-title="Sleepy Aliens">
+          <a class="project-cover cover-sleepy" href="sleepy-aliens.html" aria-label="Explore Sleepy Aliens"><img src="assets/sleepy-banner.jpg" alt="A sleeping cow floating in a glowing UFO beam" loading="lazy"><span class="project-tag micro">Ambient lullaby maker / iOS</span><span class="project-arrow" aria-hidden="true">↗</span></a>
+          <div class="project-info"><div><p>Make a little space for calm. Lift friendly animals into a glowing UFO beam and compose evolving, ambient music.</p></div><a class="text-link" href="sleepy-aliens.html">Meet the aliens <span aria-hidden="true">↗</span></a></div>
+        </article>
+        <article class="product-slide" role="group" aria-roledescription="slide" aria-label="3 of 4: Unity ADM Recorder" data-title="Unity ADM Recorder">
+          <a class="project-cover cover-adm" href="https://github.com/amaribrahim/unity-adm-recorder" target="_blank" rel="noopener" aria-label="Explore Unity ADM Recorder on GitHub (opens in a new tab)"><img src="assets/unity-adm-recorder.png" width="2820" height="1768" alt="Audio objects positioned in a three-dimensional Unity scene" loading="lazy"><span class="project-tag micro">Unity tool / Working prototype</span><span class="project-arrow" aria-hidden="true">↗</span></a>
+          <div class="project-info"><div><p>Capture audio-object movement in Unity, then combine it with your stems to create an ADM BWF file for spatial audio workflows.</p></div><a class="text-link" href="https://github.com/amaribrahim/unity-adm-recorder" target="_blank" rel="noopener">Explore on GitHub <span aria-hidden="true">↗</span></a></div>
+        </article>
+        <article class="product-slide" role="group" aria-roledescription="slide" aria-label="4 of 4: Serenity Bird Engine" data-title="Serenity Bird Engine">
+          <div class="project-cover cover-serenity">
+            <div class="development-copy"><div class="section-kicker micro">In the lab / In development</div><h3>Go birding<br>in <span>sound.</span></h3><p>Listen to birds in ever-evolving natural soundscapes. Explore different destinations and discover birds you’re likely to encounter in North America.</p><div class="development-tags"><span>Multiple destinations</span><span>North American birds</span><span>Habitats informed by nature</span></div></div>
+            <div class="listening-field" role="img" aria-label="Illustration of a listener surrounded by sparrow, robin, stream and cricket sounds"><div class="field-ring"></div><div class="field-ring"></div><div class="field-ring"></div><div class="field-cross"></div><div class="field-sweep"></div><div class="listener" aria-hidden="true">⌖</div><div class="field-source" style="left:28%;top:21%">Sparrow<small>18 m / NE</small></div><div class="field-source" style="left:71%;top:35%">Robin<small>24 m / E</small></div><div class="field-source" style="left:64%;top:74%">Stream<small>31 m / SE</small></div><div class="field-source" style="left:16%;top:64%">Cricket<small>6 m / SW</small></div><div class="field-caption micro"><span>Listener field</span><span>Illustration / Not live audio</span></div></div>
           </div>
-          <h1 class="h-display" style="font-size: clamp(40px, 5.5vw, 80px);">
-            Building the next generation of audio experiences.
-          </h1>
-        </div>
-        <div style="grid-column: span 4 / -1; padding-top: 60px;" class="reveal-hero" data-delay="120">
-          <p class="lead" style="margin: 0 0 24px;">
-            Alien Emoji is an audio studio led by <a href="https://www.linkedin.com/in/amaribrahim" target="_blank" rel="noopener" style="color: var(--accent); border-bottom: 1px solid currentColor;">Amar Ibrahim</a> — 15 years of audio production &amp; development, game sound, and engineering interactive systems. We are constantly exploring the potential of audio through interactive immersive experiences, with a particular interest in spatial technology.
-          </p>
-
-          <div style="display:flex; gap: 12px; flex-wrap: wrap;">
-            <a class="btn btn-primary" href="#products">
-              See current work <span class="arrow">↓</span>
-            </a>
-            <a class="btn btn-ghost" href="#contact">
-              Get in touch
-            </a>
-          </div>
-        </div>
+          <div class="project-info"><div><p>Built on Serenity Engine, developed from the technology and design discoveries behind Birdsong.</p></div><span class="project-status micro">In development</span></div>
+        </article>
       </div>
-      <div class="row" style="margin-top: 40px; align-items: start;">
-        <div style="grid-column: span 4;" class="reveal-hero" data-delay="220">
-          <div class="mono" style="margin-bottom: 8px;">[01] In development</div>
-          <div style="font-size: 15px; color: var(--ink-2);">
-            An immersive spatial audio engine.
-            <span style="color: var(--muted); margin-left: 6px;">Mid 2026 →</span>
-          </div>
-        </div>
-        <div style="grid-column: span 4;" class="reveal-hero" data-delay="300">
-          <div class="mono" style="margin-bottom: 8px;">[02] Currently shipping</div>
-          <div style="font-size: 15px; color: var(--ink-2);">
-            Birdsong v1.2 — new Forest Ambience system.
-            <a href="birdsong.html" style="color: var(--accent); margin-left: 6px;">Read →</a>
-          </div>
-        </div>
-        <div style="grid-column: span 4;" class="reveal-hero" data-delay="380">
-          <div class="mono" style="margin-bottom: 8px;">[03] In rotation</div>
-          <div style="font-size: 15px; color: var(--ink-2);">
-            Sleepy Aliens — ambient lullaby maker for iPhone.
-            <a href="sleepy-aliens.html" style="color: var(--accent); margin-left: 6px;">Read →</a>
-          </div>
-        </div>
-      </div>
- 
-    </div>
-  </section>
-
-  <!-- ============ TICKER ============ -->
-  <div class="ticker">
-    <div class="ticker-track">
-      <span>Spatial audio</span><span class="sep">●</span>
-      <span>Real-world acoustics</span><span class="sep">●</span>
-      <span>Interactive sound design</span><span class="sep">●</span>
-      <span>HRTF / Binaural</span><span class="sep">●</span>
-      <span>Procedural ambience</span><span class="sep">●</span>
-      <span>Listener-first software</span><span class="sep">●</span>
-      <span>Spatial audio</span><span class="sep">●</span>
-      <span>Real-world acoustics</span><span class="sep">●</span>
-      <span>Interactive sound design</span><span class="sep">●</span>
-      <span>HRTF / Binaural</span><span class="sep">●</span>
-      <span>Procedural ambience</span><span class="sep">●</span>
-      <span>Listener-first software</span><span class="sep">●</span>
+      <div class="carousel-controls" hidden><span class="carousel-status micro" aria-live="polite" aria-atomic="true">01 / 04</span><div class="carousel-pagination" aria-label="Choose a project"><button type="button" data-slide="0" aria-label="Show Birdsong Forest" aria-current="true"></button><button type="button" data-slide="1" aria-label="Show Sleepy Aliens"></button><button type="button" data-slide="2" aria-label="Show Unity ADM Recorder"></button><button type="button" data-slide="3" aria-label="Show Serenity Bird Engine"></button></div></div>
     </div>
   </div>
-
-  <!-- ============ PRODUCTS ============ -->
-  <section class="section products-gradient" id="products" data-screen-label="Home · Products">
-    <div class="shell">
-      <div class="section-head">
-        <div>
-          <div class="eyebrow"><span class="dot"></span>Products</div>
-        </div>
-      </div>
-
-      <div class="products-grid">
-        <!-- Engine (coming soon) -->
-        <div class="card product-card reveal-scroll">
-          <div class="product-card-media" style="padding: 0; overflow: hidden;">
-            <div class="spatial" style="border: none; border-radius: 0; aspect-ratio: unset; height: 100%;">
-              <div class="spatial-axes"></div>
-              <div class="spatial-ring spatial-ring--outer"></div>
-              <div class="spatial-ring spatial-ring--inner"></div>
-              <div class="spatial-listener"></div>
-              <div class="spatial-source" style="left: 32%; top: 28%;">
-                <span class="spatial-label">Sparrow · 18m</span>
-              </div>
-              <div class="spatial-source" style="left: 68%; top: 38%; animation-delay: 1.2s;">
-                <span class="spatial-label">Robin · 24m</span>
-              </div>
-              <div class="spatial-source" style="left: 76%; top: 66%; animation-delay: 0.4s;">
-                <span class="spatial-label">Stream · 31m</span>
-              </div>
-              <div class="spatial-source" style="left: 24%; top: 62%; animation-delay: 2.1s;">
-                <span class="spatial-label">Cricket · 6m</span>
-              </div>
-              <div class="mono" style="position: absolute; left: 12px; top: 12px; font-size: 10px; color: var(--muted-2);">FIG. 03 — Listener field</div>
-              <div class="mono" style="position: absolute; right: 12px; bottom: 12px; font-size: 10px; color: var(--muted-2);">N · ↑ forward</div>
-            </div>
-          </div>
-          <div class="product-card-body">
-            <div class="card-meta">
-              <span>R&amp;D / Mid 2026</span>
-              <span style="color: var(--muted-2);">Engine</span>
-            </div>
-            <h3 class="h3" style="margin: 12px 0 8px;">Immersive Spatial Audio Engine</h3>
-            <p style="color: var(--muted); margin: 0 0 16px; font-size: 14px; line-height: 1.5;">
-              A spatial sound workstation that simplifies authoring immersive audio content.
-            </p>
-            <a href="#contact" class="mono" style="color: var(--accent);">→ Request the deck</a>
-          </div>
-        </div>
-        <!-- Birdsong -->
-        <a href="birdsong.html" class="card product-card reveal-scroll" style="text-decoration: none;">
-          <div class="product-card-media">
-            <img src="assets/birdsong-shot-1.png" alt="Birdsong: Listen to the forest"
-                 onerror="this.style.display='none'; this.parentElement.classList.add('placeholder-fallback');" />
-          </div>
-          <div class="product-card-body">
-            <div class="card-meta">
-              <span>Birdsong / 2026</span>
-              <span style="color: var(--accent);">macOS · Now</span>
-            </div>
-            <h3 class="h3" style="margin: 12px 0 8px;">
-              <span style="font-family: 'DM Serif Display', Georgia, serif; font-style: italic; color: var(--accent);">Birdsong</span> — Listen to the forest.
-            </h3>
-            <p style="color: var(--muted); margin: 0 0 16px; font-size: 14px; line-height: 1.5;">
-              Immersive spatial audio bird-finding. Every call, every sound.
-            </p>
-            <span class="mono" style="color: var(--accent);">View →</span>
-          </div>
-        </a>
-
-        <!-- Sleepy Aliens -->
-        <a href="sleepy-aliens.html" class="card product-card reveal-scroll" style="text-decoration: none;">
-          <div class="product-card-media">
-            <img src="assets/sleepy-aliens-icon.png" alt="Sleepy Aliens — ambient lullaby maker" />
-          </div>
-          <div class="product-card-body">
-            <div class="card-meta">
-              <span>Sleepy Aliens / 2025</span>
-              <span>iOS</span>
-            </div>
-            <h3 class="h3" style="margin: 12px 0 8px;">Sleepy Aliens</h3>
-            <p style="color: var(--muted); margin: 0 0 16px; font-size: 14px; line-height: 1.5;">
-              An ambient lullaby maker. Drag friendly animals up a glowing UFO beam to compose calm, evolving music.
-            </p>
-            <span class="mono" style="color: var(--accent);">View →</span>
-          </div>
-        </a>
-
-
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CONTACT ============ -->
-  <section class="section contact-gradient contact-section" id="contact" style="border-top: none; padding: 180px 0; color: var(--fg);" data-screen-label="Home · Contact">
-    <div class="shell" style="text-align: center;">
-      <div class="eyebrow" style="margin-bottom: 28px; color: var(--muted); justify-content: center; display: flex; align-items: center; justify-content: center;"><span class="dot" style="background: var(--accent);"></span>Get in touch</div>
-      <h2 style="font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-size: clamp(48px, 7vw, 96px); font-weight: 400; color: var(--fg); margin: 0 0 28px; line-height: 1.05; letter-spacing: -0.02em;">
-        Say hello.
-      </h2>
-      <p style="color: var(--muted); margin: 0 auto 40px; max-width: 38ch; font-size: 16px; line-height: 1.6;">
-        Collaborations, licensing, press, or just to talk about the future of audio.
-      </p>
-      <a href="mailto:amar@alienemoji.com" class="btn btn-primary" style="font-size: 14px; padding: 13px 24px; background: var(--accent); color: #fff; border-color: transparent;">
-        amar@alienemoji.com <span class="arrow">→</span>
-      </a>
-    </div>
-  </section>
-
-  
+</section>
+<section class="services-section" id="services" aria-labelledby="services-title">
+  <div class="shell"><div class="section-kicker micro reveal">02 / Services</div><div class="services-grid"><h2 class="reveal" id="services-title">Building custom audio solutions for indies.</h2><div class="services-copy reveal"><p>We build bespoke audio tools and interactive sound systems with game developers and publishers.</p><p class="services-support">Great sound that matches your creative vision.</p><div class="services-line"><span>Audio production &amp; development</span><span aria-hidden="true">01</span></div><div class="services-line"><span>Game sound</span><span aria-hidden="true">02</span></div><div class="services-line"><span>Tools &amp; interactive audio systems</span><span aria-hidden="true">03</span></div><a class="text-link" href="mailto:amar@alienemoji.com">Tell us what you’re building <span aria-hidden="true">↗</span></a></div></div></div>
+</section>
+<section class="intro-section" id="about" aria-labelledby="about-title">
+  <div class="shell"><div class="section-kicker micro reveal">03 / About</div><div class="intro-grid"><h2 class="statement reveal" id="about-title">About us</h2><div class="intro-copy reveal"><p>Alien Emoji is an audio studio led by Amar Ibrahim. With 20 years across audio production, game sound and interactive systems, we connect the technical to the creative.</p><p>Our products are a place to experiment. Our collaborations bring the same curiosity to the worlds you build.</p><a class="text-link" href="https://www.linkedin.com/in/amaribrahim" target="_blank" rel="noopener">Meet Amar <span aria-hidden="true">↗</span></a></div></div></div>
+</section>
+<section class="contact-new" id="contact" aria-labelledby="contact-title">
+  <div class="shell"><div class="contact-top reveal"><div class="section-kicker micro">Have something in mind?</div><p>Tell us about the world you’re building and where sound fits in.</p></div><h2 id="contact-title"><a class="contact-link reveal" href="mailto:amar@alienemoji.com"><span>Say hello.</span><span class="contact-arrow" aria-hidden="true">↗</span></a></h2><a class="contact-email" href="mailto:amar@alienemoji.com">amar@alienemoji.com</a></div>
+</section>
 </main>
 <div id="site-footer"></div>
-<script src="site.js"></script>
-
-<!-- Tweaks panel (React) -->
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-<script type="text/babel" src="tweaks-panel.jsx"></script>
-<script type="text/babel" src="tweaks.jsx"></script>
-
 </body>
 </html>

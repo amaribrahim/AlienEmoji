@@ -217,3 +217,33 @@
     targets.forEach(t => io.observe(t));
   });
 })();
+
+// Product row: native scrolling, keyboard support, and position controls.
+(() => {
+  const rail = document.getElementById('product-rail');
+  if (!rail) return;
+  const controls = document.querySelector('.rail-controls');
+  const prev = controls.querySelector('[data-rail-prev]');
+  const next = controls.querySelector('[data-rail-next]');
+  const status = controls.querySelector('[data-rail-status]');
+  const cards = [...rail.children];
+  const step = () => cards[0].getBoundingClientRect().width + parseFloat(getComputedStyle(rail).columnGap);
+  const update = () => {
+    const first = Math.round(rail.scrollLeft / step()) + 1;
+    const visible = Math.max(1, Math.round((rail.clientWidth + 24) / step()));
+    const last = Math.min(cards.length, first + visible - 1);
+    status.textContent = (first === last ? first : first + '–' + last) + ' of ' + cards.length;
+    prev.disabled = rail.scrollLeft < 2;
+    next.disabled = rail.scrollLeft >= rail.scrollWidth - rail.clientWidth - 2;
+  };
+  const move = direction => rail.scrollBy({left: direction * step(), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
+  prev.addEventListener('click', () => move(-1));
+  next.addEventListener('click', () => move(1));
+  rail.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); move(e.key === 'ArrowRight' ? 1 : -1); }
+  });
+  rail.addEventListener('scroll', update, {passive:true});
+  new ResizeObserver(update).observe(rail);
+  controls.hidden = false;
+  update();
+})();

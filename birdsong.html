@@ -4,17 +4,21 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Birdsong: Listen to the Forest — Alien Emoji</title>
+  <title>Birdsong Forest — Alien Emoji</title>
   <meta name="description"
     content="An immersive spatial audio bird-finding experience for macOS. Every sound placed where it would be in the real world." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Mono:wght@400&family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;1,400&family=family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet">
   <link rel="icon" href="assets/alienemoji-logo.ico" type="image/x-icon">
   <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="dynamic.css">
+<script src="dynamic.js" defer></script>
+<link rel="stylesheet" href="star-guitar.css">
+<script type="module" src="star-guitar.mjs"></script>
 </head>
 
 <body data-page="birdsong" data-screen-label="Birdsong">
@@ -43,7 +47,7 @@
           <div class="hero-title-col" style="grid-column: span 8 / -1;">
             <h1 class="h-display" style="margin: 0;">
               <span
-                style="font-family: 'DM Serif Display', Georgia, serif; font-style: italic; color: var(--accent); font-weight: 400;">Birdsong</span><br>
+                style="font-family: var(--f-mono); font-style: normal; color: var(--accent); font-weight: 400;">Birdsong Forest</span><br>
               Listen to the forest.
             </h1>
           </div>
@@ -206,7 +210,7 @@
     </section>
 
     <!-- HOW IT WORKS / TECHNICAL -->
-    <section class="section" style="background: #fafafa;" data-screen-label="Birdsong · How it works">
+    <section class="section" data-screen-label="Birdsong · How it works">
       <div class="shell">
         <div class="section-head">
           <div>
@@ -296,7 +300,7 @@
         <div style="grid-column: 2 / span 10;">
           <div class="eyebrow" style="margin-bottom: 32px;"><span class="dot"></span>Designer's note</div>
           <p class="h2" style="margin: 0 0 32px; font-weight: 500; letter-spacing: -0.02em;">
-            "I wanted a place where the audio was actually <em style="font-family: 'DM Serif Display', Georgia, serif; color: var(--accent);">there</em> —
+            "I wanted a place where the audio was actually <em style="font-family: var(--f-mono); color: var(--accent);">there</em> —
             where you could turn your head and the forest would turn with you.
             The point isn't to win. The point is to listen."
           </p>
@@ -307,7 +311,7 @@
   </section> -->
 
     <!-- CTA -->
-    <section class="section cta-section" style="background: var(--ink); color: #fff; padding: 96px 0;"
+    <section class="section cta-section" style="color: #fff; padding: 96px 0;"
       data-screen-label="Birdsong · CTA">
       <div class="shell">
         <div class="row" style="align-items: end;">
@@ -317,7 +321,7 @@
             </div>
             <h2 class="h1" style="margin: 0; max-width: 14ch;">
               Put on headphones. <em
-                style="font-family: 'DM Serif Display', Georgia, serif; color: var(--accent);">Listen.</em>
+                style="font-family: var(--f-mono); color: var(--accent);">Listen.</em>
             </h2>
           </div>
           <div style="grid-column: span 4 / -1;">
@@ -338,19 +342,13 @@
   </main>
 
   <div id="site-footer"></div>
-  <script src="site.js"></script>
+  
 
-  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js"
-    integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L"
-    crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"
-    integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm"
-    crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"
-    integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y"
-    crossorigin="anonymous"></script>
-  <script type="text/babel" src="tweaks-panel.jsx"></script>
-  <script type="text/babel" src="tweaks.jsx"></script>
+  
+  
+  
+  
+  
 
 </body>
 
