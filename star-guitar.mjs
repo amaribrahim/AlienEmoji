@@ -108,21 +108,23 @@ let width=0,height=0,points=[],frame=0,lastFrame=0,time=0,playArea={top:220,heig
 let paused=document.body.classList.contains('motion-paused');
 const reducedMotion=matchMedia('(prefers-reduced-motion:reduce)');
 let pointer={x:0,y:0},camera={x:0,y:0,scroll:0},previous=null,pointerId=null,hoverStar=-1;
-let colors={},sprites={},nudge=null,lastNudge=-Infinity;
+let colors={},sprites={},dustSprites={},nudge=null,lastNudge=-Infinity;
 const gate=new ContactGate(180),lastPluck=new Map(),vibrations=new Map(),starPulses=new Map();
 let seed=831;const random=()=>{seed=seed*16807%2147483647;return(seed-1)/2147483646;};
 // Dust stays dimmer than every constellation star. 92% sits deep in the background; a few nearer motes give the parallax its scale.
 const dust=Array.from({length:2100},(_,i)=>{const layer=i%100;return{x:random(),y:random(),near:layer===0?.6+random()*.75:layer<8?.2+random()*.25:.04+random()*.12,size:random(),phase:random()*6.28,color:random()};});
+// Assign brightness once, independently of size, after generating the existing positions.
+for(const star of dust)star.brightness=.26+.68*random()**1.4;
 // Background dust is painted once per depth band and each band is moved as one sheet.
 const FAR=.18,farEdges=[.04,.08,.12,.16],farBands=farEdges.slice(1).map((hi,i)=>{const sheet=document.createElement('canvas');return{lo:farEdges[i],hi,depth:(farEdges[i]+hi)/2,sheet,ctx:sheet.getContext('2d')};});
 let liveDust=[],dpr=1;
-const dustSprite=s=>sprites[s.color>.96?'warm':s.color>.85?'secondary':'paper'];
+const dustSprite=s=>dustSprites[s.color>.96?'warm':s.color>.85?'secondary':'paper'];
 function paintFarDust(){
  if(!width||!height||!colors.paper)return;
  const field=dust.slice(0,width<701?1400:dust.length);liveDust=field.filter(s=>s.near>=FAR);
  for(const band of farBands){
   const c=band.ctx;band.sheet.width=canvas.width;band.sheet.height=canvas.height;c.setTransform(dpr,0,0,dpr,0,0);
-  for(const s of field)if(s.near>=band.lo&&s.near<band.hi){const radius=.8+s.size*.9;c.globalAlpha=(.27+s.size*.38)*.93;c.drawImage(dustSprite(s),s.x*width-radius,s.y*height-radius,radius*2,radius*2);}
+  for(const s of field)if(s.near>=band.lo&&s.near<band.hi){const radius=1+s.size*1.1;c.globalAlpha=s.brightness;c.drawImage(dustSprite(s),s.x*width-radius,s.y*height-radius,radius*2,radius*2);}
  }
 }
 let stringLabels=[];
@@ -145,11 +147,11 @@ lowInput.addEventListener('change',()=>{lowest=Number(lowInput.value);tune(true)
 highInput.addEventListener('change',()=>{highest=Number(highInput.value);tune(true);});
 tune();
 const rgba=(hex,a)=>{const h=hex.replace('#','');return`rgba(${[0,2,4].map(i=>parseInt(h.slice(i,i+2),16)).join(',')},${clamp(a,0,1)})`;};
-function makeSprite(color){const sprite=document.createElement('canvas');sprite.width=sprite.height=64;const c=sprite.getContext('2d'),g=c.createRadialGradient(32,32,0,32,32,32);g.addColorStop(0,rgba(color,1));g.addColorStop(.09,rgba(color,.9));g.addColorStop(.22,rgba(color,.45));g.addColorStop(.48,rgba(color,.09));g.addColorStop(1,rgba(color,0));c.fillStyle=g;c.fillRect(0,0,64,64);return sprite;}
+function makeSprite(color,background=false){const sprite=document.createElement('canvas');sprite.width=sprite.height=64;const c=sprite.getContext('2d'),g=c.createRadialGradient(32,32,0,32,32,32);g.addColorStop(0,rgba(color,1));g.addColorStop(background?.14:.09,rgba(color,background?.85:.9));g.addColorStop(background?.42:.22,rgba(color,background?.4:.45));g.addColorStop(background?.78:.48,rgba(color,background?.1:.09));g.addColorStop(1,rgba(color,0));c.fillStyle=g;c.fillRect(0,0,64,64);return sprite;}
 function palette(){
  const css=getComputedStyle(document.documentElement);
  const tokens={accent:'guitar-strings',paper:'guitar-stars',secondary:'guitar-glow',warm:'sky-warm',night:'night'};
- for(const [key,token]of Object.entries(tokens)){colors[key]=css.getPropertyValue(`--${token}`).trim()||css.getPropertyValue(`--${key}`).trim();sprites[key]=makeSprite(colors[key]);}
+ for(const [key,token]of Object.entries(tokens)){colors[key]=css.getPropertyValue(`--${token}`).trim()||css.getPropertyValue(`--${key}`).trim();sprites[key]=makeSprite(colors[key]);if(['paper','secondary','warm'].includes(key))dustSprites[key]=makeSprite(colors[key],true);}
  paintFarDust();draw(performance.now());
 }
 function layouts(){
@@ -187,24 +189,25 @@ function draw(now){
   const n=s.near;
   const x=((s.x*width-camera.x*n*120+Math.sin(time*.012+s.phase)*n*7)%width+width)%width;
   const y=((s.y*height-camera.y*n*95-camera.scroll*n*40+time*n*.5)%height+height)%height;
-  const radius=n>.5?1.6+s.size*1.6:.8+s.size*1.2;
-  const alpha=(n>.5?.2+s.size*.18:.3+s.size*.25)*(.93+Math.sin(time*.25+s.phase)*.07);
+  const radius=n>.5?1.8+s.size*1.6:1+s.size*1.3;
+  const alpha=s.brightness*(.95+Math.sin(time*.25+s.phase)*.05);
   ctx.globalAlpha=alpha;ctx.drawImage(dustSprite(s),x-radius,y-radius,radius*2,radius*2);
  }ctx.globalAlpha=1;
  strings.forEach((string,i)=>{
   const a=points[string.a],b=points[string.b],age=Math.max(0,(now-(vibrations.get(i)??-1e9))/1000);
   const energy=Math.exp(-age*1.7),distance=Math.hypot(b.x-a.x,b.y-a.y),nx=-(b.y-a.y)/(distance||1),ny=(b.x-a.x)/(distance||1);
-  const alpha=.20+energy*.62;
-  const gradient=ctx.createLinearGradient(a.x,a.y,b.x,b.y);gradient.addColorStop(0,rgba(colors.accent,alpha*a.depth));gradient.addColorStop(1,rgba(colors.secondary,alpha*b.depth));
-  ctx.strokeStyle=gradient;ctx.lineWidth=.45+(a.depth+b.depth)*.22+energy*.8;ctx.beginPath();
+  const alpha=.40+energy*.5;
+  const gradient=ctx.createLinearGradient(a.x,a.y,b.x,b.y);gradient.addColorStop(0,rgba(colors.accent,alpha*(.55+a.depth*.45)));gradient.addColorStop(1,rgba(colors.secondary,alpha*(.55+b.depth*.45)));
+  ctx.strokeStyle=gradient;ctx.lineWidth=.65+(a.depth+b.depth)*.26+energy*.8;ctx.beginPath();
   for(let j=0;j<=36;j++){const t=j/36,wave=paused?0:Math.sin(t*Math.PI)*Math.sin(t*Math.PI*3-age*25)*energy*7,x=a.x+(b.x-a.x)*t+nx*wave,y=a.y+(b.y-a.y)*t+ny*wave;j?ctx.lineTo(x,y):ctx.moveTo(x,y);}ctx.stroke();
   if(energy>.08){ctx.fillStyle=rgba(colors.accent,energy*.85);ctx.font='9px "JetBrains Mono",monospace';ctx.fillText(stringLabels[i],(a.x+b.x)/2+7,(a.y+b.y)/2-9);}
  });
  points.map((p,i)=>({...p,i})).sort((a,b)=>a.depth-b.depth).forEach(p=>{
   const age=(now-(starPulses.get(p.i)??-1e9))/1000,energy=Math.exp(-age*2),hover=p.i===hoverStar;
-  const radius=2+12*p.depth*p.depth,halo=radius*3+energy*16;
-  ctx.globalAlpha=.12*p.depth+energy*.19;ctx.drawImage(sprites.accent,p.x-halo,p.y-halo,halo*2,halo*2);
-  ctx.globalAlpha=.40+.58*p.depth*p.depth;ctx.drawImage(sprites.paper,p.x-radius,p.y-radius,radius*2,radius*2);ctx.globalAlpha=1;
+  const radius=2.7+13*p.depth*p.depth,halo=radius*3+energy*16;
+  ctx.globalAlpha=.20*p.depth+energy*.22;ctx.drawImage(sprites.accent,p.x-halo,p.y-halo,halo*2,halo*2);
+  ctx.globalAlpha=.65+.35*p.depth;ctx.drawImage(sprites.paper,p.x-radius,p.y-radius,radius*2,radius*2);ctx.globalAlpha=1;
+  ctx.fillStyle=rgba(colors.paper,.9);ctx.beginPath();ctx.arc(p.x,p.y,.65+1.1*p.depth*p.depth,0,Math.PI*2);ctx.fill();
   if(energy>.04||hover){ctx.strokeStyle=rgba(colors.accent,hover?.4:energy*.4);ctx.lineWidth=.6;ctx.beginPath();ctx.arc(p.x,p.y,radius+5+(paused?0:(1-energy)*19),0,Math.PI*2);ctx.stroke();}
  });
 }

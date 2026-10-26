@@ -1,6 +1,8 @@
 /* One fixed sky, shared by every page and the full-screen instrument. */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .guitar-sky{position:fixed;inset:0;z-index:0;overflow:hidden;background:radial-gradient(ellipse at 75% 40%,color-mix(in srgb,var(--sky-glow) 12%,transparent),transparent 60%),radial-gradient(ellipse at 18% 85%,color-mix(in srgb,var(--sky-warm) 5%,transparent),transparent 55%),var(--night)}
+/* Static cloud texture sits behind the stars; no extra animation or pointer surface. */
+.guitar-sky:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 79% 35%,#c969974d,transparent 42%),radial-gradient(ellipse at 60% 57%,#8063ce66,transparent 48%),radial-gradient(ellipse at 28% 83%,#437ca852,transparent 42%),radial-gradient(ellipse at 93% 66%,color-mix(in srgb,var(--sky-warm) 16%,transparent),transparent 38%);-webkit-mask-image:url("assets/nebula-mask.svg");mask-image:url("assets/nebula-mask.svg");-webkit-mask-size:100% 100%;mask-size:100% 100%}
 .guitar-sky:after{content:"";position:absolute;inset:0;background:var(--night);opacity:var(--sky-dim,.04);pointer-events:none}
 .guitar-scene{position:absolute;inset:0;overflow:hidden;isolation:isolate;touch-action:pan-y}
 .guitar-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
@@ -8,7 +10,7 @@
 .guitar-star{position:absolute;left:0;top:0;width:44px;height:44px;border:0;border-radius:50%;padding:0;background:none;color:var(--accent);cursor:crosshair;pointer-events:auto;touch-action:pan-y}
 .guitar-star span{position:absolute;left:35px;top:12px;font:8px var(--f-mono);white-space:nowrap;opacity:0;transition:opacity .2s}
 .guitar-star:focus-visible{outline:1px solid var(--accent);outline-offset:4px}.guitar-star:focus-visible span,.guitar-star:hover span{opacity:.8}.over-string{cursor:crosshair}
-.guitar-labels{position:absolute;inset:0;pointer-events:none}.guitar-labels span{position:absolute;left:0;top:0;font:8px var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);opacity:.55}
+.guitar-labels{position:absolute;inset:0;pointer-events:none}.guitar-labels span{position:absolute;left:0;top:0;font:8px var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);opacity:.8}
 body>main,#site-footer{position:relative;z-index:1}
 .hero-stage,.work-section,.contact-new,.ae-footer{background:transparent}
 .hero-stage:after{opacity:.07}.hero-content-new{position:relative;z-index:2}.hero-content-new a,.hero-content-new button{pointer-events:auto}.hero-bottom{z-index:3;bottom:50px}.hero-coordinate{pointer-events:none}
