@@ -161,17 +161,85 @@ body[data-page=home] main>section{scroll-margin-top:0}
 @media(prefers-reduced-motion:reduce){.guitar-dock .guitar-sound[aria-pressed=false] .guitar-sound-icon{animation:none}}
 
 /* A small instrument-side console, moving on the same camera plane as Orion. */
-.guitar-dock{position:absolute;left:77%;right:auto;top:var(--console-top,150px);width:clamp(160px,19vw,230px);max-width:none;transform:translate3d(var(--console-x,0px),var(--console-y,0px),0);will-change:transform;font-family:var(--f-mono);gap:6px}
+.guitar-dock{position:absolute;left:65%;right:auto;top:var(--console-top,150px);width:clamp(175px,19vw,230px);max-width:none;transform:translate3d(var(--console-x,0px),var(--console-y,0px),0);will-change:transform;font-family:var(--f-mono);gap:6px}
 .guitar-dock h2{font:400 clamp(19px,1.6vw,24px)/1.4 var(--f-mono);letter-spacing:-.04em;margin:0 0 8px}
 .guitar-dock .guitar-control-row{display:grid;grid-template-columns:16px 1fr;justify-content:start;gap:10px;border-radius:0;min-height:36px;font:10px/1.6 var(--f-mono)}
-.guitar-dock .guitar-sound[aria-pressed=false]{color:var(--paper);transform:translate(-12vw,0)}
+.guitar-dock .guitar-sound{color:var(--paper);transform:none}
+.guitar-dock .guitar-sound[aria-pressed=false]{color:var(--paper);transform:none}
+.guitar-dock .guitar-sound-icon svg{display:block;width:16px;height:16px}
+.guitar-dock .guitar-sound[aria-pressed=false] .guitar-speaker-waves,.guitar-dock .guitar-sound[aria-pressed=true] .guitar-speaker-muted{display:none}
+.guitar-dock .guitar-sound[aria-pressed=true] .guitar-sound-icon{color:var(--accent)}
+.guitar-dock .guitar-expand{display:flex;width:max-content;gap:10px;margin-left:26px;color:var(--muted)}
+.guitar-dock .guitar-expand-icon{font-size:13px;transition:transform .25s}
+.guitar-dock .guitar-expand:hover .guitar-expand-icon{transform:translateX(3px)}
 .guitar-dock .guitar-sound-icon,.guitar-expand-icon,.guitar-toggle-icon{justify-self:center}
 .guitar-dock .guitar-range select{font-family:var(--f-mono)}
 @media(max-width:700px){
- .guitar-dock{left:var(--gutter);right:auto;width:46%;max-width:210px;gap:4px}
- .guitar-dock .guitar-sound[aria-pressed=false]{transform:translate(28vw,var(--invitation-y,80px))}
+ .guitar-dock{left:calc(var(--gutter) + 28vw);right:24px;top:calc(var(--console-top,375px) + var(--invitation-y,80px) - 34px);width:auto;max-width:210px;gap:4px}
+ .guitar-dock .guitar-expand{margin-left:19px}
+ .guitar-dock .guitar-sound-icon svg{width:14px;height:14px}
  .guitar-dock h2{font-size:19px}
  .guitar-dock .guitar-control-row{grid-template-columns:12px 1fr;gap:7px;font-size:9px;min-height:42px}
  .guitar-dock .guitar-range{gap:8px}
  .hero-stage:has(.controls-open),.hero-content-new:has(.controls-open){min-height:900px}
 }
+
+/* A real instrument destination; the shared sky and sound stay alive between views. */
+[hidden]{display:none!important}
+.guitar-home{position:relative;z-index:1;width:100%}
+.guitar-home[inert]{pointer-events:none}
+.guitar-dock a{pointer-events:auto;text-decoration:none}
+html.guitar-route,body.guitar-route{overflow:hidden}
+html.guitar-route body>#main,html.guitar-route body>#site-nav,html.guitar-route body>#site-footer{display:none}
+.guitar-page{position:fixed;inset:0;z-index:2;padding:0!important;color:var(--paper);pointer-events:none;overflow-y:auto;overscroll-behavior:contain}
+.guitar-page[inert]{pointer-events:none}
+.guitar-page-header{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:25px 4vw;gap:20px}
+.guitar-back{display:inline-flex;align-items:center;gap:12px;min-height:44px;font:10px var(--f-mono);text-decoration:none;color:var(--muted);pointer-events:auto}
+.guitar-back:hover{color:var(--paper)}
+.guitar-page-brand{font:500 18px var(--f-display);letter-spacing:-.06em}
+.guitar-page-intro{position:absolute;top:112px;left:4vw}
+.guitar-page-intro .guitar-eyebrow{margin:0 0 12px;color:var(--muted-2);font:8px var(--f-mono);letter-spacing:.12em;text-transform:uppercase}
+.guitar-page-intro h1{margin:0;font:450 clamp(40px,4.4vw,64px)/1.05 var(--f-display);letter-spacing:-.055em;outline:none}
+.guitar-page-intro>p:last-child{margin:14px 0 0;font:11px/1.7 var(--f-mono);color:var(--muted)}
+.guitar-panel{position:absolute;left:4vw;right:4vw;bottom:max(25px,env(safe-area-inset-bottom));display:grid;grid-template-columns:1.1fr .9fr 1.2fr;align-items:center;column-gap:6vw;row-gap:22px;padding:24px 0 0;border-top:1px solid var(--line);pointer-events:auto;background:linear-gradient(transparent,color-mix(in srgb,var(--night) 85%,transparent));font-family:var(--f-mono)}
+.guitar-playback{display:flex;flex-direction:column;gap:7px}
+.guitar-panel .guitar-control-row{display:grid;grid-template-columns:18px 1fr;align-items:center;justify-content:start;gap:10px;min-height:36px;width:auto;height:auto;margin:0;padding:0;border:0;border-radius:0;box-shadow:none;background:none;backdrop-filter:none;color:var(--muted);text-align:left;font:10px/1.6 var(--f-mono);cursor:pointer;transform:none}
+.guitar-panel .guitar-control-row:hover{color:var(--paper)}
+.guitar-panel .guitar-sound-label{font:inherit;letter-spacing:0}
+.guitar-panel .guitar-sound-icon{display:inline-block;width:auto;height:auto;border:0;background:none;color:var(--paper);font:20px/1 serif}
+.guitar-panel .guitar-volume{width:100%;grid-template-columns:1fr 32px;font:9px var(--f-mono);gap:11px}
+.guitar-panel .guitar-volume input{width:100%;min-height:30px}
+.guitar-panel .guitar-range{display:grid;grid-template-columns:1fr 1fr;gap:18px;width:auto;order:0}
+.guitar-panel .guitar-range label{font:9px var(--f-mono);gap:10px}
+.guitar-panel .guitar-range select{width:100%;min-width:0;min-height:42px;border-radius:0;padding:9px 12px;font:12px var(--f-mono);background:color-mix(in srgb,var(--night) 70%,transparent)}
+.guitar-panel-help{grid-column:1/-1;display:flex;justify-content:space-between;gap:20px;margin:0;font:8px/1.7 var(--f-mono);color:var(--muted-2)}
+.guitar-route .guitar-scene,.guitar-route .guitar-star{touch-action:none}
+.guitar-route .guitar-labels span{opacity:.8}
+.guitar-route .guitar-sky .guitar-readout{display:flex;top:130px;bottom:auto;right:4vw;text-align:right}
+.guitar-route .guitar-readout>span:first-child,.guitar-route .guitar-caption{display:none}
+.guitar-page :is(a,button,input,select):focus-visible{outline:1px solid var(--accent);outline-offset:5px}
+@media(max-width:700px){
+ .guitar-page-header{padding:17px 24px}.guitar-page-brand{font-size:16px}
+ .guitar-page-intro{top:100px;left:24px}.guitar-page-intro h1{font-size:42px}.guitar-page-intro>p:last-child{font-size:9px;margin-top:10px}
+ .guitar-page-intro .guitar-eyebrow{font-size:7px;margin-bottom:10px}
+ .guitar-panel{left:24px;right:24px;bottom:max(20px,env(safe-area-inset-bottom));grid-template-columns:1.1fr 1fr;gap:17px 22px;padding-top:18px}
+ .guitar-panel .guitar-control-row{font-size:9px;min-height:40px;gap:7px}.guitar-playback{gap:0}
+ .guitar-panel .guitar-range{grid-column:1/-1;gap:20px}
+ .guitar-panel-help{font-size:7px;gap:5px;flex-direction:column}
+ .guitar-panel-help span{font-size:7px}
+ .guitar-route .guitar-sky .guitar-readout{top:215px;left:24px;right:auto;text-align:left}
+}
+@media(max-height:600px) and (min-width:701px){
+ .guitar-page-header{padding-top:10px;padding-bottom:10px}.guitar-page-intro{top:78px}.guitar-page-intro h1{font-size:38px}
+ .guitar-panel{bottom:14px;padding-top:12px;row-gap:10px}.guitar-route .guitar-sky .guitar-readout{top:96px}
+}
+@media(max-height:700px) and (max-width:700px){
+ .guitar-page-intro{top:78px}.guitar-page-intro h1{font-size:34px}
+ .guitar-page-intro .guitar-eyebrow{font-size:6px;margin-bottom:8px}
+ .guitar-page-intro>p:last-child{font-size:8px;margin-top:7px}
+ .guitar-panel{bottom:15px;padding-top:10px;row-gap:10px}
+ .guitar-panel .guitar-control-row{min-height:34px}.guitar-panel .guitar-range label{gap:6px}
+ .guitar-panel-help span{display:none}
+ .guitar-route .guitar-sky .guitar-readout{display:none}
+}
+@media(prefers-reduced-motion:reduce){.guitar-page *{scroll-behavior:auto}}

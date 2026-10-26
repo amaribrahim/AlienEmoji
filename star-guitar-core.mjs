@@ -3,10 +3,10 @@ export const distance3 = (a, b) => Math.hypot(a.x-b.x, a.y-b.y, a.z-b.z);
 export const pitchOptions = [38,41,43,45,48,50,53,55,57,60,62,65,67,69,72,74];
 export function restorePitchRange(saved) {
   return pitchOptions.includes(saved?.lowest)&&pitchOptions.includes(saved?.highest)&&saved.lowest<saved.highest
-    ? {lowest:saved.lowest,highest:saved.highest} : {lowest:50,highest:62};
+    ? {lowest:saved.lowest,highest:saved.highest} : {lowest:38,highest:62};
 }
 export const noteName = midi => `${['C','C♯','D','E♭','E','F','F♯','G','A♭','A','B♭','B'][midi%12]}${Math.floor(midi/12)-1}`;
-export function pitchForLength(length, shortest, longest, lowest=50, highest=62) {
+export function pitchForLength(length, shortest, longest, lowest=38, highest=62) {
   if(!pitchOptions.includes(lowest)||!pitchOptions.includes(highest)||lowest>=highest)throw new RangeError('Choose a lowest note below the highest note.');
   const pitches = pitchOptions.filter(p=>p>=lowest&&p<=highest).reverse();
   const t = longest > shortest ? clamp((length-shortest)/(longest-shortest),0,1) : .5;
@@ -15,7 +15,7 @@ export function pitchForLength(length, shortest, longest, lowest=50, highest=62)
 }
 // Quantile spacing gives dense clusters of lengths more musical room, while
 // preserving longer = lower. Equal lengths always receive the same pitch.
-export function pitchForDistribution(length,lengths,lowest=50,highest=62) {
+export function pitchForDistribution(length,lengths,lowest=38,highest=62) {
   const sorted=[...new Set(lengths)].sort((a,b)=>a-b);
   if(sorted.length<2)return pitchForLength(.5,0,1,lowest,highest);
   let rank=sorted.findIndex(value=>value>=length);

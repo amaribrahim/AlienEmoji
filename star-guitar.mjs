@@ -1,5 +1,15 @@
 import {clamp,pitchOptions,noteName,pitchForDistribution,restorePitchRange,stars,strings,constellations,pointDistance,sweptDistance,ContactGate,RandomStrings,formatLightYears,crossedDivider} from './star-guitar-core.mjs';
 import {StringSynth} from './star-guitar-audio.mjs';
+import {guitarRoutes,isGuitarPath} from './star-guitar-route.mjs';
+
+const routes=guitarRoutes(import.meta.url);
+// A directory entry keeps resolving assets and links from the site root after Back home.
+const entryBase=document.querySelector('base');if(entryBase)entryBase.href=new URL('.',import.meta.url).href;
+let instrumentActive=false,viewMix=0;
+const constellationBounds=constellations.map(group=>{
+ const members=stars.filter(star=>star.constellation===group.id);
+ return {left:Math.max(...members.map(star=>-star.x*5/(5+star.z)))+.48,right:Math.max(...members.map(star=>star.x*5/(5+star.z)))+.48,top:Math.max(...members.map(star=>-star.y*5/(5+star.z)))+.36,bottom:Math.max(...members.map(star=>star.y*5/(5+star.z)))+.36};
+});
 
 const sky=document.createElement('div');sky.className='guitar-sky';
 const scene=document.createElement('div');scene.className='guitar-scene';
@@ -17,31 +27,36 @@ const starButtons=stars.map((star,i)=>{
 });
 const labels=constellations.map(group=>{const label=document.createElement('span');label.textContent=group.name;scene.querySelector('.guitar-labels').append(label);return label;});
 const dock=document.createElement('section');dock.className='guitar-dock';dock.id='star-guitar-console';dock.setAttribute('aria-label','Star Guitar Console');
-dock.innerHTML=`<h2 hidden>Star Guitar</h2>
-<button class="guitar-sound guitar-control-row" type="button" aria-pressed="false"><span class="guitar-sound-icon" aria-hidden="true">♪</span><span class="guitar-sound-label">Play the Star Guitar</span></button>
-<button class="guitar-expand guitar-control-row" type="button" hidden aria-expanded="false" aria-controls="guitar-controls"><span class="guitar-expand-icon" aria-hidden="true">+</span><span class="guitar-expand-label">Expand controls</span></button>
-<div id="guitar-controls" class="guitar-controls" hidden>
+dock.innerHTML=`<button class="guitar-sound guitar-control-row" type="button" aria-pressed="false"><span class="guitar-sound-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4 6 8H3v8h3l5 4V4Z"/><path class="guitar-speaker-waves" d="M15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14"/><path class="guitar-speaker-muted" d="m16 9 6 6m0-6-6 6"/></svg></span><span class="guitar-sound-label">Turn sound on</span></button>
+<a class="guitar-expand guitar-control-row" href="${routes.instrument}"><span>Play the Star Guitar</span><span class="guitar-expand-icon" aria-hidden="true">→</span></a>
+<p class="guitar-status sr-only" role="status"></p>`;
+const instrument=document.createElement('main');instrument.className='guitar-page';instrument.hidden=true;instrument.inert=true;instrument.setAttribute('aria-labelledby','guitar-page-title');
+instrument.innerHTML=`<header class="guitar-page-header"><a class="guitar-back" href="${routes.home}"><span aria-hidden="true">←</span> Back home</a><span class="guitar-page-brand">alien emoji</span></header>
+<div class="guitar-page-intro"><p class="guitar-eyebrow">An instrument in the stars</p><h1 id="guitar-page-title" tabindex="-1">Star Guitar</h1><p>Touch a star. Brush a string.</p></div>
+<section class="guitar-panel" aria-label="Instrument controls">
+<div class="guitar-playback"><button class="guitar-sound guitar-control-row" type="button" aria-pressed="false"><span class="guitar-sound-icon" aria-hidden="true">♪</span><span class="guitar-sound-label">Play the Star Guitar</span></button>
 <button class="guitar-auto guitar-control-row" type="button" aria-pressed="true" aria-label="Auto strum"><span class="guitar-toggle-icon" aria-hidden="true">Ⅱ</span><span class="guitar-toggle-label">Pause auto strum</span></button>
+</div>
 <label class="guitar-volume">Volume <input type="range" min="0" max="100" value="90" step="5" aria-label="Star guitar volume"><output>90%</output></label>
 <div class="guitar-range"><label>Lowest note<select class="guitar-low" aria-label="Lowest note"></select></label><label>Highest note<select class="guitar-high" aria-label="Highest note"></select></label></div>
-<p class="guitar-controls-help">Auto strum plays occasional notes.</p>
-</div><p class="guitar-status sr-only" role="status"></p>`;
+<p class="guitar-panel-help">D minor pentatonic<span>Auto strum plays occasional notes. Keys 1–9 play stars.</span></p>
+<p class="guitar-status sr-only" role="status"></p></section>`;
+document.body.append(instrument);
+const panel=instrument.querySelector('.guitar-panel');
 const hero=document.querySelector('.hero-stage');if(hero)hero.append(dock);
-const soundButtons=[dock.querySelector('.guitar-sound')];
-let controlsOpen=false,autoStrum=true;
+const soundButtons=[dock.querySelector('.guitar-sound'),panel.querySelector('.guitar-sound')];
+let autoStrum=true;
 let context=null,synth=null,sound=false,starting=false,volume=.9,audioGeneration=0;
 try{const saved=Number(localStorage.getItem('star-guitar-volume-v2'));if(localStorage.getItem('star-guitar-volume-v2')!==null&&Number.isFinite(saved))volume=clamp(saved,0,1);}catch{}
-const volumeInputs=[dock.querySelector('input[type=range]')];
+const volumeInputs=[panel.querySelector('input[type=range]')];
 function syncVolume(){for(const input of volumeInputs){input.value=Math.round(volume*100);input.parentElement.querySelector('output').value=`${Math.round(volume*100)}%`;}}
 syncVolume();
 function syncSound(message){
- const label=starting?'Starting…':sound?'Turn sound off':'Play the Star Guitar';
- for(const button of soundButtons){button.querySelector('.guitar-sound-label').textContent=label;button.setAttribute('aria-pressed',String(sound));button.setAttribute('aria-label',label);button.disabled=starting;button.title=label;}
- dock.querySelector('h2').hidden=!sound;expandButton.hidden=!sound;
- if(!sound)setControlsOpen(false);
- else nudge?.cancel();
+ for(const button of soundButtons){const label=starting?'Starting…':sound?'Turn sound off':button===soundButtons[0]?'Turn sound on':'Play the Star Guitar';button.querySelector('.guitar-sound-label').textContent=label;button.setAttribute('aria-pressed',String(sound));button.setAttribute('aria-label',label);button.disabled=starting;button.title=label;}
+ if(sound)nudge?.cancel();
  document.body.classList.toggle('guitar-sounding',sound);
  dock.querySelector('.guitar-status').textContent=message||(sound?'Sound enabled. Brush a string or touch a star.':'Sound off.');
+ panel.querySelector('.guitar-status').textContent=message||(sound?'Sound enabled. Brush a string or touch a star.':'Sound off.');
  scene.querySelector('.guitar-caption').textContent=message||(sound?'Touch a star. Brush a string.':'Switch sound on to listen.');
 }
 async function enableSound(){
@@ -75,6 +90,7 @@ const dividers=[...document.querySelectorAll('.work-section,.services-section,.i
 let previousScroll=scrollY;
 function resetDividers(){previousScroll=scrollY;for(const divider of dividers)divider.previous=[];}
 function scanDividers(now){
+ if(instrumentActive)return;
  const moved=scrollY!==previousScroll;previousScroll=scrollY;
  for(const divider of dividers){
   const box=divider.element.getBoundingClientRect();
@@ -88,7 +104,7 @@ function scanDividers(now){
   divider.previous=differences;
  }
 }
-let width=0,height=0,points=[],frame=0,lastFrame=0,time=0;
+let width=0,height=0,points=[],frame=0,lastFrame=0,time=0,playArea={top:220,height:300};
 let paused=document.body.classList.contains('motion-paused');
 const reducedMotion=matchMedia('(prefers-reduced-motion:reduce)');
 let pointer={x:0,y:0},camera={x:0,y:0,scroll:0},previous=null,pointerId=null,hoverStar=-1;
@@ -110,9 +126,9 @@ function paintFarDust(){
  }
 }
 let stringLabels=[];
-let lowest=50,highest=62;
-try{({lowest,highest}=restorePitchRange(JSON.parse(localStorage.getItem('star-guitar-range-v3'))));}catch{}
-const lowInput=dock.querySelector('.guitar-low'),highInput=dock.querySelector('.guitar-high');
+let lowest=38,highest=62;
+try{({lowest,highest}=restorePitchRange(JSON.parse(localStorage.getItem('star-guitar-range-v4'))));}catch{}
+const lowInput=panel.querySelector('.guitar-low'),highInput=panel.querySelector('.guitar-high');
 for(const select of [lowInput,highInput])select.innerHTML=pitchOptions.map(midi=>`<option value="${midi}">${noteName(midi)}</option>`).join('');
 function tune(persist=false){
  const lengths=strings.map(s=>s.length);
@@ -123,7 +139,7 @@ function tune(persist=false){
  for(const option of highInput.options)option.disabled=Number(option.value)<=lowest;
  starButtons.forEach((button,i)=>{const notes=[...new Set(strings.filter(s=>s.a===i||s.b===i).map(s=>s.name))];button.setAttribute('aria-label',`${stars[i].name}, ${stars[i].constellation}: strum ${notes.join(', ')}`);});
  scene.querySelector('.guitar-note').textContent=`${noteName(lowest)} – ${noteName(highest)} / D MINOR PENTATONIC`;
- if(persist){try{localStorage.setItem('star-guitar-range-v3',JSON.stringify({lowest,highest}));}catch{}dock.querySelector('.guitar-status').textContent=`Note range ${noteName(lowest)} to ${noteName(highest)}.`;}
+ if(persist){try{localStorage.setItem('star-guitar-range-v4',JSON.stringify({lowest,highest}));}catch{}panel.querySelector('.guitar-status').textContent=`Note range ${noteName(lowest)} to ${noteName(highest)}.`;}
 }
 lowInput.addEventListener('change',()=>{lowest=Number(lowInput.value);tune(true);});
 highInput.addEventListener('change',()=>{highest=Number(highInput.value);tune(true);});
@@ -137,8 +153,14 @@ function palette(){
  paintFarDust();draw(performance.now());
 }
 function layouts(){
- if(width<701)return [[.72,.72,.15],[.39,.48,.095],[.24,.79,.14]];
- return [[.64,.52,.14],[.34,.22,.10],[.20,.73,.12]];
+ const home=width<701?[[.72,.72,.15],[.39,.48,.095],[.24,.79,.14]]:[[.64,.52,.14],[.34,.22,.10],[.20,.73,.12]];
+ const play=width<701?[[.69,.43,.21],[.25,.22,.16],[.27,.72,.19]]:[[.50,.43,.20],[.21,.38,.15],[.79,.43,.17]];
+ play.forEach((group,i)=>{
+  const bounds=constellationBounds[i],x=group[0]*width,y=playArea.top+playArea.height*group[1];
+  const scale=Math.min(width*group[2],playArea.height*(width<701?.27:.38),(x-28)/bounds.left,(width-x-28)/bounds.right,(y-playArea.top)/bounds.top,(playArea.top+playArea.height-y)/bounds.bottom);
+  group[1]=y/Math.max(height,1);group[2]=Math.max(8,scale)/Math.max(width,1);
+ });
+ return home.map((group,i)=>group.map((value,j)=>value+(play[i][j]-value)*viewMix));
 }
 function geometry(){
  const layout=layouts();
@@ -153,7 +175,7 @@ function geometry(){
  points.forEach((p,i)=>{starButtons[i].style.transform=`translate(${p.x-22}px,${p.y-22}px)`;});
  labels.forEach((label,i)=>{const group=points.filter((_,j)=>stars[j].constellation===constellations[i].id);label.style.transform=`translate(${Math.min(...group.map(p=>p.x))}px,${Math.max(...group.map(p=>p.y))+25}px)`;});
 }
-function resize(){const box=scene.getBoundingClientRect();width=box.width;height=box.height;if(!width||!height)return;dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);previous=null;resetDividers();geometry();paintFarDust();draw(performance.now());}
+function resize(){const box=scene.getBoundingClientRect();width=box.width;height=box.height;if(!width||!height)return;if(instrumentActive){const top=instrument.querySelector('.guitar-page-intro').getBoundingClientRect().bottom+36;playArea={top,height:Math.max(60,panel.getBoundingClientRect().top-top-45)};}dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);previous=null;resetDividers();geometry();paintFarDust();draw(performance.now());}
 function draw(now){
  if(!width||!height||!colors.paper)return;
  ctx.clearRect(0,0,width,height);geometry();scanDividers(now);
@@ -186,7 +208,7 @@ function draw(now){
   if(energy>.04||hover){ctx.strokeStyle=rgba(colors.accent,hover?.4:energy*.4);ctx.lineWidth=.6;ctx.beginPath();ctx.arc(p.x,p.y,radius+5+(paused?0:(1-energy)*19),0,Math.PI*2);ctx.stroke();}
  });
 }
-function tick(now){frame=-1;if(document.hidden){frame=0;return;}if(now-lastFrame>30){const delta=Math.min((now-lastFrame)/1000,.05);lastFrame=now;if(!paused){time+=delta;camera.x+=(pointer.x-camera.x)*.045;camera.y+=(pointer.y-camera.y)*.045;camera.scroll+=((window.scrollY/Math.max(height,1))-camera.scroll)*.03;}draw(now);}for(const[id,at]of vibrations)if(now-at>6000)vibrations.delete(id);frame=(!paused||vibrations.size)?requestAnimationFrame(tick):0;}
+function tick(now){frame=-1;if(document.hidden){frame=0;return;}if(now-lastFrame>30){const delta=Math.min((now-lastFrame)/1000,.05);lastFrame=now;const target=instrumentActive?1:0;viewMix=reducedMotion.matches||paused?target:viewMix+(target-viewMix)*.14;if(Math.abs(viewMix-target)<.001)viewMix=target;if(!paused){time+=delta;camera.x+=(pointer.x-camera.x)*.045;camera.y+=(pointer.y-camera.y)*.045;camera.scroll+=((window.scrollY/Math.max(height,1))-camera.scroll)*.03;}draw(now);}for(const[id,at]of vibrations)if(now-at>6000)vibrations.delete(id);frame=(!paused||vibrations.size||viewMix!==(instrumentActive?1:0))?requestAnimationFrame(tick):0;}
 function wake(){if(!frame&&!document.hidden)frame=requestAnimationFrame(tick);}
 function setPaused(value){paused=value;draw(performance.now());wake();}
 document.addEventListener('motionchange',e=>setPaused(e.detail.paused));
@@ -199,7 +221,7 @@ function notifyMutedPluck(){
  const frames=paused||reducedMotion.matches
   ? [{opacity:1,easing},{opacity:.6,easing},{opacity:1}]
   : [{transform:'rotate(0deg)',offset:0,easing},{transform:'rotate(-9deg)',offset:.25,easing},{transform:'rotate(7deg)',offset:.65,easing},{transform:'rotate(0deg)',offset:1}];
- nudge=soundButtons[0].querySelector('.guitar-sound-icon').animate(frames,{duration:2600});
+ nudge=soundButtons[instrumentActive?1:0].querySelector('.guitar-sound-icon').animate(frames,{duration:2600});
 }
 setInterval(notifyMutedPluck,9000);
 
@@ -214,7 +236,7 @@ function clearPointer(){previous=null;pointerId=null;gate.clear();hoverStar=-1;p
 function interact(event,down=false){
  if(event.pointerType==='touch'&&!down&&event.pointerId!==pointerId)return;
  // Page controls, text, and product covers retain their usual behavior.
- const blocked=event.target.closest('a,button,input,select,textarea,[contenteditable],.theme-panel,.ae-header,.project-cover,p,h1,h2,h3');
+ const blocked=event.target.closest('a,button,input,select,textarea,[contenteditable],.theme-panel,.ae-header,.project-cover,.guitar-panel,p,h1,h2,h3');
  if(blocked&&!blocked.classList.contains('guitar-star')){previous=null;gate.clear();hoverStar=-1;return;}
  const box=scene.getBoundingClientRect(),p={x:event.clientX-box.left,y:event.clientY-box.top};
  pointer={x:(p.x/width-.5)*2,y:(p.y/height-.5)*2};
@@ -230,21 +252,68 @@ document.addEventListener('pointerdown',e=>{if(e.button!==0)return;pointerId=e.p
 document.addEventListener('pointerup',e=>{if(e.pointerType==='touch')clearPointer();},{passive:true});
 document.addEventListener('pointercancel',clearPointer);scene.addEventListener('lostpointercapture',clearPointer);document.addEventListener('pointerleave',clearPointer);
 starButtons.forEach((button,i)=>button.addEventListener('click',e=>{if(e.detail===0)strumStar(i);}));
-document.addEventListener('keydown',e=>{if(!controlsOpen||e.repeat||/INPUT|SELECT|TEXTAREA/.test(e.target.tagName)||e.altKey||e.metaKey||e.ctrlKey)return;if(!e.target.closest('.guitar-dock,.guitar-star'))return;if(/^[1-9]$/.test(e.key)){e.preventDefault();strumStar(Number(e.key)-1);}});
-const expandButton=dock.querySelector('.guitar-expand'),controls=dock.querySelector('.guitar-controls');
-function setControlsOpen(open){controlsOpen=open;controls.hidden=!open;expandButton.setAttribute('aria-expanded',String(open));expandButton.querySelector('.guitar-expand-label').textContent=open?'Collapse controls':'Expand controls';expandButton.querySelector('.guitar-expand-icon').textContent=open?'−':'+';starLayer.inert=!open;dock.classList.toggle('controls-open',open);}
-expandButton.addEventListener('click',()=>setControlsOpen(!controlsOpen));
+document.addEventListener('keydown',e=>{if(!instrumentActive||e.repeat||/INPUT|SELECT|TEXTAREA/.test(e.target.tagName)||e.altKey||e.metaKey||e.ctrlKey)return;if(e.key==='Escape'){e.preventDefault();goHome();}else if(/^[1-9]$/.test(e.key)){e.preventDefault();strumStar(Number(e.key)-1);}});
+const expandButton=dock.querySelector('.guitar-expand');
+const homeView=document.createElement('div');homeView.className='guitar-home';
+const homeTitle='Alien Emoji — Audio experiences, tools & systems';
+document.body.insertBefore(homeView,instrument);
+for(const element of document.querySelectorAll('#site-nav,#main,#site-footer'))homeView.append(element);
+const homeSectionLinks=[...homeView.querySelectorAll('a[href^="#"]')].map(link=>({link,hash:link.getAttribute('href')}));
+let homeScroll=history.state?.guitarScroll||0;
+let homeLocation=isGuitarPath(location.pathname,routes.instrument)?(history.state?.guitarHome||routes.home):location.pathname+location.search+location.hash;
+let navigationVersion=0,routeAnimations=[];
+function showInstrument(active,animate=true){
+ const version=++navigationVersion;
+ for(const animation of routeAnimations)animation.cancel();routeAnimations=[];
+ if(active&&!instrumentActive&&animate)homeScroll=scrollY;
+ instrumentActive=active;clearPointer();resetDividers();
+ homeView.hidden=false;instrument.hidden=false;
+ homeView.inert=active;instrument.inert=!active;starLayer.inert=!active;
+ document.documentElement.classList.toggle('guitar-route',active);
+ document.body.classList.toggle('guitar-route',active);
+ history.scrollRestoration=active?'manual':'auto';
+ for(const {link,hash}of homeSectionLinks)link.href=homeLocation.split('#')[0]+hash;
+ homeView.style.position=active?'fixed':'';homeView.style.top=active?`${-homeScroll}px`:'';
+ window.scrollTo({top:active?0:homeScroll,behavior:'instant'});
+ document.title=active?'Star Guitar — Alien Emoji':homeTitle;
+ if(!animate||reducedMotion.matches||paused)viewMix=active?1:0;
+ dimSky();resize();wake();
+ const focusTarget=active?instrument.querySelector('h1'):expandButton;
+ focusTarget.focus({preventScroll:true});
+ const finish=()=>{if(version!==navigationVersion)return;homeView.hidden=active;instrument.hidden=!active;};
+ if(animate&&!reducedMotion.matches&&!paused){
+  const timing={duration:560,easing:'cubic-bezier(.22,.8,.2,1)',fill:'both'};
+  routeAnimations=[homeView.animate(active?[{opacity:1,transform:'translateX(0)'},{opacity:0,transform:'translateX(-8vw)'}]:[{opacity:0,transform:'translateX(-8vw)'},{opacity:1,transform:'translateX(0)'}],timing),instrument.animate(active?[{opacity:0,transform:'translateX(12vw)'},{opacity:1,transform:'translateX(0)'}]:[{opacity:1,transform:'translateX(0)'},{opacity:0,transform:'translateX(12vw)'}],timing)];
+  Promise.all(routeAnimations.map(animation=>animation.finished)).then(finish).catch(()=>{});
+ }else finish();
+}
+function ordinaryClick(event){return event.button===0&&!event.metaKey&&!event.ctrlKey&&!event.shiftKey&&!event.altKey;}
+expandButton.addEventListener('click',event=>{
+ if(!ordinaryClick(event))return;event.preventDefault();
+ if(!sound)void enableSound();
+ homeLocation=location.pathname+location.search+location.hash;
+ history.pushState({guitarView:true,guitarHome:homeLocation,guitarScroll:scrollY},'',routes.instrument);
+ showInstrument(true);
+});
+function goHome(){
+ if(history.state?.guitarView)history.back();
+ else{history.replaceState(null,'',homeLocation);showInstrument(false);}
+}
+instrument.querySelector('.guitar-back').addEventListener('click',event=>{if(ordinaryClick(event)){event.preventDefault();goHome();}});
+window.addEventListener('popstate',()=>{const active=isGuitarPath(location.pathname,routes.instrument);if(active!==instrumentActive)showInstrument(active);});
 let schedule=new RandomStrings(strings.length,Math.random,performance.now());
-function pauseToggle(selector,name,change){const button=dock.querySelector(selector);let on=true;button.addEventListener('click',()=>{on=!on;button.setAttribute('aria-pressed',String(on));button.querySelector('.guitar-toggle-label').textContent=`${on?'Pause':'Resume'} ${name}`;button.querySelector('.guitar-toggle-icon').textContent=on?'Ⅱ':'▷';change(on);});}
+function pauseToggle(selector,name,change){const button=panel.querySelector(selector);let on=true;button.addEventListener('click',()=>{on=!on;button.setAttribute('aria-pressed',String(on));button.querySelector('.guitar-toggle-label').textContent=`${on?'Pause':'Resume'} ${name}`;button.querySelector('.guitar-toggle-icon').textContent=on?'Ⅱ':'▷';change(on);});}
 pauseToggle('.guitar-auto','auto strum',on=>{autoStrum=on;schedule=new RandomStrings(strings.length,Math.random,performance.now());});
 setInterval(()=>{if(!document.hidden&&autoStrum)for(const id of schedule.poll(performance.now()))pluck(id,0,.35+Math.random()*.12);},750);
-new ResizeObserver(resize).observe(scene);document.addEventListener('themechange',palette);
+const resizeObserver=new ResizeObserver(resize);resizeObserver.observe(scene);resizeObserver.observe(panel);document.addEventListener('themechange',palette);
 document.addEventListener('visibilitychange',()=>{if(document.hidden){muteSound('Sound paused while this page was away.');clearPointer();}else{schedule.reset(performance.now());wake();}});
 window.addEventListener('pagehide',()=>muteSound());
 function dimSky(){
+ if(instrumentActive){sky.style.setProperty('--sky-dim','0');return;}
  const home=document.body.dataset.page==='home',hero=document.querySelector('.hero-stage');
  const travel=home?(hero?.offsetHeight||innerHeight)*.8:innerHeight*.65;
  sky.style.setProperty('--sky-dim',String((home?.04:.24)+clamp(scrollY/travel,0,1)*(home?.64:.44)));
 }
 window.addEventListener('scroll',()=>{dimSky();wake();},{passive:true});window.addEventListener('resize',dimSky);dimSky();
 palette();resize();setPaused(paused);syncSound();wake();
+if(isGuitarPath(location.pathname,routes.instrument))showInstrument(true,false);
