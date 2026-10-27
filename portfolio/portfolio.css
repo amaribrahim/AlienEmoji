@@ -1,0 +1,69 @@
+/* Portfolio-only styles. All highlights use the shared site's accent token. */
+.portfolio-main { max-width: 1180px; padding-top: 156px; padding-bottom: 96px; }
+body[data-page=portfolio] { background: var(--night); }
+body[data-page=portfolio] .ae-header.scrolled { background: color-mix(in srgb,var(--night) 97%,transparent); }
+.portfolio-intro { display:flex; align-items:baseline; justify-content:space-between; gap:24px; padding-bottom:46px; }
+.portfolio-intro h1 { font:400 clamp(27px,3.4vw,42px)/1.2 var(--f-sans); letter-spacing:-.035em; margin:0; }
+.portfolio-back { font:11px var(--f-mono); color:var(--muted); white-space:nowrap; }
+.portfolio-back:hover { color:var(--accent); }
+.project-columns,.project-toggle { display:grid; grid-template-columns:minmax(0,1.35fr) minmax(0,1fr) 96px 20px; gap:20px; align-items:baseline; }
+.project-columns { padding:0 22px 14px; font:10px var(--f-mono); letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
+.portfolio-project { border-top:1px solid var(--line); }
+.portfolio-project:last-child { border-bottom:1px solid var(--line); }
+.portfolio-project h2 { margin:0; }
+.project-toggle { width:100%; padding:24px 22px; text-align:left; color:var(--paper); background:none; border:0; cursor:pointer; transition:background .15s; scroll-margin-top:110px; }
+.project-toggle:hover { background:color-mix(in srgb,var(--paper) 4%,transparent); }
+.project-toggle[aria-expanded=true] { background:color-mix(in srgb,var(--accent) 6%,var(--night)); box-shadow:inset 2px 0 var(--accent); }
+.project-name { font:500 clamp(18px,2.1vw,25px)/1.3 var(--f-sans); letter-spacing:-.025em; }
+.project-company { font:11px/1.7 var(--f-mono); text-transform:uppercase; letter-spacing:.04em; color:var(--muted); }
+.project-year { font:11px/1.6 var(--f-mono); color:var(--muted); font-variant-numeric:tabular-nums; }
+.project-chevron { align-self:center; font:23px/1 var(--f-mono); color:var(--muted); text-align:right; }
+.project-toggle[aria-expanded=true] .project-chevron { color:var(--accent); }
+.project-panel { padding:28px 24px 32px; border-left:1px solid var(--line); border-right:1px solid var(--line); background:color-mix(in srgb,var(--paper) 2%,var(--night)); }
+.portfolio-cover { display:block; max-width:100%; max-height:460px; object-fit:contain; margin-bottom:28px; }
+.portfolio-overview { display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+.detail-label { font:10px/1.6 var(--f-mono); text-transform:uppercase; letter-spacing:.12em; color:var(--muted); margin:0 0 10px; }
+.portfolio-description { font-size:15px; line-height:1.75; margin:0; max-width:70ch; color:var(--paper); }
+.portfolio-link-area { margin-top:25px; padding-top:20px; border-top:1px solid var(--line); display:grid; grid-template-columns:82px minmax(0,1fr); gap:16px; }
+.portfolio-link-area .detail-label { padding-top:5px; }
+.portfolio-links { display:flex; flex-wrap:wrap; gap:8px; align-items:start; }
+.portfolio-links a { display:inline-flex; align-items:baseline; gap:12px; max-width:100%; padding:6px 10px; border:1px solid var(--line); color:var(--muted); font:11px/1.6 var(--f-mono); overflow-wrap:anywhere; }
+.portfolio-links a:hover { color:var(--accent); border-color:var(--accent); }
+.external-mark { flex-shrink:0; color:var(--accent); }
+.portfolio-media { margin:28px 0 0; padding:24px 0 0; list-style:none; display:grid; gap:24px; border-top:1px solid var(--line); }
+.media-item { min-width:0; }
+.media-title-row { display:flex; align-items:baseline; gap:12px; padding-bottom:10px; }
+.media-number { font:10px var(--f-mono); color:var(--muted); }
+.media-heading { font:500 14px/1.5 var(--f-sans); margin:0; }
+.media-type { margin-left:auto; font:9px/1.6 var(--f-mono); letter-spacing:.06em; text-transform:uppercase; color:var(--muted); white-space:nowrap; }
+.media-note,.media-error { font-size:13px; color:var(--muted); line-height:1.6; margin:10px 0; }
+.media-error:empty { display:none; }
+.audio-player { display:grid; grid-template-columns:40px minmax(0,1fr) 108px; align-items:center; gap:16px; padding:12px 16px; border:1px solid var(--line); background:var(--night); }
+.audio-toggle { width:40px; height:40px; border:1px solid var(--line); border-radius:2px; color:var(--accent); background:transparent; font-size:15px; cursor:pointer; }
+.audio-toggle:hover { border-color:var(--accent); background:var(--accent-soft); }
+.waveform { position:relative; min-width:0; height:56px; }
+.waveform svg { display:block; width:100%; height:56px; overflow:hidden; }
+.wave-unplayed { stroke:color-mix(in srgb,var(--paper) 30%,var(--night)); }
+.wave-played { stroke:var(--accent); }
+.wavehead { stroke:var(--accent); stroke-width:1.5; }
+.waveform input { position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; cursor:pointer; }
+/* Pointer seeking never draws an outline; tab navigation retains a focus cue. */
+.waveform:has(input:focus-visible) { outline:1px solid var(--accent); outline-offset:5px; }
+.audio-time { font:10px var(--f-mono); color:var(--muted); white-space:nowrap; text-align:right; font-variant-numeric:tabular-nums; }
+.media-item video { display:block; width:100%; max-height:560px; aspect-ratio:16/9; object-fit:contain; background:#000; border:1px solid var(--line); }
+.media-item img { max-width:100%; max-height:520px; object-fit:contain; }
+.media-item audio { width:100%; }
+@media(max-width:700px) {
+ .portfolio-main { padding-top:120px; padding-bottom:60px; }
+ .portfolio-intro { gap:14px; align-items:start; padding-bottom:32px; }.portfolio-intro h1 { max-width:12ch; }.portfolio-back { padding-top:7px; font-size:10px; }
+ .project-columns,.project-toggle { grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) 62px 12px; gap:9px; }
+ .project-columns { padding:0 10px 12px; font-size:8px; letter-spacing:.06em; }
+ .project-toggle { padding:20px 10px; }.project-name { font-size:17px; }.project-company { font-size:9px; letter-spacing:0; }.project-year { font-size:9px; }.project-chevron { font-size:19px; }
+ .project-panel { padding:22px 14px 26px; }
+ .portfolio-overview { grid-template-columns:1fr; gap:20px; }
+ .portfolio-description { font-size:14px; }
+ .portfolio-link-area { grid-template-columns:1fr; gap:0; margin-top:20px; }.portfolio-links { gap:7px; }.portfolio-links a { font-size:10px; padding:6px 8px; }
+ .audio-player { grid-template-columns:38px minmax(0,1fr); gap:6px 12px; padding:12px; }.audio-time { grid-column:2; }.audio-toggle { width:38px; height:40px; }
+ .media-heading { font-size:13px; }.media-title-row { gap:8px; }.media-type { font-size:8px; }
+}
+@media(prefers-reduced-motion:reduce) { .project-toggle { transition:none; } }

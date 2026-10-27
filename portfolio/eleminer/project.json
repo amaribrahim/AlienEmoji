@@ -1,0 +1,33 @@
+{
+  "title": "Eleminer",
+  "contribution": "Music (loopable background track).",
+  "description": "",
+  "company": "Transmote",
+  "platform": "",
+  "year": "2015",
+  "status": "Unconfirmed",
+  "featuredOrder": 12,
+  "cover": null,
+  "links": [],
+  "media": [
+    {
+      "file": "media/Music_intro.m4a",
+      "title": "Intro",
+      "type": "music",
+      "duration": 26.73,
+      "source": "Eleminer/Eleminer_music_v2_intro.m4a",
+      "order": 1
+    },
+    {
+      "file": "media/Music_loop.m4a",
+      "title": "Loop",
+      "type": "music",
+      "duration": 350.53,
+      "source": "Eleminer/Eleminer_music_v2_loop.m4a",
+      "order": 2
+    }
+  ],
+  "id": "eleminer",
+  "order": 12,
+  "featured": true
+}

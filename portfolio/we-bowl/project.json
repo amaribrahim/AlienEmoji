@@ -1,0 +1,25 @@
+{
+  "title": "We Bowl",
+  "contribution": "Music (main menu + friend-screen cues).",
+  "description": "Social bowling game on Facebook.",
+  "company": "Freeverse",
+  "platform": "Facebook",
+  "year": "2010",
+  "status": "Released (offline)",
+  "featuredOrder": 10,
+  "cover": null,
+  "links": [],
+  "media": [
+    {
+      "file": "media/Music_friend-screen.mp3",
+      "title": "Friend Screen",
+      "type": "music",
+      "duration": 33.28,
+      "source": "Flick Bowling 2/We Bowl Friend Screen.mp3",
+      "order": 1
+    }
+  ],
+  "id": "we-bowl",
+  "order": 10,
+  "featured": true
+}

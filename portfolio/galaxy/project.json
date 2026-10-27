@@ -1,0 +1,34 @@
+{
+  "title": "Galaxy",
+  "contribution": "Music (battle, boss, menu, stings) + SFX.",
+  "description": "Sci-fi card-battle game (card packs, stages, fusion).",
+  "company": "Atekama",
+  "platform": "Mobile",
+  "year": "2012",
+  "status": "Release unconfirmed",
+  "featuredOrder": 7,
+  "cover": null,
+  "links": [],
+  "media": [
+    {
+      "file": "media/SFX_combat.ogg",
+      "title": "Combat",
+      "type": "sound-design",
+      "duration": 6.39,
+      "source": "Galaxy_SFX/Combat.wav",
+      "order": 1
+    },
+    {
+      "file": "media/SFX_card-pack-open.ogg",
+      "title": "Card Pack Open",
+      "type": "sound-design",
+      "duration": 5.52,
+      "source": "Galaxy_SFX/CardPackOpen.wav",
+      "order": 2
+    }
+  ],
+  "id": "galaxy",
+  "order": 7,
+  "featured": true,
+  "uncertain": "Release status is unconfirmed in the supplied records."
+}

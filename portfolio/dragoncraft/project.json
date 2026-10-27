@@ -1,0 +1,114 @@
+{
+  "title": "DragonCraft",
+  "contribution": "Music (town/dragon themes, barony stings, battle cues) + SFX (town, fight, map, enemies); narrative + balancing. Some music revised with Stephen Greenberg.",
+  "description": "Freemium strategy RPG: raise dragons, build a town, battle.",
+  "company": "Freeverse / ngmoco",
+  "platform": "iOS",
+  "year": "2011–2012",
+  "status": "Released 2012",
+  "featuredOrder": 2,
+  "cover": null,
+  "links": [
+    {
+      "label": "Preview: A quick look at DragonCraft — Destructoid",
+      "url": "https://www.destructoid.com/preview-a-quick-look-at-dragoncraft/"
+    },
+    {
+      "label": "DragonCraft iPhone/iPad preview — Engadget (AOL)",
+      "url": "https://www.aol.com/news/2012-06-21-dragoncraft-iphone-ipad-preview.html"
+    },
+    {
+      "label": "DragonCraft Walkthrough — Gamezebo",
+      "url": "https://www.gamezebo.com/walkthroughs/dragoncraft-walkthrough/"
+    },
+    {
+      "label": "Town Theme — SoundCloud",
+      "url": "https://soundcloud.com/tiny-timbre/dragoncraft-town-theme"
+    }
+  ],
+  "media": [
+    {
+      "file": "media/Music_town-theme.mp3",
+      "title": "Town Theme",
+      "type": "music",
+      "duration": 167.11,
+      "source": "Dragoncraft/Dragoncraft Town Theme.mp3",
+      "order": 1
+    },
+    {
+      "file": "media/Music_town-theme-steve-rev.ogg",
+      "title": "Town Theme (Steve rev)",
+      "type": "music",
+      "duration": 109.65,
+      "source": "Dragoncraft/Dragoncraft Town Theme (steve rev).wav",
+      "order": 2
+    },
+    {
+      "file": "media/SFX_dragons.ogg",
+      "title": "Dragons",
+      "type": "sound-design",
+      "duration": 10.49,
+      "source": "Dragoncraft/DragonCraft_SFX/Dragons.wav",
+      "order": 3
+    },
+    {
+      "file": "media/SFX_enemies.ogg",
+      "title": "Enemies",
+      "type": "sound-design",
+      "duration": 9.9,
+      "source": "Dragoncraft/DragonCraft_SFX/Enemies.wav",
+      "order": 4
+    },
+    {
+      "file": "media/SFX_hero-voices.ogg",
+      "title": "Hero Voices",
+      "type": "sound-design",
+      "duration": 19.3,
+      "source": "Dragoncraft/DragonCraft_SFX/HeroVoices.wav",
+      "order": 5
+    },
+    {
+      "file": "media/SFX_combat.ogg",
+      "title": "Combat",
+      "type": "sound-design",
+      "duration": 11.82,
+      "source": "Dragoncraft/DragonCraft_SFX/Combat.wav",
+      "order": 6
+    },
+    {
+      "file": "media/SFX_map-ambience.ogg",
+      "title": "Map Ambience",
+      "type": "sound-design",
+      "duration": 14.29,
+      "source": "Dragoncraft/DragonCraft_SFX/MapAmbience.wav",
+      "order": 7
+    },
+    {
+      "file": "media/SFX_dragon-hatching.ogg",
+      "title": "Dragon Hatching",
+      "type": "sound-design",
+      "duration": 6.14,
+      "source": "Dragoncraft/DragonCraft_SFX/DragonHatching.wav",
+      "order": 8
+    },
+    {
+      "file": "media/SFX_get-dragonscale.ogg",
+      "title": "Get Dragonscale",
+      "type": "sound-design",
+      "duration": 6.47,
+      "source": "Dragoncraft/DragonCraft_SFX/GetDragonscale.wav",
+      "order": 9
+    },
+    {
+      "file": "media/SFX_map-ambience-full.mp3",
+      "title": "Map Ambience (Full)",
+      "type": "sound-design",
+      "duration": 89.31,
+      "source": "Dragoncraft/map_ambience.mp3",
+      "order": 10
+    }
+  ],
+  "id": "dragoncraft",
+  "order": 2,
+  "featured": true
+}

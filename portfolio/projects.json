@@ -1,0 +1,809 @@
+{
+  "projects": [
+    {
+      "title": "Crash Party",
+      "contribution": "Sound design team; audio tools (Sound Viewer, audio editor, tagging).",
+      "description": "Web site releasing a new mini-game every week.",
+      "company": "Crash Party",
+      "platform": "Web",
+      "year": "2026",
+      "status": "Live",
+      "featuredOrder": 1,
+      "links": [],
+      "media": [
+        {
+          "file": "media/jetpack.mp4",
+          "title": "Jetpack",
+          "type": "video",
+          "duration": 9.95,
+          "source": "Crash Party Clips/new jetpack.mp4",
+          "order": 1,
+          "src": "media/jetpack.mp4",
+          "poster": "posters/jetpack-ece27b368d30c97a.jpg"
+        },
+        {
+          "file": "media/juke-dive-and-juke.mp4",
+          "title": "Juke — Dive and Juke",
+          "type": "video",
+          "duration": 4.36,
+          "source": "Crash Party Clips/Crash Party Juke dive and juke.mp4",
+          "order": 2,
+          "src": "media/juke-dive-and-juke.mp4",
+          "poster": "posters/juke-dive-and-juke-beece6f2b54bfcd8.jpg"
+        },
+        {
+          "file": "media/snowboard.mp4",
+          "title": "Snowboard",
+          "type": "video",
+          "duration": 11.55,
+          "source": "Crash Party Clips/Crash Party Snowboard.mp4",
+          "order": 3,
+          "src": "media/snowboard.mp4",
+          "poster": "posters/snowboard-c0ce154feb521d85.jpg"
+        }
+      ],
+      "id": "crash-party",
+      "order": 1,
+      "featured": true,
+      "slug": "crash-party",
+      "basePath": "crash-party/"
+    },
+    {
+      "title": "DragonCraft",
+      "contribution": "Music (town/dragon themes, barony stings, battle cues) + SFX (town, fight, map, enemies); narrative + balancing. Some music revised with Stephen Greenberg.",
+      "description": "Freemium strategy RPG: raise dragons, build a town, battle.",
+      "company": "Freeverse / ngmoco",
+      "platform": "iOS",
+      "year": "2011–2012",
+      "status": "Released 2012",
+      "featuredOrder": 2,
+      "links": [
+        {
+          "label": "Preview: A quick look at DragonCraft — Destructoid",
+          "url": "https://www.destructoid.com/preview-a-quick-look-at-dragoncraft/"
+        },
+        {
+          "label": "DragonCraft iPhone/iPad preview — Engadget (AOL)",
+          "url": "https://www.aol.com/news/2012-06-21-dragoncraft-iphone-ipad-preview.html"
+        },
+        {
+          "label": "DragonCraft Walkthrough — Gamezebo",
+          "url": "https://www.gamezebo.com/walkthroughs/dragoncraft-walkthrough/"
+        },
+        {
+          "label": "Town Theme — SoundCloud",
+          "url": "https://soundcloud.com/tiny-timbre/dragoncraft-town-theme"
+        }
+      ],
+      "media": [
+        {
+          "file": "media/Music_town-theme.mp3",
+          "title": "Town Theme",
+          "type": "music",
+          "duration": 167.069,
+          "source": "Dragoncraft/Dragoncraft Town Theme.mp3",
+          "order": 1,
+          "src": "media/Music_town-theme.mp3",
+          "waveform": "waveforms/Music_town-theme-97133854.json"
+        },
+        {
+          "file": "media/Music_town-theme-steve-rev.ogg",
+          "title": "Town Theme (Steve rev)",
+          "type": "music",
+          "duration": 109.65425,
+          "source": "Dragoncraft/Dragoncraft Town Theme (steve rev).wav",
+          "order": 2,
+          "src": "media/Music_town-theme-steve-rev.ogg",
+          "waveform": "waveforms/Music_town-theme-steve-rev-37413fac.json"
+        },
+        {
+          "file": "media/SFX_dragons.ogg",
+          "title": "Dragons",
+          "type": "sound-design",
+          "duration": 10.490125,
+          "source": "Dragoncraft/DragonCraft_SFX/Dragons.wav",
+          "order": 3,
+          "src": "media/SFX_dragons.ogg",
+          "waveform": "waveforms/SFX_dragons-1b24e60e.json"
+        },
+        {
+          "file": "media/SFX_enemies.ogg",
+          "title": "Enemies",
+          "type": "sound-design",
+          "duration": 9.9015,
+          "source": "Dragoncraft/DragonCraft_SFX/Enemies.wav",
+          "order": 4,
+          "src": "media/SFX_enemies.ogg",
+          "waveform": "waveforms/SFX_enemies-d27969a9.json"
+        },
+        {
+          "file": "media/SFX_hero-voices.ogg",
+          "title": "Hero Voices",
+          "type": "sound-design",
+          "duration": 19.298375,
+          "source": "Dragoncraft/DragonCraft_SFX/HeroVoices.wav",
+          "order": 5,
+          "src": "media/SFX_hero-voices.ogg",
+          "waveform": "waveforms/SFX_hero-voices-23312276.json"
+        },
+        {
+          "file": "media/SFX_combat.ogg",
+          "title": "Combat",
+          "type": "sound-design",
+          "duration": 11.822625,
+          "source": "Dragoncraft/DragonCraft_SFX/Combat.wav",
+          "order": 6,
+          "src": "media/SFX_combat.ogg",
+          "waveform": "waveforms/SFX_combat-4e758392.json"
+        },
+        {
+          "file": "media/SFX_map-ambience.ogg",
+          "title": "Map Ambience",
+          "type": "sound-design",
+          "duration": 14.29225,
+          "source": "Dragoncraft/DragonCraft_SFX/MapAmbience.wav",
+          "order": 7,
+          "src": "media/SFX_map-ambience.ogg",
+          "waveform": "waveforms/SFX_map-ambience-b0b105bb.json"
+        },
+        {
+          "file": "media/SFX_dragon-hatching.ogg",
+          "title": "Dragon Hatching",
+          "type": "sound-design",
+          "duration": 6.136375,
+          "source": "Dragoncraft/DragonCraft_SFX/DragonHatching.wav",
+          "order": 8,
+          "src": "media/SFX_dragon-hatching.ogg",
+          "waveform": "waveforms/SFX_dragon-hatching-fe91d6c6.json"
+        },
+        {
+          "file": "media/SFX_get-dragonscale.ogg",
+          "title": "Get Dragonscale",
+          "type": "sound-design",
+          "duration": 6.4745,
+          "source": "Dragoncraft/DragonCraft_SFX/GetDragonscale.wav",
+          "order": 9,
+          "src": "media/SFX_get-dragonscale.ogg",
+          "waveform": "waveforms/SFX_get-dragonscale-07906dfc.json"
+        },
+        {
+          "file": "media/SFX_map-ambience-full.mp3",
+          "title": "Map Ambience (Full)",
+          "type": "sound-design",
+          "duration": 89.31275,
+          "source": "Dragoncraft/map_ambience.mp3",
+          "order": 10,
+          "src": "media/SFX_map-ambience-full.mp3",
+          "waveform": "waveforms/SFX_map-ambience-full-bca78252.json"
+        }
+      ],
+      "id": "dragoncraft",
+      "order": 2,
+      "featured": true,
+      "slug": "dragoncraft",
+      "basePath": "dragoncraft/"
+    },
+    {
+      "title": "Skee-Ball 2",
+      "contribution": "Full SFX set — ball physics, UI/system sounds, ticket/prize animations.",
+      "description": "Arcade Skee-Ball sequel: roll balls, win tickets, buy prizes, multiplayer.",
+      "company": "Freeverse / ngmoco (DeNA)",
+      "platform": "iOS",
+      "year": "2012",
+      "status": "Released Dec 2012",
+      "featuredOrder": 3,
+      "links": [
+        {
+          "label": "Skee-Ball 2 now available — TouchArcade",
+          "url": "https://toucharcade.com/2012/12/13/start-earning-tickets-in-skee-ball-2-sequel-to-the-smash-hit-original-is-now-available/"
+        }
+      ],
+      "media": [
+        {
+          "file": "media/SFX_ball-physics.ogg",
+          "title": "Ball Physics",
+          "type": "sound-design",
+          "duration": 9.632375,
+          "source": "SkeeBall2/SkeeBall2_SFX/BallPhysics.wav",
+          "order": 1,
+          "src": "media/SFX_ball-physics.ogg",
+          "waveform": "waveforms/SFX_ball-physics-33e8130e.json"
+        },
+        {
+          "file": "media/SFX_machine-power-on.ogg",
+          "title": "Machine Power On",
+          "type": "sound-design",
+          "duration": 3.94575,
+          "source": "SkeeBall2/SkeeBall2_SFX/MachinePowerOn.wav",
+          "order": 2,
+          "src": "media/SFX_machine-power-on.ogg",
+          "waveform": "waveforms/SFX_machine-power-on-6305624f.json"
+        },
+        {
+          "file": "media/SFX_jingles.ogg",
+          "title": "Jingles",
+          "type": "sound-design",
+          "duration": 9.389125,
+          "source": "SkeeBall2/SkeeBall2_SFX/Jingles.wav",
+          "order": 3,
+          "src": "media/SFX_jingles.ogg",
+          "waveform": "waveforms/SFX_jingles-f50e79d6.json"
+        },
+        {
+          "file": "media/SFX_versus-intro.ogg",
+          "title": "Versus Intro",
+          "type": "sound-design",
+          "duration": 4.738375,
+          "source": "SkeeBall2/SkeeBall2_SFX/VersusIntro.wav",
+          "order": 4,
+          "src": "media/SFX_versus-intro.ogg",
+          "waveform": "waveforms/SFX_versus-intro-ea2b418e.json"
+        },
+        {
+          "file": "media/SFX_title-screen-ambience.ogg",
+          "title": "Title Screen Ambience",
+          "type": "sound-design",
+          "duration": 12.003125,
+          "source": "SkeeBall2/SkeeBall2_SFX/TitleScreenAmbience.wav",
+          "order": 5,
+          "src": "media/SFX_title-screen-ambience.ogg",
+          "waveform": "waveforms/SFX_title-screen-ambience-9487ddb9.json"
+        },
+        {
+          "file": "media/SFX_title-intro.ogg",
+          "title": "Title Intro",
+          "type": "sound-design",
+          "duration": 5.21475,
+          "source": "SkeeBall2/SkeeBall2_SFX/TitleIntro.wav",
+          "order": 6,
+          "src": "media/SFX_title-intro.ogg",
+          "waveform": "waveforms/SFX_title-intro-c785b12e.json"
+        },
+        {
+          "file": "media/SFX_prize-reveal.ogg",
+          "title": "Prize Reveal",
+          "type": "sound-design",
+          "duration": 6.895125,
+          "source": "SkeeBall2/SkeeBall2_SFX/PrizeReveal.wav",
+          "order": 7,
+          "src": "media/SFX_prize-reveal.ogg",
+          "waveform": "waveforms/SFX_prize-reveal-5a072194.json"
+        },
+        {
+          "file": "media/SFX_buy-prize.ogg",
+          "title": "Buy Prize",
+          "type": "sound-design",
+          "duration": 1.21125,
+          "source": "SkeeBall2/SkeeBall2_SFX/BuyPrize.wav",
+          "order": 8,
+          "src": "media/SFX_buy-prize.ogg",
+          "waveform": "waveforms/SFX_buy-prize-936b66db.json"
+        },
+        {
+          "file": "media/SFX_rewind.ogg",
+          "title": "Rewind",
+          "type": "sound-design",
+          "duration": 2.545625,
+          "source": "SkeeBall2/SkeeBall2_SFX/Rewind.wav",
+          "order": 9,
+          "src": "media/SFX_rewind.ogg",
+          "waveform": "waveforms/SFX_rewind-dde77922.json"
+        }
+      ],
+      "id": "skee-ball-2",
+      "order": 3,
+      "featured": true,
+      "slug": "skee-ball-2",
+      "basePath": "skee-ball-2/"
+    },
+    {
+      "title": "Fuzion",
+      "contribution": "Music (menu, battle) + SFX (abilities, animations, UI).",
+      "description": "Creature battle game: summon, fuse and evolve creatures; elemental attacks.",
+      "company": "ngmoco",
+      "platform": "Mobile",
+      "year": "2012",
+      "status": "Unreleased",
+      "featuredOrder": 4,
+      "links": [],
+      "media": [
+        {
+          "file": "media/Music_battle-2.ogg",
+          "title": "Battle 2",
+          "type": "music",
+          "duration": 52.0,
+          "source": "Skyfall/music_battle_2.wav",
+          "order": 1,
+          "src": "media/Music_battle-2.ogg",
+          "waveform": "waveforms/Music_battle-2-89560ff7.json"
+        },
+        {
+          "file": "media/SFX_summon.ogg",
+          "title": "Summon",
+          "type": "sound-design",
+          "duration": 9.97125,
+          "source": "Fuzion_SFX/Summon.wav",
+          "order": 2,
+          "src": "media/SFX_summon.ogg",
+          "waveform": "waveforms/SFX_summon-e5ab1dbe.json"
+        },
+        {
+          "file": "media/SFX_fuse.ogg",
+          "title": "Fuse",
+          "type": "sound-design",
+          "duration": 7.091375,
+          "source": "Fuzion_SFX/Fuse.wav",
+          "order": 3,
+          "src": "media/SFX_fuse.ogg",
+          "waveform": "waveforms/SFX_fuse-d24454f1.json"
+        },
+        {
+          "file": "media/SFX_elemental-fire.ogg",
+          "title": "Elemental Fire",
+          "type": "sound-design",
+          "duration": 4.908125,
+          "source": "Fuzion_SFX/Elemental_Fire.wav",
+          "order": 4,
+          "src": "media/SFX_elemental-fire.ogg",
+          "waveform": "waveforms/SFX_elemental-fire-50668f30.json"
+        },
+        {
+          "file": "media/SFX_elemental-ice.ogg",
+          "title": "Elemental Ice",
+          "type": "sound-design",
+          "duration": 4.737625,
+          "source": "Fuzion_SFX/Elemental_Ice.wav",
+          "order": 5,
+          "src": "media/SFX_elemental-ice.ogg",
+          "waveform": "waveforms/SFX_elemental-ice-f41f4541.json"
+        },
+        {
+          "file": "media/SFX_elemental-stone.ogg",
+          "title": "Elemental Stone",
+          "type": "sound-design",
+          "duration": 5.178875,
+          "source": "Fuzion_SFX/Elemental_Stone.wav",
+          "order": 6,
+          "src": "media/SFX_elemental-stone.ogg",
+          "waveform": "waveforms/SFX_elemental-stone-f3165006.json"
+        },
+        {
+          "file": "media/SFX_elemental-dark.ogg",
+          "title": "Elemental Dark",
+          "type": "sound-design",
+          "duration": 5.5165,
+          "source": "Fuzion_SFX/Elemental_Dark.wav",
+          "order": 7,
+          "src": "media/SFX_elemental-dark.ogg",
+          "waveform": "waveforms/SFX_elemental-dark-4f8942a9.json"
+        },
+        {
+          "file": "media/SFX_elemental-neutral.ogg",
+          "title": "Elemental Neutral",
+          "type": "sound-design",
+          "duration": 5.498,
+          "source": "Fuzion_SFX/Elemental_Neutral.wav",
+          "order": 8,
+          "src": "media/SFX_elemental-neutral.ogg",
+          "waveform": "waveforms/SFX_elemental-neutral-c721dcc8.json"
+        },
+        {
+          "file": "media/SFX_ally-attack.ogg",
+          "title": "Ally Attack",
+          "type": "sound-design",
+          "duration": 5.178375,
+          "source": "Fuzion_SFX/AllyAttack.wav",
+          "order": 9,
+          "src": "media/SFX_ally-attack.ogg",
+          "waveform": "waveforms/SFX_ally-attack-7077a0a7.json"
+        },
+        {
+          "file": "media/SFX_summon-book-intro.ogg",
+          "title": "Summon Book Intro",
+          "type": "sound-design",
+          "duration": 1.13025,
+          "source": "Fuzion_SFX/SummonBookIntro.wav",
+          "order": 10,
+          "src": "media/SFX_summon-book-intro.ogg",
+          "waveform": "waveforms/SFX_summon-book-intro-d4670d0a.json"
+        },
+        {
+          "file": "media/SFX_new-creature.ogg",
+          "title": "New Creature",
+          "type": "sound-design",
+          "duration": 3.435125,
+          "source": "Fuzion_SFX/NewCreature.wav",
+          "order": 11,
+          "src": "media/SFX_new-creature.ogg",
+          "waveform": "waveforms/SFX_new-creature-4314826b.json"
+        }
+      ],
+      "id": "fuzion",
+      "order": 4,
+      "featured": true,
+      "slug": "fuzion",
+      "basePath": "fuzion/"
+    },
+    {
+      "title": "Gamestar Mechanic",
+      "contribution": "Lead audio designer — music, SFX, ambience; audio implementation (soundtrack XML).",
+      "description": "Game-design learning platform: kids play quests and build their own games.",
+      "company": "Gamelab → E-Line Media",
+      "platform": "Web",
+      "year": "2007–2012",
+      "status": "Released",
+      "featuredOrder": 5,
+      "links": [
+        {
+          "label": "Official credits",
+          "url": "https://gamestarmechanic.com/about/credits"
+        },
+        {
+          "label": "Gamestar Mechanic Launches Today — Joan Ganz Cooney Center",
+          "url": "https://joanganzcooneycenter.org/2010/09/29/gamestar-mechanic-launches-today/"
+        },
+        {
+          "label": "Gamestar Mechanic — Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Gamestar_Mechanic"
+        }
+      ],
+      "media": [
+        {
+          "file": "media/Music_the-league-of-tinkerers.mp3",
+          "title": "The League of Tinkerers",
+          "type": "music",
+          "duration": 78.419,
+          "source": "Gamestar/The League of Tinkerers.mp3",
+          "order": 1,
+          "src": "media/Music_the-league-of-tinkerers.mp3",
+          "waveform": "waveforms/Music_the-league-of-tinkerers-701b719b.json"
+        }
+      ],
+      "id": "gamestar-mechanic",
+      "order": 5,
+      "featured": true,
+      "slug": "gamestar-mechanic",
+      "basePath": "gamestar-mechanic/"
+    },
+    {
+      "title": "Dreamland",
+      "contribution": "Music + SFX, with Stephen Greenberg; FreshPlanet implemented.",
+      "description": "Social RPG on Facebook.",
+      "company": "FreshPlanet",
+      "platform": "Facebook",
+      "year": "2011",
+      "status": "Released (offline)",
+      "featuredOrder": 6,
+      "links": [
+        {
+          "label": "Dream Land review — Gamezebo",
+          "url": "https://www.gamezebo.com/reviews/dream-land-review-2/"
+        },
+        {
+          "label": "Will Work for XP: The Month a Million People Played My Game — NYU Game Center",
+          "url": "https://gamecenter.nyu.edu/will-work-for-xp-the-month-a-million-people-played-my-game/"
+        },
+        {
+          "label": "Will Work for XP: Demoing Dreamland at the NY Gaming Meetup — NYU Game Center",
+          "url": "https://gamecenter.nyu.edu/will-work-for-xp-demoing-dreamland-at-the-ny-gaming-meetup/"
+        },
+        {
+          "label": "Parents’ Guide to Dreamland — Common Sense Media",
+          "url": "https://www.commonsensemedia.org/game-reviews/dreamland"
+        },
+        {
+          "label": "Dreamland art portfolio — Kei Tawara / Behance",
+          "url": "https://www.behance.net/gallery/26880991/Dreamland"
+        },
+        {
+          "label": "Dreamland Ambience — SoundCloud",
+          "url": "https://soundcloud.com/tiny-timbre/deamland-ambience"
+        },
+        {
+          "label": "Deja Vu — SoundCloud",
+          "url": "https://soundcloud.com/tiny-timbre/dreamland-worldview"
+        },
+        {
+          "label": "The Dreamland Room — SoundCloud",
+          "url": "https://soundcloud.com/tiny-timbre/dreamland-room"
+        }
+      ],
+      "media": [
+        {
+          "file": "media/Music_deja-vu.mp3",
+          "title": "Deja Vu",
+          "type": "music",
+          "duration": 54.047,
+          "source": "Dreamland/Deja Vu.mp3",
+          "order": 1,
+          "src": "media/Music_deja-vu.mp3",
+          "waveform": "waveforms/Music_deja-vu-db275c91.json"
+        },
+        {
+          "file": "media/Music_dreamland-ambience.mp3",
+          "title": "Dreamland Ambience",
+          "type": "music",
+          "duration": 68.048,
+          "source": "Dreamland/Deamland Ambience.mp3",
+          "order": 2,
+          "src": "media/Music_dreamland-ambience.mp3",
+          "waveform": "waveforms/Music_dreamland-ambience-665bd8c7.json"
+        },
+        {
+          "file": "media/Music_the-dreamland-room.mp3",
+          "title": "The Dreamland Room",
+          "type": "music",
+          "duration": 186.932,
+          "source": "Dreamland/The Dreamland Room.mp3",
+          "order": 3,
+          "src": "media/Music_the-dreamland-room.mp3",
+          "waveform": "waveforms/Music_the-dreamland-room-157d0852.json"
+        }
+      ],
+      "id": "dreamland",
+      "order": 6,
+      "featured": true,
+      "slug": "dreamland",
+      "basePath": "dreamland/"
+    },
+    {
+      "title": "Galaxy",
+      "contribution": "Music (battle, boss, menu, stings) + SFX.",
+      "description": "Sci-fi card-battle game (card packs, stages, fusion).",
+      "company": "Atekama",
+      "platform": "Mobile",
+      "year": "2012",
+      "status": "Release unconfirmed",
+      "featuredOrder": 7,
+      "links": [],
+      "media": [
+        {
+          "file": "media/SFX_combat.ogg",
+          "title": "Combat",
+          "type": "sound-design",
+          "duration": 6.39225,
+          "source": "Galaxy_SFX/Combat.wav",
+          "order": 1,
+          "src": "media/SFX_combat.ogg",
+          "waveform": "waveforms/SFX_combat-4e758392.json"
+        },
+        {
+          "file": "media/SFX_card-pack-open.ogg",
+          "title": "Card Pack Open",
+          "type": "sound-design",
+          "duration": 5.524375,
+          "source": "Galaxy_SFX/CardPackOpen.wav",
+          "order": 2,
+          "src": "media/SFX_card-pack-open.ogg",
+          "waveform": "waveforms/SFX_card-pack-open-357244e2.json"
+        }
+      ],
+      "id": "galaxy",
+      "order": 7,
+      "featured": true,
+      "uncertain": "Release status is unconfirmed in the supplied records.",
+      "slug": "galaxy",
+      "basePath": "galaxy/"
+    },
+    {
+      "title": "Spa Life",
+      "contribution": "Music + SFX.",
+      "description": "Clarins-branded social game on Facebook.",
+      "company": "FreshPlanet (for Clarins)",
+      "platform": "Facebook",
+      "year": "2011",
+      "status": "Released (offline)",
+      "featuredOrder": 8,
+      "links": [
+        {
+          "label": "Clarins looks to beautify Facebook with Spa Life, its first social game — AOL",
+          "url": "https://www.aol.com/2011/09/23/clarins-spa-life-facebook-game/"
+        },
+        {
+          "label": "Spa Life walkthrough — Gamezebo",
+          "url": "https://www.gamezebo.com/walkthroughs/spa-life-walkthrough/"
+        }
+      ],
+      "media": [
+        {
+          "file": "media/Music_spa-life.mp3",
+          "title": "Spa Life",
+          "type": "music",
+          "duration": 78.315,
+          "source": "Spa Life/Spa Life.mp3",
+          "order": 1,
+          "src": "media/Music_spa-life.mp3",
+          "waveform": "waveforms/Music_spa-life-4b796a48.json"
+        }
+      ],
+      "id": "spa-life",
+      "order": 8,
+      "featured": true,
+      "slug": "spa-life",
+      "basePath": "spa-life/"
+    },
+    {
+      "title": "Flick Bowling 2",
+      "contribution": "Music + SFX; character VO production.",
+      "description": "Arcade bowling with flick-to-throw controls and character bowlers.",
+      "company": "Freeverse",
+      "platform": "iOS",
+      "year": "2009–2010",
+      "status": "Released",
+      "featuredOrder": 9,
+      "links": [
+        {
+          "label": "Hands-on preview with video — TouchArcade",
+          "url": "https://toucharcade.com/2010/03/18/flick-bowling-2-hands-on-preview-with-video/"
+        },
+        {
+          "label": "Flick Bowling 2 review — Pocket Gamer",
+          "url": "https://www.pocketgamer.com/flick-bowling-2/review/"
+        },
+        {
+          "label": "Review — iLounge",
+          "url": "https://www.ilounge.com/index.php/reviews/entry/freeverse-flick-bowling-2"
+        }
+      ],
+      "media": [],
+      "id": "flick-bowling-2",
+      "order": 9,
+      "featured": true,
+      "slug": "flick-bowling-2",
+      "basePath": "flick-bowling-2/"
+    },
+    {
+      "title": "We Bowl",
+      "contribution": "Music (main menu + friend-screen cues).",
+      "description": "Social bowling game on Facebook.",
+      "company": "Freeverse",
+      "platform": "Facebook",
+      "year": "2010",
+      "status": "Released (offline)",
+      "featuredOrder": 10,
+      "links": [],
+      "media": [
+        {
+          "file": "media/Music_friend-screen.mp3",
+          "title": "Friend Screen",
+          "type": "music",
+          "duration": 33.23075,
+          "source": "Flick Bowling 2/We Bowl Friend Screen.mp3",
+          "order": 1,
+          "src": "media/Music_friend-screen.mp3",
+          "waveform": "waveforms/Music_friend-screen-56fd6b63.json"
+        }
+      ],
+      "id": "we-bowl",
+      "order": 10,
+      "featured": true,
+      "slug": "we-bowl",
+      "basePath": "we-bowl/"
+    },
+    {
+      "title": "Top Chef: The Game",
+      "contribution": "Music + SFX (credited).",
+      "description": "Cooking game based on the Bravo TV show.",
+      "company": "Gamelab / Brighter Minds Media",
+      "platform": "PC",
+      "year": "2008",
+      "status": "Released",
+      "featuredOrder": 11,
+      "links": [
+        {
+          "label": "Credits — MobyGames",
+          "url": "https://www.mobygames.com/game/47577/top-chef-the-game/credits/windows/?autoplatform=true"
+        },
+        {
+          "label": "Behind the Game: Top Chef — Gamezebo",
+          "url": "https://www.gamezebo.com/news/behind-the-game-top-chef/"
+        },
+        {
+          "label": "Top Chef Tips Walkthrough — Gamezebo",
+          "url": "https://www.gamezebo.com/walkthroughs/top-chef-tips-walkthrough/"
+        }
+      ],
+      "media": [],
+      "id": "top-chef",
+      "order": 11,
+      "featured": true,
+      "slug": "top-chef",
+      "basePath": "top-chef/"
+    },
+    {
+      "title": "Eleminer",
+      "contribution": "Music (loopable background track).",
+      "description": "",
+      "company": "Transmote",
+      "platform": "",
+      "year": "2015",
+      "status": "Unconfirmed",
+      "featuredOrder": 12,
+      "links": [],
+      "media": [
+        {
+          "file": "media/Music_intro.m4a",
+          "title": "Intro",
+          "type": "music",
+          "duration": 26.678375,
+          "source": "Eleminer/Eleminer_music_v2_intro.m4a",
+          "order": 1,
+          "src": "media/Music_intro.m4a",
+          "waveform": "waveforms/Music_intro-601d68d8.json"
+        },
+        {
+          "file": "media/Music_loop.m4a",
+          "title": "Loop",
+          "type": "music",
+          "duration": 350.480625,
+          "source": "Eleminer/Eleminer_music_v2_loop.m4a",
+          "order": 2,
+          "src": "media/Music_loop.m4a",
+          "waveform": "waveforms/Music_loop-a21a44ef.json"
+        }
+      ],
+      "id": "eleminer",
+      "order": 12,
+      "featured": true,
+      "slug": "eleminer",
+      "basePath": "eleminer/"
+    },
+    {
+      "title": "Bob the Builder",
+      "contribution": "Music concept (producer approved).",
+      "description": "Licensed Bob the Builder kids game.",
+      "company": "Gamelab",
+      "platform": "",
+      "year": "2008",
+      "status": "Unconfirmed",
+      "featuredOrder": 13,
+      "links": [],
+      "media": [
+        {
+          "file": "media/Music_concept.mp3",
+          "title": "Concept",
+          "type": "music",
+          "duration": 74.24,
+          "source": "Bob the builder/BOB_Mus_Concept_012708.mp3",
+          "order": 1,
+          "src": "media/Music_concept.mp3",
+          "waveform": "waveforms/Music_concept-cb1db6c6.json"
+        }
+      ],
+      "id": "bob-the-builder",
+      "order": 13,
+      "featured": true,
+      "uncertain": "Release status is unconfirmed in the supplied records.",
+      "slug": "bob-the-builder",
+      "basePath": "bob-the-builder/"
+    },
+    {
+      "title": "We Are Music",
+      "contribution": "Music.",
+      "description": "",
+      "company": "",
+      "platform": "",
+      "year": "",
+      "status": "",
+      "featuredOrder": 14,
+      "links": [],
+      "media": [
+        {
+          "file": "media/Music_we-are-music.mp3",
+          "title": "We Are Music",
+          "type": "music",
+          "duration": 32.6,
+          "source": "We are music/We are music.mp3",
+          "order": 1,
+          "src": "media/Music_we-are-music.mp3",
+          "waveform": "waveforms/Music_we-are-music-1b143d06.json"
+        }
+      ],
+      "id": "we-are-music",
+      "order": 14,
+      "featured": true,
+      "slug": "we-are-music",
+      "basePath": "we-are-music/"
+    }
+  ]
+}

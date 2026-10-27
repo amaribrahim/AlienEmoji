@@ -1,0 +1,94 @@
+{
+  "title": "Skee-Ball 2",
+  "contribution": "Full SFX set — ball physics, UI/system sounds, ticket/prize animations.",
+  "description": "Arcade Skee-Ball sequel: roll balls, win tickets, buy prizes, multiplayer.",
+  "company": "Freeverse / ngmoco (DeNA)",
+  "platform": "iOS",
+  "year": "2012",
+  "status": "Released Dec 2012",
+  "featuredOrder": 3,
+  "cover": null,
+  "links": [
+    {
+      "label": "Skee-Ball 2 now available — TouchArcade",
+      "url": "https://toucharcade.com/2012/12/13/start-earning-tickets-in-skee-ball-2-sequel-to-the-smash-hit-original-is-now-available/"
+    }
+  ],
+  "media": [
+    {
+      "file": "media/SFX_ball-physics.ogg",
+      "title": "Ball Physics",
+      "type": "sound-design",
+      "duration": 9.63,
+      "source": "SkeeBall2/SkeeBall2_SFX/BallPhysics.wav",
+      "order": 1
+    },
+    {
+      "file": "media/SFX_machine-power-on.ogg",
+      "title": "Machine Power On",
+      "type": "sound-design",
+      "duration": 3.95,
+      "source": "SkeeBall2/SkeeBall2_SFX/MachinePowerOn.wav",
+      "order": 2
+    },
+    {
+      "file": "media/SFX_jingles.ogg",
+      "title": "Jingles",
+      "type": "sound-design",
+      "duration": 9.39,
+      "source": "SkeeBall2/SkeeBall2_SFX/Jingles.wav",
+      "order": 3
+    },
+    {
+      "file": "media/SFX_versus-intro.ogg",
+      "title": "Versus Intro",
+      "type": "sound-design",
+      "duration": 4.74,
+      "source": "SkeeBall2/SkeeBall2_SFX/VersusIntro.wav",
+      "order": 4
+    },
+    {
+      "file": "media/SFX_title-screen-ambience.ogg",
+      "title": "Title Screen Ambience",
+      "type": "sound-design",
+      "duration": 12.0,
+      "source": "SkeeBall2/SkeeBall2_SFX/TitleScreenAmbience.wav",
+      "order": 5
+    },
+    {
+      "file": "media/SFX_title-intro.ogg",
+      "title": "Title Intro",
+      "type": "sound-design",
+      "duration": 5.21,
+      "source": "SkeeBall2/SkeeBall2_SFX/TitleIntro.wav",
+      "order": 6
+    },
+    {
+      "file": "media/SFX_prize-reveal.ogg",
+      "title": "Prize Reveal",
+      "type": "sound-design",
+      "duration": 6.9,
+      "source": "SkeeBall2/SkeeBall2_SFX/PrizeReveal.wav",
+      "order": 7
+    },
+    {
+      "file": "media/SFX_buy-prize.ogg",
+      "title": "Buy Prize",
+      "type": "sound-design",
+      "duration": 1.21,
+      "source": "SkeeBall2/SkeeBall2_SFX/BuyPrize.wav",
+      "order": 8
+    },
+    {
+      "file": "media/SFX_rewind.ogg",
+      "title": "Rewind",
+      "type": "sound-design",
+      "duration": 2.55,
+      "source": "SkeeBall2/SkeeBall2_SFX/Rewind.wav",
+      "order": 9
+    }
+  ],
+  "id": "skee-ball-2",
+  "order": 3,
+  "featured": true
+}

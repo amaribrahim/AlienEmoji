@@ -1,0 +1,29 @@
+{
+  "title": "Flick Bowling 2",
+  "contribution": "Music + SFX; character VO production.",
+  "description": "Arcade bowling with flick-to-throw controls and character bowlers.",
+  "company": "Freeverse",
+  "platform": "iOS",
+  "year": "2009–2010",
+  "status": "Released",
+  "featuredOrder": 9,
+  "cover": null,
+  "links": [
+    {
+      "label": "Hands-on preview with video — TouchArcade",
+      "url": "https://toucharcade.com/2010/03/18/flick-bowling-2-hands-on-preview-with-video/"
+    },
+    {
+      "label": "Flick Bowling 2 review — Pocket Gamer",
+      "url": "https://www.pocketgamer.com/flick-bowling-2/review/"
+    },
+    {
+      "label": "Review — iLounge",
+      "url": "https://www.ilounge.com/index.php/reviews/entry/freeverse-flick-bowling-2"
+    }
+  ],
+  "media": [],
+  "id": "flick-bowling-2",
+  "order": 9,
+  "featured": true
+}

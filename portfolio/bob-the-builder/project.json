@@ -1,0 +1,26 @@
+{
+  "title": "Bob the Builder",
+  "contribution": "Music concept (producer approved).",
+  "description": "Licensed Bob the Builder kids game.",
+  "company": "Gamelab",
+  "platform": "",
+  "year": "2008",
+  "status": "Unconfirmed",
+  "featuredOrder": 13,
+  "cover": null,
+  "links": [],
+  "media": [
+    {
+      "file": "media/Music_concept.mp3",
+      "title": "Concept",
+      "type": "music",
+      "duration": 74.24,
+      "source": "Bob the builder/BOB_Mus_Concept_012708.mp3",
+      "order": 1
+    }
+  ],
+  "id": "bob-the-builder",
+  "order": 13,
+  "featured": true,
+  "uncertain": "Release status is unconfirmed in the supplied records."
+}

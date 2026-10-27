@@ -1,0 +1,74 @@
+{
+  "title": "Dreamland",
+  "contribution": "Music + SFX, with Stephen Greenberg; FreshPlanet implemented.",
+  "description": "Social RPG on Facebook.",
+  "company": "FreshPlanet",
+  "platform": "Facebook",
+  "year": "2011",
+  "status": "Released (offline)",
+  "featuredOrder": 6,
+  "cover": null,
+  "links": [
+    {
+      "label": "Dream Land review — Gamezebo",
+      "url": "https://www.gamezebo.com/reviews/dream-land-review-2/"
+    },
+    {
+      "label": "Will Work for XP: The Month a Million People Played My Game — NYU Game Center",
+      "url": "https://gamecenter.nyu.edu/will-work-for-xp-the-month-a-million-people-played-my-game/"
+    },
+    {
+      "label": "Will Work for XP: Demoing Dreamland at the NY Gaming Meetup — NYU Game Center",
+      "url": "https://gamecenter.nyu.edu/will-work-for-xp-demoing-dreamland-at-the-ny-gaming-meetup/"
+    },
+    {
+      "label": "Parents’ Guide to Dreamland — Common Sense Media",
+      "url": "https://www.commonsensemedia.org/game-reviews/dreamland"
+    },
+    {
+      "label": "Dreamland art portfolio — Kei Tawara / Behance",
+      "url": "https://www.behance.net/gallery/26880991/Dreamland"
+    },
+    {
+      "label": "Dreamland Ambience — SoundCloud",
+      "url": "https://soundcloud.com/tiny-timbre/deamland-ambience"
+    },
+    {
+      "label": "Deja Vu — SoundCloud",
+      "url": "https://soundcloud.com/tiny-timbre/dreamland-worldview"
+    },
+    {
+      "label": "The Dreamland Room — SoundCloud",
+      "url": "https://soundcloud.com/tiny-timbre/dreamland-room"
+    }
+  ],
+  "media": [
+    {
+      "file": "media/Music_deja-vu.mp3",
+      "title": "Deja Vu",
+      "type": "music",
+      "duration": 54.07,
+      "source": "Dreamland/Deja Vu.mp3",
+      "order": 1
+    },
+    {
+      "file": "media/Music_dreamland-ambience.mp3",
+      "title": "Dreamland Ambience",
+      "type": "music",
+      "duration": 68.08,
+      "source": "Dreamland/Deamland Ambience.mp3",
+      "order": 2
+    },
+    {
+      "file": "media/Music_the-dreamland-room.mp3",
+      "title": "The Dreamland Room",
+      "type": "music",
+      "duration": 186.96,
+      "source": "Dreamland/The Dreamland Room.mp3",
+      "order": 3
+    }
+  ],
+  "id": "dreamland",
+  "order": 6,
+  "featured": true
+}

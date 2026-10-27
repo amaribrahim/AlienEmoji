@@ -1,0 +1,34 @@
+{
+  "title": "Spa Life",
+  "contribution": "Music + SFX.",
+  "description": "Clarins-branded social game on Facebook.",
+  "company": "FreshPlanet (for Clarins)",
+  "platform": "Facebook",
+  "year": "2011",
+  "status": "Released (offline)",
+  "featuredOrder": 8,
+  "cover": null,
+  "links": [
+    {
+      "label": "Clarins looks to beautify Facebook with Spa Life, its first social game — AOL",
+      "url": "https://www.aol.com/2011/09/23/clarins-spa-life-facebook-game/"
+    },
+    {
+      "label": "Spa Life walkthrough — Gamezebo",
+      "url": "https://www.gamezebo.com/walkthroughs/spa-life-walkthrough/"
+    }
+  ],
+  "media": [
+    {
+      "file": "media/Music_spa-life.mp3",
+      "title": "Spa Life",
+      "type": "music",
+      "duration": 78.34,
+      "source": "Spa Life/Spa Life.mp3",
+      "order": 1
+    }
+  ],
+  "id": "spa-life",
+  "order": 8,
+  "featured": true
+}

@@ -1,0 +1,105 @@
+{
+  "title": "Fuzion",
+  "contribution": "Music (menu, battle) + SFX (abilities, animations, UI).",
+  "description": "Creature battle game: summon, fuse and evolve creatures; elemental attacks.",
+  "company": "ngmoco",
+  "platform": "Mobile",
+  "year": "2012",
+  "status": "Unreleased",
+  "featuredOrder": 4,
+  "cover": null,
+  "links": [],
+  "media": [
+    {
+      "file": "media/Music_battle-2.ogg",
+      "title": "Battle 2",
+      "type": "music",
+      "duration": 52.0,
+      "source": "Skyfall/music_battle_2.wav",
+      "order": 1
+    },
+    {
+      "file": "media/SFX_summon.ogg",
+      "title": "Summon",
+      "type": "sound-design",
+      "duration": 9.97,
+      "source": "Fuzion_SFX/Summon.wav",
+      "order": 2
+    },
+    {
+      "file": "media/SFX_fuse.ogg",
+      "title": "Fuse",
+      "type": "sound-design",
+      "duration": 7.09,
+      "source": "Fuzion_SFX/Fuse.wav",
+      "order": 3
+    },
+    {
+      "file": "media/SFX_elemental-fire.ogg",
+      "title": "Elemental Fire",
+      "type": "sound-design",
+      "duration": 4.91,
+      "source": "Fuzion_SFX/Elemental_Fire.wav",
+      "order": 4
+    },
+    {
+      "file": "media/SFX_elemental-ice.ogg",
+      "title": "Elemental Ice",
+      "type": "sound-design",
+      "duration": 4.74,
+      "source": "Fuzion_SFX/Elemental_Ice.wav",
+      "order": 5
+    },
+    {
+      "file": "media/SFX_elemental-stone.ogg",
+      "title": "Elemental Stone",
+      "type": "sound-design",
+      "duration": 5.18,
+      "source": "Fuzion_SFX/Elemental_Stone.wav",
+      "order": 6
+    },
+    {
+      "file": "media/SFX_elemental-dark.ogg",
+      "title": "Elemental Dark",
+      "type": "sound-design",
+      "duration": 5.52,
+      "source": "Fuzion_SFX/Elemental_Dark.wav",
+      "order": 7
+    },
+    {
+      "file": "media/SFX_elemental-neutral.ogg",
+      "title": "Elemental Neutral",
+      "type": "sound-design",
+      "duration": 5.5,
+      "source": "Fuzion_SFX/Elemental_Neutral.wav",
+      "order": 8
+    },
+    {
+      "file": "media/SFX_ally-attack.ogg",
+      "title": "Ally Attack",
+      "type": "sound-design",
+      "duration": 5.18,
+      "source": "Fuzion_SFX/AllyAttack.wav",
+      "order": 9
+    },
+    {
+      "file": "media/SFX_summon-book-intro.ogg",
+      "title": "Summon Book Intro",
+      "type": "sound-design",
+      "duration": 1.13,
+      "source": "Fuzion_SFX/SummonBookIntro.wav",
+      "order": 10
+    },
+    {
+      "file": "media/SFX_new-creature.ogg",
+      "title": "New Creature",
+      "type": "sound-design",
+      "duration": 3.44,
+      "source": "Fuzion_SFX/NewCreature.wav",
+      "order": 11
+    }
+  ],
+  "id": "fuzion",
+  "order": 4,
+  "featured": true
+}

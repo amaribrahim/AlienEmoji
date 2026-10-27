@@ -1,0 +1,38 @@
+{
+  "title": "Gamestar Mechanic",
+  "contribution": "Lead audio designer — music, SFX, ambience; audio implementation (soundtrack XML).",
+  "description": "Game-design learning platform: kids play quests and build their own games.",
+  "company": "Gamelab → E-Line Media",
+  "platform": "Web",
+  "year": "2007–2012",
+  "status": "Released",
+  "featuredOrder": 5,
+  "cover": null,
+  "links": [
+    {
+      "label": "Official credits",
+      "url": "https://gamestarmechanic.com/about/credits"
+    },
+    {
+      "label": "Gamestar Mechanic Launches Today — Joan Ganz Cooney Center",
+      "url": "https://joanganzcooneycenter.org/2010/09/29/gamestar-mechanic-launches-today/"
+    },
+    {
+      "label": "Gamestar Mechanic — Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Gamestar_Mechanic"
+    }
+  ],
+  "media": [
+    {
+      "file": "media/Music_the-league-of-tinkerers.mp3",
+      "title": "The League of Tinkerers",
+      "type": "music",
+      "duration": 78.45,
+      "source": "Gamestar/The League of Tinkerers.mp3",
+      "order": 1
+    }
+  ],
+  "id": "gamestar-mechanic",
+  "order": 5,
+  "featured": true
+}

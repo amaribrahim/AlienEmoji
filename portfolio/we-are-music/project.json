@@ -1,0 +1,25 @@
+{
+  "title": "We Are Music",
+  "contribution": "Music.",
+  "description": "",
+  "company": "",
+  "platform": "",
+  "year": "",
+  "status": "",
+  "featuredOrder": 14,
+  "cover": null,
+  "links": [],
+  "media": [
+    {
+      "file": "media/Music_we-are-music.mp3",
+      "title": "We Are Music",
+      "type": "music",
+      "duration": 32.63,
+      "source": "We are music/We are music.mp3",
+      "order": 1
+    }
+  ],
+  "id": "we-are-music",
+  "order": 14,
+  "featured": true
+}

@@ -1,0 +1,41 @@
+{
+  "title": "Crash Party",
+  "contribution": "Sound design team; audio tools (Sound Viewer, audio editor, tagging).",
+  "description": "Web site releasing a new mini-game every week.",
+  "company": "Crash Party",
+  "platform": "Web",
+  "year": "2026",
+  "status": "Live",
+  "featuredOrder": 1,
+  "cover": null,
+  "links": [],
+  "media": [
+    {
+      "file": "media/jetpack.mp4",
+      "title": "Jetpack",
+      "type": "video",
+      "duration": 9.95,
+      "source": "Crash Party Clips/new jetpack.mp4",
+      "order": 1
+    },
+    {
+      "file": "media/juke-dive-and-juke.mp4",
+      "title": "Juke — Dive and Juke",
+      "type": "video",
+      "duration": 4.36,
+      "source": "Crash Party Clips/Crash Party Juke dive and juke.mp4",
+      "order": 2
+    },
+    {
+      "file": "media/snowboard.mp4",
+      "title": "Snowboard",
+      "type": "video",
+      "duration": 11.55,
+      "source": "Crash Party Clips/Crash Party Snowboard.mp4",
+      "order": 3
+    }
+  ],
+  "id": "crash-party",
+  "order": 1,
+  "featured": true
+}
