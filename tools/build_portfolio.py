@@ -126,7 +126,7 @@ def build(root, destination):
     (root/'projects.json').write_text(encoded)
     (destination/'projects.json').write_text(encoded)
     manifest.write_text(json.dumps(current) + '\n')
-    (destination/'content-warnings.txt').write_text('\n'.join(warnings) + '\n')
+    (root/'content-warnings.txt').write_text('\n'.join(warnings) + '\n')
     print(f'{len(projects)} projects, {sum(len(p["media"]) for p in projects)} media items. ' + str(len(warnings)) + ' content notes.')
     for warning in warnings: print('NOTE: ' + warning)
     return result

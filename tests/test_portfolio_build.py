@@ -94,6 +94,12 @@ class PortfolioBuildTests(unittest.TestCase):
         self.project('video', media=[{'title':'Clip','type':'video','file':'media/clip.mp4','poster':track['poster']}])
         self.assertEqual(self.build()['projects'][0]['media'][0]['poster'], track['poster'])
 
+    def test_review_notes_stay_with_source_not_public_output(self):
+        self.project('notes', uncertain='Release needs confirmation')
+        self.build()
+        self.assertFalse((self.dest/'content-warnings.txt').exists())
+        self.assertIn('Release needs confirmation', (self.root/'content-warnings.txt').read_text())
+
     def test_id_must_match_folder(self):
         self.project('stable', id='different')
         with self.assertRaisesRegex(ValueError, 'ID'):

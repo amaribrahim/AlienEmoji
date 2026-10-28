@@ -1,2 +1,11 @@
 .DS_Store
 **/.DS_Store
+
+# Local review artifacts and Python caches
+__pycache__/
+*.pyc
+/PORTFOLIO.md
+/docs/superpowers/
+/tests/mobile-preview.html
+/tests/desktop-preview.html
+/portfolio/content-warnings.txt
